@@ -1,0 +1,170 @@
+<section id="register">
+  <div class="container">
+    <div class="space-110"></div>
+    <div class="row">
+      <div class="col-md-6 mr-auto ml-auto">
+        <h3 class="text-center">アカウント発行</h3>
+      </div>
+    </div>
+    <div class="space-top"></div>
+    <div class="project-pills">
+      <div class="row">
+        <div class="col-md-6 mr-auto ml-auto">
+          <div class="card card-register">
+            <form
+              class="register-form"
+              #registerTeacherForm="ngForm"
+              (ngSubmit)="registerTeacher(registerTeacherForm)"
+            >
+              <div class="form-group">
+                <label>講師名 <span class="icon-danger">*</span></label>
+                <input
+                  (ngModel)="(newTeacher.username)"
+                  name="username"
+                  type="text"
+                  class="form-control border-input"
+                  placeholder="木村良子"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>楽器 <span class="icon-danger">*</span></label>
+                <angular2-multiselect
+                  [data]="dropdownInstrumentList"
+                  [settings]="dropdownInstrumentSettings"
+                  (ngModel)="(newTeacher.selectedInstrument)"
+                  name="selectedInstrument"
+                  required
+                ></angular2-multiselect>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >講師のメールアドレス
+                  <span class="icon-danger">*</span></label
+                >
+                <input
+                  (ngModel)="(newTeacher.email)"
+                  name="email"
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  placeholder="hanako.kimura@gmail.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>講師時給 <span class="icon-danger">*</span></label>
+                <div
+                  class="input-group"
+                  [ngClass]="{ 'input-group-focus': focus2 === true }"
+                >
+                  <input
+                    (ngModel)="(newTeacher.hourlyPrice)"
+                    name="hourlyPrice"
+                    type="number"
+                    class="form-control"
+                    placeholder="1500"
+                    (focus)="focus2 = true"
+                    (blur)="focus2 = false"
+                    required
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text">円</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label>銀行名</label>
+                    <input
+                      (ngModel)="(newTeacher.bankName)"
+                      name="bankName"
+                      type="text"
+                      class="form-control border-input"
+                      placeholder="みずほ銀行"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label>支店</label>
+                    <input
+                      (ngModel)="(newTeacher.bankBranchName)"
+                      name="bankBranchName"
+                      type="text"
+                      class="form-control border-input"
+                      placeholder="新宿支店"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label>口座種類</label>
+                    <input
+                      (ngModel)="(newTeacher.bankAccountType)"
+                      name="bankAccountType"
+                      type="text"
+                      class="form-control border-input"
+                      placeholder="普通"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label>口座番号</label>
+                    <input
+                      (ngModel)="(newTeacher.bankAccountNumber)"
+                      name="bankAccountNumber"
+                      type="number"
+                      class="form-control border-input"
+                      placeholder="12345678"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>口座名義</label>
+                <input
+                  (ngModel)="(newTeacher.bankAccountName)"
+                  name="bankAccountName"
+                  type="text"
+                  class="form-control border-input"
+                  placeholder="ｷﾑﾗ ﾘﾖｳｺ（半角ｶﾅ/スペース有/ｮ→ﾖ）"
+                />
+              </div>
+
+              <button
+                *ngIf="!registerTeacherForm.valid || isClicked"
+                disabled
+                type="submit"
+                class="btn btn-block btn-round btn-lg"
+              >
+                アカウント発行
+              </button>
+              <button
+                *ngIf="registerTeacherForm.valid && !isClicked"
+                type="submit"
+                class="btn btn-primary btn-block btn-round btn-lg"
+              >
+                アカウント発行
+              </button>
+            </form>
+            <div class="space-top"></div>
+            <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
+              <p *ngFor="let error of errors">{{ error.detail }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
