@@ -1,13 +1,16 @@
 <section id="login">
   <div class="wrapper">
-    <div class="page-header">
+    <div
+      class="page-header"
+      style="background-image: url('./assets/img/login.jpg')"
+    >
       <div class="filter"></div>
       <div class="content-center">
         <div class="container">
           <div class="row">
             <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
               <div class="card card-register">
-                <h3 class="title">Login</h3>
+                <h3 class="title">再来予約＆確認</h3>
                 <br />
                 <div
                   *ngIf="errors && errors.length > 0"
@@ -82,10 +85,11 @@
                 </form>
                 <div class="forgot">
                   <button
-                    [swal]="[
-                      '',
-                      '事務局までお問い合わせください<br><br>0120-763-882'
-                    ]"
+                    [swal]="{
+                      title: '',
+                      html: '事務局までお問い合わせください<br>0120-763-882',
+                      icon: 'info'
+                    }"
                     class="btn btn-link btn-primary"
                   >
                     パスワードを紛失された方
@@ -97,7 +101,7 @@
         </div>
       </div>
       <div class="footer register-footer text-center">
-        <h6>TSUBAKI MUSIC SCHOOL</h6>
+        <h6>© DENTAL CARD, All rights reserved.</h6>
       </div>
     </div>
   </div>

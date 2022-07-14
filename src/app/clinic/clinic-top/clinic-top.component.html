@@ -1,0 +1,57 @@
+<!-- Before login -->
+<ng-container *ngIf="!auth.isAuthenticated()">
+  <div class="space-top"></div>
+  <div class="row">
+    <div class="col-md mr-auto ml-auto">
+      <a
+        class="btn btn-magnify btn-primary btn-round btn-lg"
+        [routerLink]="['/register']"
+      >
+        <i class="nc-icon nc-send"></i> &nbsp; 初回診療予約
+      </a>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md mr-auto ml-auto">
+      <a
+        class="btn btn-magnify btn-primary btn-round btn-lg"
+        [routerLink]="['/login']"
+      >
+        <i class="nc-icon nc-send"></i> &nbsp; 再来予約＆確認
+      </a>
+    </div>
+  </div>
+</ng-container>
+<!-- After login -->
+<ng-container *ngIf="auth.isAuthenticated()">
+  <h5 class="card-description text-center">次回診察予定日時：○月○日 15時〜</h5>
+  <br />
+  <div class="row">
+    <div class="col-md mr-auto ml-auto">
+      <!-- <a
+                  class="btn btn-magnify btn-primary btn-round btn-lg"
+                  [routerLink]="['/login']"
+                >
+                  <i class="nc-icon nc-send"></i> &nbsp; 再来予約をする
+                </a> -->
+      <a
+        class="btn btn-magnify btn-primary btn-round btn-lg"
+        [routerLink]="['booking']"
+      >
+        <i class="nc-icon nc-send"></i> &nbsp; 予約日時を変更する
+      </a>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md mr-auto ml-auto">
+      <button
+        class="btn btn-magnify btn-neutral btn-round btn-lg"
+        (click)="deleteConfirmation()"
+      >
+        <i class="nc-icon nc-send"></i> &nbsp; 予約をキャンセルする
+      </button>
+    </div>
+  </div>
+</ng-container>

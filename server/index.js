@@ -41,7 +41,7 @@ app.use("/api/v1/places", placeRoutes);
 app.use("/api/v1", imageUploadRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  const appPath = path.join(__dirname, "..", "dist", "lesson-reporter");
+  const appPath = path.join(__dirname, "..", "dist", "dental-card");
   const https_redirect = function () {
     return function (req, res, next) {
       if (req.headers["x-forwarded-proto"] != "https") {

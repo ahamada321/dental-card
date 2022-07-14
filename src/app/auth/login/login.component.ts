@@ -6,7 +6,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MyOriginAuthService } from '../service/auth.service';
+import { MyOriginAuthService } from '../shared/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
@@ -18,7 +18,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   errors: any[] = [];
-  footer: Date = new Date();
+  date: Date = new Date();
   user: any;
 
   focus!: boolean;
@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (this.auth.getUserRole() === 'Owner') {
           this.router.navigate(['/admin']);
         } else {
-          this.router.navigate(['/teacher']);
+          this.router.navigate(['/clinic']);
         }
       },
       (errorResponse: HttpErrorResponse) => {
@@ -89,9 +89,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       title: 'Password has been updated!',
       text: '新しいパスワードでログインできます！',
       icon: 'success',
-      // confirmButtonClass: 'btn btn-primary btn-round btn-lg',
-      // buttonsStyling: false,
-      // timer: 5000,
+      timer: 5000,
     });
   }
 }

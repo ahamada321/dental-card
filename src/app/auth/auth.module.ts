@@ -13,13 +13,13 @@ import { RegisterComponent } from './register/register.component';
 
 // import { environment } from "src/environments/environment";
 
-import { MyOriginAuthService } from './service/auth.service';
-import { AuthGuard } from './service/auth.guard';
-import { TokenInterceptor } from './service/token.interceptor';
+import { MyOriginAuthService } from './shared/auth.service';
+import { AuthGuard } from './shared/auth.guard';
+import { TokenInterceptor } from './shared/token.interceptor';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 ];
 

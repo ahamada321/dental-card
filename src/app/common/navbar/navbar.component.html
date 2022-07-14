@@ -2,7 +2,18 @@
   <div class="container">
     <div class="navbar-translate">
       <div class="navbar-header">
-        <a class="navbar-brand" [routerLink]="['/presentation']">Dental Card</a>
+        <a
+          class="navbar-brand"
+          *ngIf="!auth.isAuthenticated()"
+          [routerLink]="['/clinic']"
+          >Dental Card</a
+        >
+        <a
+          class="navbar-brand"
+          *ngIf="auth.isAuthenticated()"
+          [routerLink]="['/clinic']"
+          >Dental Card</a
+        >
       </div>
       <button
         class="navbar-toggler navbar-burger"
@@ -98,13 +109,17 @@
             >
           </div>
         </div>
-        <li class="nav-item">
-          <a
-            class="btn btn-round btn-primary"
-            href="https://www.creative-tim.com/product/paper-kit-2-pro-angular"
-          >
-            <i class="nc-icon nc-lock-circle-open"></i> ログイン
+
+        <li class="nav-item" *ngIf="!auth.isAuthenticated()">
+          <a class="btn btn-round btn-primary" [routerLink]="['/login']">
+            <i class="nc-icon nc-lock-circle-open"></i> 再来予約＆確認
           </a>
+        </li>
+
+        <li class="nav-item clickable" *ngIf="auth.isAuthenticated()">
+          <a class="nav-link" (click)="logout()"
+            ><i class="nc-icon nc-lock-circle-open"></i> ログアウトする</a
+          >
         </li>
       </ul>
     </div>

@@ -1,11 +1,11 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { MyOriginAuthService } from '../service/auth.service';
+import { MyOriginAuthService } from '../shared/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 // import { AdminService } from "src/app/admin/service/admin.service";
 // import { NgbCalendar, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
-import { Student } from 'src/app/auth/service/student.model';
-import { Teacher } from 'src/app/auth/service/teacher.model';
+import { Student } from 'src/app/auth/shared/student.model';
+import { Teacher } from 'src/app/auth/shared/teacher.model';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 
@@ -194,9 +194,7 @@ export class RegisterComponent implements OnInit {
           title: '講師アカウント発行完了',
           text: '講師IDは「tt' + teacherId + '」です',
           icon: 'success',
-          // confirmButtonClass: 'btn btn-primary btn-round btn-lg',
-          // buttonsStyling: false,
-          // allowOutsideClick: false,
+          allowOutsideClick: false,
         }).then(() => {
           formData.reset();
           this.isClicked = false;
@@ -216,8 +214,6 @@ export class RegisterComponent implements OnInit {
       title: '通信エラー',
       text: 'もう一度登録ボタンを押しなおしてください',
       icon: 'error',
-      // confirmButtonClass: 'btn btn-danger btn-round btn-lg',
-      // buttonsStyling: false,
     }).then(() => {
       this.isClicked = false;
     });

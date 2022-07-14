@@ -1,0 +1,29 @@
+<div class="space-110"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mr-auto ml-auto">
+      <div class="card card-profile">
+        <div class="card-body">
+          <div class="card-avatar">
+            <img src="assets/img/clinic-sample.jpg" alt="..." />
+          </div>
+          <h3 class="card-title">秋葉デンタルクリニック</h3>
+          <p
+            class="card-description text-center"
+            *ngIf="!auth.isAuthenticated()"
+          >
+            初回検診予約と再来予約＆確認を行えます。
+          </p>
+          <h5
+            class="card-description text-center"
+            *ngIf="auth.isAuthenticated()"
+          >
+            こんにちは。{{ auth.getUsername() }}さん
+          </h5>
+          <router-outlet></router-outlet>
+        </div>
+        <div class="card-footer text-center"></div>
+      </div>
+    </div>
+  </div>
+</div>

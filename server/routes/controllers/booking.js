@@ -215,7 +215,7 @@ exports.updateBooking = function (req, res) {
 };
 
 //Get 1 month all reports
-exports.getReports = function (req, res) {
+exports.getUserBookings = function (req, res) {
   const selectedMonth = req.params.id - 1;
   const monthStart = moment
     .tz("Asia/Tokyo")
