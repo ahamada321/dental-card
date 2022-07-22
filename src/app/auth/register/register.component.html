@@ -28,7 +28,7 @@
                 />
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label>楽器 <span class="icon-danger">*</span></label>
                 <angular2-multiselect
                   [data]="dropdownInstrumentList"
@@ -37,7 +37,7 @@
                   name="selectedInstrument"
                   required
                 ></angular2-multiselect>
-              </div>
+              </div> -->
 
               <div class="form-group">
                 <label
@@ -57,10 +57,7 @@
 
               <div class="form-group">
                 <label>講師時給 <span class="icon-danger">*</span></label>
-                <div
-                  class="input-group"
-                  [ngClass]="{ 'input-group-focus': focus2 === true }"
-                >
+                <div class="input-group">
                   <input
                     (ngModel)="(newTeacher.hourlyPrice)"
                     name="hourlyPrice"

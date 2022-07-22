@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -30,9 +28,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    // NgbModule,
     SweetAlert2Module,
-    AngularMultiSelectModule,
   ],
   exports: [RouterModule],
   providers: [

@@ -4,7 +4,6 @@ const { normalizeErrors } = require("./helpers/mongoose");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const config = require("../../config");
-const moment = require("moment-timezone");
 
 exports.getUsers = function (req, res) {
   const { page, limit } = req.query;

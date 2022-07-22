@@ -9,7 +9,7 @@
     "ng": "ng",
     "start": "npm run start --prefix server",
     "start-dev": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build --prod --output-hashing=all",
+    "build": "ng build --configuration production --output-hashing=all",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -28,7 +28,6 @@
     "@auth0/angular-jwt": "^5.0.2",
     "@danielmoncada/angular-datetime-picker": "^14.1.0",
     "@sweetalert2/ngx-sweetalert2": "^11.0.0",
-    "angular2-multiselect-dropdown": "5.0.4",
     "aws-sdk": "^2.1172.0",
     "bcrypt": "^5.0.1",
     "bootstrap": "^4.6.1",

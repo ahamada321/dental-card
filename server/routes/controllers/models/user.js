@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const moment = require("moment-timezone");
 
 const userSchema = new Schema({
   teacherId: Number,

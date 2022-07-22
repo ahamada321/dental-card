@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import * as moment from 'moment-timezone';
 import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 import { ClinicService } from '../shared/clinic.service';
 import { BookingService } from '../clinic-booking/shared/booking.service';

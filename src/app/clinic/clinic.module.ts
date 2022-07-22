@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
-import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AuthGuard } from '../auth/shared/auth.guard';
 
@@ -45,7 +44,6 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     JwBootstrapSwitchNg2Module,
-    AngularMultiSelectModule,
     SweetAlert2Module,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
