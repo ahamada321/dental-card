@@ -12,6 +12,11 @@ import { ClinicTopComponent } from './clinic-top/clinic-top.component';
 import { ClinicBookingComponent } from './clinic-booking/clinic-booking.component';
 import { ClinicService } from './shared/clinic.service';
 import { BookingService } from './clinic-booking/shared/booking.service';
+import { MatStepperModule } from '@angular/material/stepper';
+import {
+  OwlDateTimeModule,
+  OwlNativeDateTimeModule,
+} from '@danielmoncada/angular-datetime-picker';
 
 const routes: Routes = [
   {
@@ -33,7 +38,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ClinicComponent, ClinicTopComponent],
+  declarations: [ClinicComponent, ClinicTopComponent, ClinicBookingComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -42,6 +47,9 @@ const routes: Routes = [
     JwBootstrapSwitchNg2Module,
     AngularMultiSelectModule,
     SweetAlert2Module,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    MatStepperModule,
   ],
   providers: [ClinicService, BookingService],
 })

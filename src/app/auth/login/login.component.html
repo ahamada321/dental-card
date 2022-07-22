@@ -35,11 +35,12 @@
                         ></span>
                       </div>
                       <input
-                        type="email"
                         class="form-control"
-                        id="teacherId"
-                        formControlName="teacherId"
+                        type="email"
+                        id="email"
+                        formControlName="email"
                         placeholder="メールアドレス"
+                        pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
                         (focus)="focus = true"
                         (blur)="focus = false"
                       />

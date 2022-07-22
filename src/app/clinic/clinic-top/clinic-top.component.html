@@ -25,18 +25,34 @@
 </ng-container>
 <!-- After login -->
 <ng-container *ngIf="auth.isAuthenticated()">
-  <h5 class="card-description text-center">次回診察予定日時：○月○日 15時〜</h5>
+  <h5
+    *ngIf="foundBookings && foundBookings.length === 0"
+    class="card-description text-center"
+  >
+    次回診察日時：予約なし
+  </h5>
+  <div
+    class="card-description text-center"
+    *ngIf="foundBookings && foundBookings.length > 0"
+  >
+    <h5>
+      次回診察日時：{{ foundBookings[0].startAt | date: "yyyy年 MM月 dd日" }}
+    </h5>
+    <h5>{{ foundBookings[0].startAt | date: "HH:mmスタート" }}</h5>
+  </div>
   <br />
   <div class="row">
     <div class="col-md mr-auto ml-auto">
-      <!-- <a
-                  class="btn btn-magnify btn-primary btn-round btn-lg"
-                  [routerLink]="['/login']"
-                >
-                  <i class="nc-icon nc-send"></i> &nbsp; 再来予約をする
-                </a> -->
       <a
         class="btn btn-magnify btn-primary btn-round btn-lg"
+        *ngIf="foundBookings && foundBookings.length === 0"
+        [routerLink]="['/login']"
+      >
+        <i class="nc-icon nc-send"></i> &nbsp; 再来予約をする
+      </a>
+      <a
+        class="btn btn-magnify btn-primary btn-round btn-lg"
+        *ngIf="foundBookings && foundBookings.length > 0"
         [routerLink]="['booking']"
       >
         <i class="nc-icon nc-send"></i> &nbsp; 予約日時を変更する
@@ -48,6 +64,7 @@
     <div class="col-md mr-auto ml-auto">
       <button
         class="btn btn-magnify btn-neutral btn-round btn-lg"
+        *ngIf="foundBookings && foundBookings.length > 0"
         (click)="deleteConfirmation()"
       >
         <i class="nc-icon nc-send"></i> &nbsp; 予約をキャンセルする

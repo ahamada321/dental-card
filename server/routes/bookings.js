@@ -4,8 +4,6 @@ const router = express.Router();
 const UserCtrl = require("./controllers/user");
 const BookingCtrl = require("./controllers/booking");
 
-router.get("/:id", UserCtrl.authMiddleware, BookingCtrl.getUserBookings);
-
 router.get(
   "/student/:id",
   UserCtrl.authMiddleware,
@@ -17,6 +15,8 @@ router.get(
   UserCtrl.authMiddleware,
   BookingCtrl.getTeacherReports
 );
+
+router.get("", UserCtrl.authMiddleware, BookingCtrl.getUserBookings); // All bookings
 
 router.post("", UserCtrl.authMiddleware, BookingCtrl.createBooking);
 

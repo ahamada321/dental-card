@@ -12,7 +12,7 @@ import { Booking } from '../clinic-booking/shared/booking.model';
   styleUrls: ['./clinic-top.component.scss'],
 })
 export class ClinicTopComponent implements OnInit {
-  bookings: Booking[] = [];
+  foundBookings: Booking[] = [];
 
   constructor(
     public auth: MyOriginAuthService,
@@ -26,8 +26,8 @@ export class ClinicTopComponent implements OnInit {
 
   getUserBookings() {
     this.bookingService.getUserBookings().subscribe(
-      (bookings) => {
-        this.bookings = bookings;
+      (foundBookings) => {
+        this.foundBookings = foundBookings;
       },
       (errorResponse) => {}
     );
@@ -52,8 +52,8 @@ export class ClinicTopComponent implements OnInit {
   }
 
   private deleteBooking() {
-    if (this.bookings[0]._id) {
-      this.bookingService.deleteBooking(this.bookings[0]._id).subscribe(
+    if (this.foundBookings[0]._id) {
+      this.bookingService.deleteBooking(this.foundBookings[0]._id).subscribe(
         (deletedBooking) => {
           Swal.fire({
             title: '予約キャンセルされました',

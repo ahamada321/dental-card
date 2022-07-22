@@ -1,168 +1,178 @@
 <div class="space-top"></div>
-<form class="settings-form">
-  <div class="form-group">
-    <label>レッスン実施日 <span class="icon-danger">*</span></label>
-    <!-- <div class="input-group date">
-                  <input
-                    [(ngModel)]="selectedDate"
-                    name="selectedDate"
-                    [readonly]="true"
-                    [owlDateTime]="dt1"
-                    [owlDateTimeTrigger]="dt1"
-                    [min]="minDate"
-                    [max]="maxDate"
-                    class="form-control"
-                    placeholder="予約希望日を選択"
-                    (focus)="focus = true"
-                    (blur)="focus = false"
-                    required
-                  />
-                  <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
-
-                  <div class="input-group-append">
-                    <span class="glyphicon glyphicon-calendar input-group-text">
-                      <i class="fa fa-calendar" aria-hidden="true"></i>
-                    </span>
+<mat-horizontal-stepper [linear]="false" #stepper>
+  <mat-step label="診療内容を選択" [completed]="isSelectedCourseType">
+    <div class="row">
+      <div class="col-md-10 mr-auto ml-auto">
+        <div class="section section-summary">
+          <div class="container">
+            <div class="space-top"></div>
+            <a (click)="onCourseSelected('定期検診予約', stepper)">
+              <div
+                class="card"
+                data-background="image"
+                style="background-image: url('assets/img/clinic-img.jpg')"
+              >
+                <div class="card-body">
+                  <h3 class="card-title">定期検診予約</h3>
+                  <p class="card-description">
+                    歯のクリーニングや歯石除去、虫歯チェックなどを行います。
+                  </p>
+                  <div class="card-footer">
+                    <a class="btn btn-primary btn-round">
+                      <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                      選択する
+                    </a>
                   </div>
-                </div> -->
-  </div>
+                </div>
+              </div>
+            </a>
 
-  <div class="form-group">
-    <label>レッスン開始時刻 <span class="icon-danger">*</span></label>
-    <!-- <ngb-timepicker
-                  [(ngModel)]="lessonStartAt"
-                  name="lessonStartAt"
-                  [minuteStep]="15"
-                  required
-                ></ngb-timepicker> -->
-  </div>
+            <a>
+              <div
+                class="card"
+                data-background="image"
+                style="background-image: url('assets/img/clinic-img.jpg')"
+              >
+                <div class="card-body">
+                  <h3 class="card-title">詰め物が取れた</h3>
+                  <p class="card-description">
+                    詰め物が取れてしまった歯の治療を行います。
+                  </p>
+                  <div class="card-footer">
+                    <a class="btn btn-primary btn-round">
+                      <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                      選択する
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </a>
 
-  <div class="form-group">
-    <label>生徒名 <span class="icon-danger">*</span></label>
-    <h6 class="description">
-      ※体験レッスン報告の場合は「(名前)/体験レッスン用」を選択
-    </h6>
+            <a>
+              <div
+                class="card"
+                data-background="image"
+                style="background-image: url('assets/img/clinic-img.jpg')"
+              >
+                <div class="card-body">
+                  <h3 class="card-title">歯が痛い</h3>
+                  <p class="card-description">虫歯チェックや治療を行います。</p>
+                  <div class="card-footer">
+                    <a class="btn btn-primary btn-round">
+                      <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                      選択する
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </a>
 
-    <!-- <select
-                  class="custom-select"
-                  [(ngModel)]="newReport.selectedStudentId"
-                  name="selectedStudentId"
-                  required
-                >
-                  <option [value]="undefined" disabled>生徒を選択</option>
-                  <option
-                    *ngFor="let dropdownStudentList of dropdownStudentLists"
-                    [value]="dropdownStudentList.id"
-                  >
-                    {{ dropdownStudentList.itemName }}
-                  </option>
-                </select> -->
-  </div>
+            <a>
+              <div
+                class="card"
+                data-background="image"
+                style="background-image: url('assets/img/clinic-img.jpg')"
+              >
+                <div class="card-body">
+                  <h3 class="card-title">歯ぐきが痛い</h3>
+                  <p class="card-description">
+                    歯周病チェックや治療を行います。
+                  </p>
+                  <div class="card-footer">
+                    <a class="btn btn-primary btn-round">
+                      <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                      選択する
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </a>
 
-  <div class="form-group">
-    <label>レッスン方法 <span class="icon-danger">*</span></label>
-    <h6 class="description">
-      ※体験レッスン報告の場合は「〇〇レッスン(体験)」を選択
-    </h6>
-    <!-- <select
-                  class="custom-select"
-                  [(ngModel)]="newReport.selectedCourseType"
-                  name="selectedCourseType"
-                  required
-                >
-                  <option [value]="undefined" disabled>
-                    レッスン方法を選択
-                  </option>
-                  <option
-                    *ngFor="
-                      let dropdownCourseTypeList of dropdownCourseTypeLists
-                    "
-                    [value]="dropdownCourseTypeList.itemName"
-                  >
-                    {{ dropdownCourseTypeList.itemName }}
-                  </option>
-                </select> -->
-  </div>
-
-  <div class="space-top"></div>
-  <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
-    <p *ngFor="let error of errors">{{ error.detail }}</p>
-  </div>
-  <button
-    *ngIf="!bookingForm.valid || isClicked"
-    disabled
-    type="submit"
-    class="btn btn-block btn-round btn-lg"
-  >
-    上記内容で報告
-  </button>
-  <button
-    *ngIf="bookingForm.valid && !isClicked"
-    type="submit"
-    class="btn btn-block btn-primary btn-round btn-lg"
-  >
-    上記内容で報告
-  </button>
-</form>
-
-<!-- <section id="clinic-booking">
-  <form>
-    <div class="form-group">
-      <div
-        class="input-group date"
-        [ngClass]="{ 'input-group-focus': focus === true }"
-      >
-        <input
-          [(ngModel)]="selectedDate"
-          (ngModelChange)="onDateSelect($event)"
-          name="selectedDate"
-          [readonly]="true"
-          [owlDateTime]="dt1"
-          [owlDateTimeTrigger]="dt1"
-          [min]="minDate"
-          [max]="maxDate"
-          class="form-control"
-          placeholder="日付を選択"
-          (focus)="focus = true"
-          (blur)="focus = false"
-        />
-        <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
-
-        <div class="input-group-append">
-          <span
-            [owlDateTimeTrigger]="dt1"
-            class="glyphicon glyphicon-calendar input-group-text"
-          >
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-          </span>
+            <a>
+              <div
+                class="card"
+                data-background="image"
+                style="background-image: url('assets/img/clinic-img.jpg')"
+              >
+                <div class="card-body">
+                  <h3 class="card-title">口臭が気になる</h3>
+                  <p class="card-description">
+                    虫歯や歯周病チェックを行います。
+                  </p>
+                  <div class="card-footer">
+                    <a class="btn btn-primary btn-round">
+                      <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                      選択する
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </form>
-  <div class="space-top"></div>
-  <div
-    *ngIf="timeTables && timeTables.length > 0 && !isDateBlock_flg"
-    class="info"
-  >
-    <div *ngFor="let timeTable of timeTables">
-      <p>
-        <button
-          *ngIf="isValidBooking(timeTable)"
-          class="btn btn-primary"
-          (click)="selectDateTime(timeTable)"
-        >
-          {{ timeTable.format("HH:mm") }} スタート
-        </button>
-        <button
-          *ngIf="!isValidBooking(timeTable)"
-          class="btn"
-          [disabled]="true"
-        >
-          完売！
-        </button>
-      </p>
+  </mat-step>
+
+  <mat-step label="予約日時を選択" [completed]="isSelectedDateTime">
+    <div class="row">
+      <div class="col-md-5 ml-auto mr-auto">
+        <div class="input-group date">
+          <input
+            [(ngModel)]="selectedDate"
+            (ngModelChange)="onDateSelect($event)"
+            name="selectedDate"
+            [readonly]="true"
+            [owlDateTime]="dt1"
+            [owlDateTimeTrigger]="dt1"
+            [min]="minDate"
+            class="form-control"
+            placeholder="希望日を選択"
+            required
+          />
+          <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+
+          <div class="input-group-append">
+            <span class="glyphicon glyphicon-calendar input-group-text">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+    <div
+      *ngIf="timeTables && timeTables.length > 0 && !isDateBlock_flg"
+      class="info"
+    >
+      <div *ngFor="let timeTable of timeTables">
+        <p>
+          <button
+            *ngIf="isValidBooking(timeTable)"
+            class="btn btn-primary"
+            (click)="selectDateTime(timeTable, stepper)"
+          >
+            {{ timeTable.format("HH:mm") }} スタート
+          </button>
+          <button
+            *ngIf="!isValidBooking(timeTable)"
+            class="btn"
+            [disabled]="true"
+          >
+            予約不可
+          </button>
+        </p>
+      </div>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+<!-- <section id="clinic-booking">
+  <form>
+    <div class="form-group">
+      
+    </div>
+  </form> -->
+
+<!--
   <ng-container *ngIf="timeTables.length == 0 || isDateBlock_flg">
     <div class="separator"></div>
     <div class="info">

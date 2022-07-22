@@ -11,33 +11,28 @@ exports.createBooking = function (req, res) {
   // Passed booking information from booking.component.ts
   const user = res.locals.user;
   const {
-    selectedStudentId,
     startAt,
-    selectedCourseType,
-    title,
-    progress,
+    courseType,
+    courseTime,
     place,
-    receiptImageUrl,
-    receiptPrice,
     memo,
-    transportFee,
+    rental, // Room
+    status,
   } = req.body;
 
   const booking = new Booking({
     // startAt: moment(Object.assign(startAt, lessonDate)).subtract(1, 'months'),
     startAt: moment(startAt),
-    courseType: selectedCourseType,
-    title,
-    progress,
+    courseType,
+    courseTime,
     place,
-    receiptImageUrl,
-    receiptPrice,
     memo,
-    transportFee,
+    user, // Patient
+    rental, // Room
+    status,
   });
 
-  // Rental.findOne({studentId: studentId[0].id})
-  Rental.findById(selectedStudentId)
+  Rental.findById(rental._id)
     .populate("bookings")
     .populate("user", "id")
     .exec(function (err, foundRental) {
@@ -56,31 +51,16 @@ exports.createBooking = function (req, res) {
         });
       }
 
-      if (receiptPrice && !receiptImageUrl) {
+      if (!isValidBooking(booking, foundRental.bookings)) {
         return res.status(422).send({
           errors: [
             {
-              title: "Error!",
-              detail:
-                "「領収証画像を選択」＆「切り抜いた画像をアップロード」ボタンを押してから報告してください！",
+              title: "Invalid booking!",
+              detail: "Chosed dates are already taken!",
             },
           ],
         });
       }
-
-      if (!receiptPrice && receiptImageUrl) {
-        return res.status(422).send({
-          errors: [
-            {
-              title: "Error!",
-              detail: "領収証金額が入力されていません！",
-            },
-          ],
-        });
-      }
-
-      booking.user = user;
-      booking.teacherHourlyPrice = user.hourlyPrice;
 
       if (booking.courseType === "対面レッスン（体験）") {
         booking.teacherRevenue = 3000;
@@ -102,7 +82,10 @@ exports.createBooking = function (req, res) {
       }
 
       booking.rental = foundRental;
-      foundRental.bookings.push(booking);
+      foundRental.bookings.push(booking); // This updates DB side.
+      foundRental.user.bookings.push(booking); // This updates DB side.
+      foundRental.save();
+      User.updateOne({ _id: user.id }, { $push: { bookings: booking } });
 
       booking.save(function (err) {
         if (err) {
@@ -214,23 +197,22 @@ exports.updateBooking = function (req, res) {
     });
 };
 
-//Get 1 month all reports
 exports.getUserBookings = function (req, res) {
-  const selectedMonth = req.params.id - 1;
-  const monthStart = moment
-    .tz("Asia/Tokyo")
-    .startOf("month")
-    .subtract(selectedMonth, "month");
-  const monthEnd = moment(monthStart).add(1, "month");
+  const user = res.locals.user;
 
-  Booking.find({ createdAt: { $gte: monthStart, $lt: monthEnd } })
-    .sort({ createdAt: -1 })
-    .populate("user rental", "-password")
-    .exec(function (err, foundReports) {
+  Booking.find({ user })
+    // .populate('rental')
+    .populate({
+      // populate 'rental' and 'bookings' in 'rental'
+      path: "rental",
+      populate: { path: "bookings" }, // This is using for re-proposal dates window.
+    })
+    .sort({ startAt: -1 })
+    .exec(function (err, foundBookings) {
       if (err) {
         return res.status(422).send({ errors: normalizeErrors(err.errors) });
       }
-      res.json(foundReports);
+      return res.json(foundBookings);
     });
 };
 

@@ -18,7 +18,7 @@ const routes: Routes = [{ path: '', redirectTo: 'login', pathMatch: 'full' }];
           swal.mixin({
             customClass: {
               confirmButton: 'btn btn-primary btn-round btn-lg',
-              cancelButton: 'btn btn-gray btn-round btn-lg',
+              cancelButton: 'btn btn-secondary btn-round btn-lg',
             },
             buttonsStyling: false,
           })

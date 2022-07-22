@@ -15,3 +15,6 @@
 .cdk-overlay-container {
   z-index: 99999 !important; // Adding due to mobile header has broken when opened owl calendar.
 }
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
