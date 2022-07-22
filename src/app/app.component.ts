@@ -101,13 +101,8 @@ export class AppComponent implements OnInit {
               // add logic
               navbar.classList.remove('navbar-transparent');
             } else if (
-              _locationExamples !== 'addproduct' &&
-              _locationExamples !== 'blogposts' &&
-              _locationExamples !== 'discover' &&
-              _locationExamples !== 'contactus' &&
-              _locationExamples !== 'login' &&
-              _locationExamples !== 'register' &&
-              _locationExamples !== 'search'
+              _locationExamples === 'login' ||
+              _locationExamples === 'register'
             ) {
               // remove logic
               navbar.classList.add('navbar-transparent');
