@@ -6,10 +6,10 @@ import { FormGroup } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 import { BookingService } from './shared/booking.service';
-
 import { Clinic } from '../shared/clinic.model';
 import { Booking } from './shared/booking.model';
 import Swal from 'sweetalert2';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-clinic-booking',
@@ -71,22 +71,22 @@ export class ClinicBookingComponent implements OnInit {
     let mEndAt = null;
     let mStartAt = null;
 
-    // mEndAt = moment({ hour: 20, minute: 30 }).set({
-    //   year: date.getFullYear(),
-    //   month: date.getMonth(),
-    //   date: date.getDate(),
-    // });
-    // mStartAt = moment({ hour: 9, minute: 0 }).set({
-    //   year: date.getFullYear(),
-    //   month: date.getMonth(),
-    //   date: date.getDate(),
-    // });
+    mEndAt = moment({ hour: 20, minute: 30 }).set({
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      date: date.getDate(),
+    });
+    mStartAt = moment({ hour: 9, minute: 0 }).set({
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      date: date.getDate(),
+    });
 
-    // while (mStartAt < mEndAt) {
-    //   // mTimeTables.push(moment(mStartAt));
-    //   mStartAt.add(30, 'minutes');
-    // }
-    // this.timeTables = mTimeTables;
+    while (mStartAt < mEndAt) {
+      mTimeTables.push(moment(mStartAt));
+      mStartAt.add(30, 'minutes');
+    }
+    this.timeTables = mTimeTables;
   }
 
   isValidBooking(startAt: Date) {
