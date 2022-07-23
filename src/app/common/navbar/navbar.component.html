@@ -32,83 +32,9 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
-        <div ngbDropdown class="nav-item dropdown">
-          <div class="nav-link dropdown-toggle" ngbDropdownToggle>
-            Components
-          </div>
-          <div
-            ngbDropdownMenu
-            class="dropdown-menu dropdown-menu-right dropdown-danger"
-          >
-            <a ngbDropdownItem [routerLink]="['/components']"
-              ><i class="nc-icon nc-tile-56"></i>All Components</a
-            >
-            <a ngbDropdownItem [routerLink]="['/presentation']"
-              ><i class="nc-icon nc-settings"></i>Presentation</a
-            >
-            <a
-              ngbDropdownItem
-              href="https://demos.creative-tim.com/paper-kit-2-pro-angular/#/documentation/tutorial"
-              ><i class="nc-icon nc-bullet-list-67"></i>Documentation</a
-            >
-          </div>
-        </div>
-        <div ngbDropdown class="nav-item dropdown">
-          <div class="nav-link dropdown-toggle" ngbDropdownToggle>Sections</div>
-          <div
-            ngbDropdownMenu
-            class="dropdown-menu dropdown-menu-right dropdown-danger"
-          >
-            <a
-              class="dropdown-item"
-              [routerLink]="['/sections']"
-              fragment="headers"
-              ><i class="nc-icon nc-tile-56"></i>&nbsp; Headers</a
-            >
-            <a
-              class="dropdown-item"
-              [routerLink]="['/sections']"
-              fragment="features"
-              ><i class="nc-icon nc-settings"></i>&nbsp; Features</a
-            >
-            <a
-              class="dropdown-item"
-              [routerLink]="['/sections']"
-              fragment="blogs"
-              ><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Blogs</a
-            >
-            <a
-              class="dropdown-item"
-              [routerLink]="['/sections']"
-              fragment="teams"
-              ><i class="nc-icon nc-single-02"></i>&nbsp; Teams</a
-            >
-            <a
-              class="dropdown-item"
-              [routerLink]="['/sections']"
-              fragment="projects"
-              ><i class="nc-icon nc-calendar-60"></i>&nbsp; Projects</a
-            >
-            <a
-              class="dropdown-item"
-              [routerLink]="['/sections']"
-              fragment="pricing"
-              ><i class="nc-icon nc-money-coins"></i>&nbsp; Pricing</a
-            >
-            <a
-              class="dropdown-item"
-              [routerLink]="['/sections']"
-              fragment="testimonials"
-              ><i class="nc-icon nc-badge"></i>&nbsp; Testimonials</a
-            >
-            <a
-              class="dropdown-item"
-              [routerLink]="['/sections']"
-              fragment="contact-us"
-              ><i class="nc-icon nc-mobile"></i>&nbsp; Contacts</a
-            >
-          </div>
-        </div>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']"> デンタルカードとは </a>
+        </li>
 
         <li class="nav-item" *ngIf="!auth.isAuthenticated()">
           <a class="btn btn-round btn-primary" [routerLink]="['/login']">
@@ -116,8 +42,8 @@
           </a>
         </li>
 
-        <li class="nav-item clickable" *ngIf="auth.isAuthenticated()">
-          <a class="nav-link" (click)="logout()"
+        <li class="nav-item" *ngIf="auth.isAuthenticated()">
+          <a class="nav-link clickable" (click)="logout()"
             ><i class="nc-icon nc-lock-circle-open"></i> ログアウトする</a
           >
         </li>

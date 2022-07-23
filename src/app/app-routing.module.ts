@@ -4,13 +4,15 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AuthModule } from './auth/auth.module';
 import { ClinicModule } from './clinic/clinic.module';
+import { StaticModule } from './static/static.module';
 
-const routes: Routes = [{ path: '', redirectTo: 'login', pathMatch: 'full' }];
+const routes: Routes = [];
 
 @NgModule({
   imports: [
     AuthModule,
     ClinicModule,
+    StaticModule,
     RouterModule.forRoot(routes),
     SweetAlert2Module.forRoot({
       provideSwal: () =>

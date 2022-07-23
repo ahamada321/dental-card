@@ -1,0 +1,203 @@
+<div class="wrapper">
+  <div
+    class="page-header"
+    style="background-image: url('./assets/img/lp/back-image.jpg')"
+  >
+    <div class="filter"></div>
+    <div class="content-center">
+      <div class="container">
+        <!-- <div class="title-brand">
+          <div class="logo">
+            <img src="assets/img/logo/logo-w-aeru-wh.svg" alt="..." />
+          </div>
+        </div> -->
+        <div class="space-50"></div>
+        <h2 class="presentation-subtitle text-center">
+          \ 経営者 マッチングアプリ /
+        </h2>
+
+        <div class="space-top"></div>
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto text-center">
+            <a
+              [routerLink]="['/saas']"
+              class="btn btn-primary btn-round btn-lg"
+            >
+              法人向け商品はこちら
+            </a>
+          </div>
+        </div>
+        <div class="space-top"></div>
+        <div class="row">
+          <div class="col-6 col-sm-5 ml-auto">
+            <div
+              class="card"
+              data-background="image"
+              style="
+                background-image: url('assets/img/sections/rawpixel-com.jpg');
+              "
+            >
+              <div class="card-body">
+                <h3 class="card-title">全ての人</h3>
+                <p class="card-description">全ての人を一覧できます</p>
+                <div class="card-footer">
+                  <a
+                    [routerLink]="['/rentals']"
+                    class="btn btn-primary btn-move-right btn-round"
+                    >見に行く
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-5 mr-auto">
+            <div
+              class="card"
+              data-background="image"
+              style="
+                background-image: url('assets/img/sections/rawpixel-com.jpg');
+              "
+            >
+              <div class="card-body">
+                <h3 class="card-title">営業</h3>
+                <p class="card-description">一般営業/法人営業など</p>
+                <div class="card-footer">
+                  <a
+                    [routerLink]="['/rentals']"
+                    [queryParams]="{
+                      selectedCategory: ['営業']
+                    }"
+                    class="btn btn-warning btn-move-right btn-round"
+                    >見に行く
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6 col-sm-5 ml-auto">
+            <div
+              class="card"
+              data-background="image"
+              style="
+                background-image: url('assets/img/sections/rawpixel-com.jpg');
+              "
+            >
+              <div class="card-body">
+                <h3 class="card-title">経営者</h3>
+                <p class="card-description">経営者</p>
+                <div class="card-footer">
+                  <a
+                    [routerLink]="['/rentals']"
+                    [queryParams]="{
+                      selectedCategory: ['経営者']
+                    }"
+                    class="btn btn-info btn-move-right btn-round"
+                    >見に行く
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-5 mr-auto">
+            <div
+              class="card"
+              data-background="image"
+              style="
+                background-image: url('assets/img/sections/rawpixel-com.jpg');
+              "
+            >
+              <div class="card-body">
+                <h3 class="card-title">個人事業主</h3>
+                <p class="card-description">個人事業主</p>
+                <div class="card-footer">
+                  <a
+                    [routerLink]="['/rentals']"
+                    [queryParams]="{
+                      selectedCategory: ['個人事業主']
+                    }"
+                    class="btn btn-success btn-move-right btn-round"
+                    >見に行く
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6 col-sm-5 ml-auto">
+            <div
+              class="card"
+              data-background="image"
+              style="
+                background-image: url('assets/img/sections/rawpixel-com.jpg');
+              "
+            >
+              <div class="card-body">
+                <h3 class="card-title">社会人</h3>
+                <p class="card-description">これから起業・価値提供したい</p>
+                <div class="card-footer">
+                  <a
+                    [routerLink]="['/rentals']"
+                    [queryParams]="{
+                      selectedCategory: ['社会人']
+                    }"
+                    class="btn btn-danger btn-move-right btn-round"
+                    >見に行く
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-5 mr-auto">
+            <div
+              class="card"
+              data-background="image"
+              style="
+                background-image: url('assets/img/sections/rawpixel-com.jpg');
+              "
+            >
+              <div class="card-body">
+                <h3 class="card-title">学生</h3>
+                <p class="card-description">これから起業・価値提供したい</p>
+                <div class="card-footer">
+                  <a
+                    [routerLink]="['/rentals']"
+                    [queryParams]="{
+                      selectedCategory: ['学生']
+                    }"
+                    class="btn btn-default btn-move-right btn-round"
+                    >見に行く
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-top"></div>
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto text-center">
+            <a
+              [routerLink]="['/register']"
+              class="btn btn-primary btn-round btn-lg"
+            >
+              新規会員登録する
+            </a>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto text-center">
+            <button class="btn btn-primary btn-link btn-lg">
+              ログインはこちら
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -85,16 +85,12 @@
                   </button>
                 </form>
                 <div class="forgot">
-                  <button
-                    [swal]="{
-                      title: '',
-                      html: '事務局までお問い合わせください<br>0120-763-882',
-                      icon: 'info'
-                    }"
+                  <a
                     class="btn btn-link btn-primary"
+                    [routerLink]="['/register']"
                   >
-                    パスワードを紛失された方
-                  </button>
+                    初めてご利用の方はこちら
+                  </a>
                 </div>
               </div>
             </div>
