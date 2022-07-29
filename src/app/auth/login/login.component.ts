@@ -71,12 +71,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   login() {
     this.auth.login(this.loginForm.value).subscribe(
       (token) => {
-        this.router.navigate(['/clinic']);
-        // if (this.auth.getUserRole() === 'Owner') {
-        //   this.router.navigate(['/admin']);
-        // } else {
-        //   this.router.navigate(['/clinic']);
-        // }
+        if (this.auth.getUserRole() === 'Owner') {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/clinic']);
+        }
       },
       (errorResponse: HttpErrorResponse) => {
         this.errors = errorResponse.error.errors;

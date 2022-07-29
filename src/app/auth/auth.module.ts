@@ -15,6 +15,11 @@ import { MyOriginAuthService } from './shared/auth.service';
 import { AuthGuard } from './shared/auth.guard';
 import { TokenInterceptor } from './shared/token.interceptor';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import {
+  OwlDateTimeModule,
+  OwlNativeDateTimeModule,
+} from '@danielmoncada/angular-datetime-picker';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,6 +34,9 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     SweetAlert2Module,
+    AngularMultiSelectModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   exports: [RouterModule],
   providers: [

@@ -27,6 +27,7 @@
     "@auth0/angular-jwt": "^5.0.2",
     "@danielmoncada/angular-datetime-picker": "^14.1.0",
     "@sweetalert2/ngx-sweetalert2": "^11.0.0",
+    "angular2-multiselect-dropdown": "^5.0.4",
     "aws-sdk": "^2.1180.0",
     "bcrypt": "^5.0.1",
     "bootstrap": "^4.6.1",

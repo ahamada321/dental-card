@@ -53,7 +53,7 @@
       <a
         class="btn btn-magnify btn-primary btn-round btn-lg"
         *ngIf="foundBookings && foundBookings.length > 0"
-        [routerLink]="['booking']"
+        [routerLink]="['booking', foundBookings[0]._id]"
       >
         <i class="nc-icon nc-send"></i> &nbsp; 予約日時を変更する
       </a>

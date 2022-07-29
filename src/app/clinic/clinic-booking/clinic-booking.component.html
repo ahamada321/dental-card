@@ -1,6 +1,10 @@
 <div class="space-top"></div>
 <mat-horizontal-stepper [linear]="false" #stepper>
-  <mat-step label="診療内容" [completed]="isSelectedCourseType">
+  <mat-step
+    *ngIf="!currentBooking"
+    label="診療内容"
+    [completed]="isSelectedCourseType"
+  >
     <div class="row">
       <div class="col-md-10 mr-auto ml-auto">
         <div class="section section-summary">

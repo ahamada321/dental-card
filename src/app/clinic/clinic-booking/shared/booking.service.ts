@@ -7,12 +7,16 @@ import { HttpClient } from '@angular/common/http';
 export class BookingService {
   constructor(private http: HttpClient) {}
 
-  public getUserBookings(): Observable<any> {
-    return this.http.get('/api/v1/bookings');
-  }
-
   public createBooking(bookingData: Booking): Observable<any> {
     return this.http.post('/api/v1/bookings', bookingData);
+  }
+
+  public getBookingById(bookingId: string): Observable<any> {
+    return this.http.get('/api/v1/bookings/' + bookingId);
+  }
+
+  public getUserBookings(): Observable<any> {
+    return this.http.get('/api/v1/bookings');
   }
 
   public updateBooking(bookingData: Booking): Observable<any> {

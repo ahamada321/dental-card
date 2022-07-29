@@ -103,6 +103,22 @@ exports.createBooking = function (req, res) {
     });
 };
 
+exports.getBookingById = function (req, res) {
+  const user = res.locals.user;
+
+  Booking.findById(req.params.id).exec(function (err, foundBooking) {
+    if (err) {
+      return res.status(422).send({
+        errors: {
+          title: "No Booking found!",
+          detail: "Could not find Booking!",
+        },
+      });
+    }
+    return res.json(foundBooking);
+  });
+};
+
 exports.deleteBooking = function (req, res) {
   const user = res.locals.user;
 
@@ -213,60 +229,5 @@ exports.getUserBookings = function (req, res) {
         return res.status(422).send({ errors: normalizeErrors(err.errors) });
       }
       return res.json(foundBookings);
-    });
-};
-
-//Get 14 month reports
-exports.getStudentReports = function (req, res) {
-  const studentlId = req.params.id;
-  const user = res.locals.user;
-  const monthStart = moment
-    .tz("Asia/Tokyo")
-    .startOf("month")
-    .subtract(13, "month");
-
-  if (user.userRole === "User") {
-    Booking.find({
-      rental: studentlId,
-      user: user._id,
-      createdAt: { $gte: monthStart },
-    })
-      .sort({ startAt: -1 })
-      .populate("user rental", "-password")
-      .exec(function (err, foundReports) {
-        if (err) {
-          return res.status(422).send({ errors: normalizeErrors(err.errors) });
-        }
-        res.json(foundReports);
-      });
-  } else {
-    Booking.find({ rental: studentlId, createdAt: { $gte: monthStart } })
-      .sort({ startAt: -1 })
-      .populate("user rental", "-password")
-      .exec(function (err, foundReports) {
-        if (err) {
-          return res.status(422).send({ errors: normalizeErrors(err.errors) });
-        }
-        res.json(foundReports);
-      });
-  }
-};
-
-//Get 14 month reports
-exports.getTeacherReports = function (req, res) {
-  const teacherId = req.params.id;
-  const monthStart = moment
-    .tz("Asia/Tokyo")
-    .startOf("month")
-    .subtract(13, "month");
-
-  Booking.find({ user: teacherId, createdAt: { $gte: monthStart } })
-    .sort({ startAt: -1 })
-    .populate("user rental", "-password")
-    .exec(function (err, foundReports) {
-      if (err) {
-        return res.status(422).send({ errors: normalizeErrors(err.errors) });
-      }
-      res.json(foundReports);
     });
 };

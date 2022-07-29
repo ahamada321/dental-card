@@ -28,6 +28,11 @@ const routes: Routes = [
         // canActivate: [AuthGuard],
       },
       {
+        path: 'booking/:bookingId',
+        component: ClinicBookingComponent,
+        // canActivate: [AuthGuard],
+      },
+      {
         path: 'booking',
         component: ClinicBookingComponent,
         // canActivate: [AuthGuard],

@@ -3,7 +3,7 @@
     <div class="space-110"></div>
     <div class="row">
       <div class="col-md-6 mr-auto ml-auto">
-        <h3 class="text-center">アカウント発行</h3>
+        <h3 class="text-center">予診票</h3>
       </div>
     </div>
     <div class="space-top"></div>
@@ -13,13 +13,13 @@
           <div class="card card-register">
             <form
               class="register-form"
-              #registerTeacherForm="ngForm"
-              (ngSubmit)="registerTeacher(registerTeacherForm)"
+              #registerForm="ngForm"
+              (ngSubmit)="register(registerForm)"
             >
               <div class="form-group">
-                <label>講師名 <span class="icon-danger">*</span></label>
+                <label>氏名 <span class="icon-danger">*</span></label>
                 <input
-                  (ngModel)="(newTeacher.username)"
+                  (ngModel)="(username)"
                   name="username"
                   type="text"
                   class="form-control border-input"
@@ -28,24 +28,10 @@
                 />
               </div>
 
-              <!-- <div class="form-group">
-                <label>楽器 <span class="icon-danger">*</span></label>
-                <angular2-multiselect
-                  [data]="dropdownInstrumentList"
-                  [settings]="dropdownInstrumentSettings"
-                  (ngModel)="(newTeacher.selectedInstrument)"
-                  name="selectedInstrument"
-                  required
-                ></angular2-multiselect>
-              </div> -->
-
               <div class="form-group">
-                <label
-                  >講師のメールアドレス
-                  <span class="icon-danger">*</span></label
-                >
+                <label>メールアドレス <span class="icon-danger">*</span></label>
                 <input
-                  (ngModel)="(newTeacher.email)"
+                  (ngModel)="(email)"
                   name="email"
                   type="email"
                   id="email"
@@ -56,25 +42,200 @@
               </div>
 
               <div class="form-group">
-                <label>講師時給 <span class="icon-danger">*</span></label>
-                <div class="input-group">
+                <label>性別 <span class="icon-danger">*</span></label>
+                <angular2-multiselect
+                  [data]="dropdownGenderList"
+                  [settings]="dropdownGenderSettings"
+                  (ngModel)="(gender)"
+                  name="gender"
+                  required
+                ></angular2-multiselect>
+              </div>
+
+              <div class="form-group">
+                <label>生年月日 <span class="icon-danger">*</span></label>
+                <div class="input-group date">
                   <input
-                    (ngModel)="(newTeacher.hourlyPrice)"
-                    name="hourlyPrice"
-                    type="number"
+                    [(ngModel)]="birthDay"
+                    (ngModelChange)="onDateSelect($event)"
+                    name="birthDay"
+                    [readonly]="true"
+                    [owlDateTime]="dt1"
+                    [owlDateTimeTrigger]="dt1"
+                    [max]="max"
                     class="form-control"
-                    placeholder="1500"
-                    (focus)="focus2 = true"
-                    (blur)="focus2 = false"
+                    placeholder="生年月日を選択"
                     required
                   />
+                  <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+
                   <div class="input-group-append">
-                    <span class="input-group-text">円</span>
+                    <span class="glyphicon glyphicon-calendar input-group-text">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </span>
                   </div>
                 </div>
               </div>
 
-              <div class="row">
+              <div class="form-group">
+                <label>電話番号</label>
+                <input
+                  (ngModel)="(phoneNumber)"
+                  name="phoneNumber"
+                  type="text"
+                  class="form-control border-input"
+                  placeholder="08012341234"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>住所</label>
+                <input
+                  (ngModel)="(address)"
+                  name="address"
+                  type="text"
+                  class="form-control border-input"
+                  placeholder="東京都〇〇区〇〇1-1-1"
+                />
+              </div>
+
+              <div class="form-group">
+                <label
+                  >新型コロナウイルスワクチンは接種しましたか
+                  <span class="icon-danger">*</span></label
+                >
+                <angular2-multiselect
+                  [data]="dropdownAnswerList"
+                  [settings]="dropdownAnswerSettings"
+                  (ngModel)="(covid)"
+                  name="covid"
+                  required
+                ></angular2-multiselect>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >今回来院された目的はなんですか?
+                  <span class="icon-danger">*</span></label
+                >
+                <angular2-multiselect
+                  [data]="dropdownPurposeList"
+                  [settings]="dropdownPurposeSettings"
+                  (ngModel)="(purpose)"
+                  name="purpose"
+                  required
+                ></angular2-multiselect>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >抜歯の経験はありますか？
+                  <span class="icon-danger">*</span></label
+                >
+                <angular2-multiselect
+                  [data]="dropdownAnswerList"
+                  [settings]="dropdownAnswerSettings"
+                  (ngModel)="(toothExtraction)"
+                  name="toothExtraction"
+                  required
+                ></angular2-multiselect>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >その時に何か異常はありましたか？　
+                  <span class="icon-danger">*</span></label
+                >
+                <input
+                  (ngModel)="(phoneNumber)"
+                  name="phoneNumber"
+                  type="text"
+                  class="form-control border-input"
+                  placeholder="08012341234"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>薬を飲んで副作用〜</label>
+                <input
+                  (ngModel)="(phoneNumber)"
+                  name="phoneNumber"
+                  type="text"
+                  class="form-control border-input"
+                  placeholder="08012341234"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>特異体質やアレルギー〜</label>
+                <input
+                  (ngModel)="(phoneNumber)"
+                  name="phoneNumber"
+                  type="text"
+                  class="form-control border-input"
+                  placeholder="08012341234"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>内科的な病気〜</label>
+                <input
+                  (ngModel)="(phoneNumber)"
+                  name="phoneNumber"
+                  type="text"
+                  class="form-control border-input"
+                  placeholder="08012341234"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>歯の清掃回数 <span class="icon-danger">*</span></label>
+                <angular2-multiselect
+                  [data]="dropdownAnswerList"
+                  [settings]="dropdownAnswerSettings"
+                  (ngModel)="(toothExtraction)"
+                  name="toothExtraction"
+                  required
+                ></angular2-multiselect>
+              </div>
+
+              <div class="form-group">
+                <label>この機会に <span class="icon-danger">*</span></label>
+                <angular2-multiselect
+                  [data]="dropdownAnswerList"
+                  [settings]="dropdownAnswerSettings"
+                  (ngModel)="(toothExtraction)"
+                  name="toothExtraction"
+                  required
+                ></angular2-multiselect>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >診療についてのご希望
+                  <span class="icon-danger">*</span></label
+                >
+                <angular2-multiselect
+                  [data]="dropdownAnswerList"
+                  [settings]="dropdownAnswerSettings"
+                  (ngModel)="(toothExtraction)"
+                  name="toothExtraction"
+                  required
+                ></angular2-multiselect>
+              </div>
+
+              <div class="form-group">
+                <label>現在の健康状態 <span class="icon-danger">*</span></label>
+                <angular2-multiselect
+                  [data]="dropdownAnswerList"
+                  [settings]="dropdownAnswerSettings"
+                  (ngModel)="(toothExtraction)"
+                  name="toothExtraction"
+                  required
+                ></angular2-multiselect>
+              </div>
+
+              <!-- <div class="row">
                 <div class="col-md-6 col-sm-6">
                   <div class="form-group">
                     <label>銀行名</label>
@@ -137,18 +298,18 @@
                   class="form-control border-input"
                   placeholder="ｷﾑﾗ ﾘﾖｳｺ（半角ｶﾅ/スペース有/ｮ→ﾖ）"
                 />
-              </div>
+              </div> -->
 
               <button
-                *ngIf="!registerTeacherForm.valid || isClicked"
+                *ngIf="!registerForm.valid || isClicked"
                 disabled
                 type="submit"
                 class="btn btn-block btn-round btn-lg"
               >
-                アカウント発行
+                登録する
               </button>
               <button
-                *ngIf="registerTeacherForm.valid && !isClicked"
+                *ngIf="registerForm.valid && !isClicked"
                 type="submit"
                 class="btn btn-primary btn-block btn-round btn-lg"
               >
