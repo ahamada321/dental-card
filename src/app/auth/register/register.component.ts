@@ -4,7 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 // import { AdminService } from "src/app/admin/service/admin.service";
 // import { NgbCalendar, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
-import { Student } from 'src/app/auth/shared/student.model';
+import { Report } from 'src/app/auth/shared/report.model';
 import { Teacher } from 'src/app/auth/shared/teacher.model';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   errors: any = [];
   max = new Date(); // Restrict selecting range of birthday
 
+  newReport = new Report();
   username!: string;
   email!: string;
   gender = {};
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
   phoneNumber!: number;
   address!: string;
   covid = {};
-  purpose!: string;
+  purpose = {};
   toothExtraction = {};
 
   // Select gender
@@ -57,56 +58,18 @@ export class RegisterComponent implements OnInit {
 
   // Select purpose
   dropdownPurposeList = [
-    { id: 1, itemName: '歯科検診を希望' },
-    { id: 2, itemName: '詰め物が取れた' },
-    { id: 3, itemName: '歯が痛い' },
-    { id: 4, itemName: '歯肉が痛い' },
-    { id: 5, itemName: '入れ歯を入れたい' },
-    { id: 6, itemName: '歯並びが気になる' },
-    { id: 7, itemName: 'その他' },
+    { id: 1, purpose: '歯科検診を希望' },
+    { id: 2, purpose: '詰め物が取れた' },
+    { id: 3, purpose: '歯が痛い' },
+    { id: 4, purpose: '歯肉が痛い' },
+    { id: 5, purpose: '入れ歯を入れたい' },
+    { id: 6, purpose: '歯並びが気になる' },
+    { id: 7, purpose: 'その他' },
   ];
   dropdownPurposeSettings = {
     singleSelection: true,
     text: '来院目的を選択してください',
-    labelKey: 'itemName',
-    enableSearchFilter: false,
-    classes: '',
-  };
-
-  // Select instrument
-  dropdownInstrumentList = [
-    { id: 1, itemName: 'ピアノ' },
-    { id: 2, itemName: '声楽' },
-    { id: 3, itemName: 'ボーカル' },
-    { id: 4, itemName: 'ヴァイオリン' },
-    { id: 5, itemName: 'ヴィオラ' },
-    { id: 6, itemName: 'チェロ' },
-    { id: 7, itemName: 'コントラバス' },
-    { id: 8, itemName: 'フルート' },
-    { id: 9, itemName: 'サックス' },
-    { id: 10, itemName: 'クラリネット' },
-    { id: 11, itemName: 'オーボエ' },
-    { id: 12, itemName: 'トランペット' },
-    { id: 13, itemName: 'トロンボーン' },
-    { id: 14, itemName: 'アコースティックギター' },
-    { id: 15, itemName: 'エレキギター' },
-    { id: 16, itemName: 'エレキベース' },
-    { id: 17, itemName: 'ドラム' },
-    { id: 18, itemName: 'DTM' },
-    { id: 19, itemName: 'ソルフェージュ・楽典' },
-    // { id: 20, itemName: "和楽器" },
-    { id: 22, itemName: 'ウクレレ' },
-    { id: 23, itemName: '三味線' },
-    { id: 24, itemName: '琴' },
-    { id: 25, itemName: 'ファゴット' },
-    { id: 26, itemName: 'チューバ' },
-    { id: 27, itemName: 'ホルン' },
-    { id: 28, itemName: 'ユーフォニアム' },
-    { id: 21, itemName: 'それ以外' },
-  ];
-  dropdownInstrumentSettings = {
-    singleSelection: true,
-    text: '楽器を選択',
+    labelKey: 'purpose',
     enableSearchFilter: false,
     classes: '',
   };
@@ -179,6 +142,10 @@ export class RegisterComponent implements OnInit {
   // }
 
   register(formData: NgForm) {}
+
+  aa() {
+    console.log(this.newReport);
+  }
 
   private showSwalError() {
     Swal.fire({

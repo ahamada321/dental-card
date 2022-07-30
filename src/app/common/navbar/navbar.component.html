@@ -5,14 +5,14 @@
         <a
           class="navbar-brand"
           *ngIf="!auth.isAuthenticated()"
-          [routerLink]="['/clinic']"
-          >Dental Card</a
+          [routerLink]="['/register']"
+          >Yoshinhyo</a
         >
         <a
           class="navbar-brand"
           *ngIf="auth.isAuthenticated()"
-          [routerLink]="['/clinic']"
-          >Dental Card</a
+          [routerLink]="['/admin']"
+          >Yoshinhyo</a
         >
       </div>
       <button
@@ -32,13 +32,9 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']"> デンタルカードとは </a>
-        </li>
-
         <li class="nav-item" *ngIf="!auth.isAuthenticated()">
           <a class="btn btn-round btn-primary" [routerLink]="['/login']">
-            <i class="nc-icon nc-lock-circle-open"></i> 再来予約＆確認
+            <i class="nc-icon nc-lock-circle-open"></i> 管理者用
           </a>
         </li>
 
