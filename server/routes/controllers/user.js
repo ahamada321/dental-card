@@ -155,58 +155,66 @@ exports.register = function (req, res) {
     username,
     email,
     password,
-    passwordConfirmation,
-
-    selectedInstrument,
-
-    hourlyPrice,
-    instrumentRental,
-
-    bankName,
-    bankBranchName,
-    bankAccountType,
-    bankAccountNumber,
-    bankAccountName,
+    birthday,
+    gender,
+    phoneNumber,
+    address,
+    covid,
+    purpose,
+    purposeDetail,
+    toothExtraction,
+    sideEffect,
+    allergic,
+    medicalIllness,
+    toothCleaningTimes,
+    request,
+    medicalInsurance,
+    condition,
   } = req.body;
 
   // Filling user infomation with ../models/user.js format
   const user = new User({
     username,
     email,
-    password: "tsubaki",
-    selectedInstrument,
-
-    hourlyPrice,
-    instrumentRental,
-
-    bankName,
-    bankBranchName,
-    bankAccountType,
-    bankAccountNumber,
-    bankAccountName,
+    password: "clinic",
+    birthday,
+    gender,
+    phoneNumber,
+    address,
+    covid,
+    purpose,
+    purposeDetail,
+    toothExtraction,
+    sideEffect,
+    allergic,
+    medicalIllness,
+    toothCleaningTimes,
+    request,
+    medicalInsurance,
+    condition,
   });
 
-  if (!email || !password) {
-    return res.status(422).send({
-      errors: [
-        {
-          title: "Data missing!",
-          detail: "フォームに正しく入力してください",
-        },
-      ],
-    });
-  }
+  // if (!email || !password) {
+  //   return res.status(422).send({
+  //     errors: [
+  //       {
+  //         title: "Data missing!",
+  //         detail: "フォームに正しく入力してください",
+  //       },
+  //     ],
+  //   });
+  // }
 
-  if (password !== passwordConfirmation) {
-    return res.status(422).send({
-      errors: [
-        {
-          title: "Invalid password!",
-          detail: "パスワードとパスワード確認が異なります",
-        },
-      ],
-    });
-  }
+  // if (password !== passwordConfirmation) {
+  //   return res.status(422).send({
+  //     errors: [
+  //       {
+  //         title: "Invalid password!",
+  //         detail: "パスワードとパスワード確認が異なります",
+  //       },
+  //     ],
+  //   });
+  // }
 
   User.findOne({ email }, function (err, existingUser) {
     if (err) {

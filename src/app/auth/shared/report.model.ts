@@ -1,15 +1,26 @@
 // import { Report } from 'src/app/teacher/service/report.model';
 
 export class Report {
-  _id?: string;
+  _id!: string;
+  createdAt?: Date;
+  isVerified?: boolean; //wanna delete
 
-  username!: string;
-  email!: string;
-  gender!: object;
-  birthDay!: Date;
-  phoneNumber!: number;
-  address!: string;
-  covid!: object;
-  purpose!: object;
-  toothExtraction!: object;
+  username?: string;
+  email?: string;
+  gender?: string;
+  birthday?: Date;
+  phoneNumber?: number;
+  // prefecture?: string;
+  address?: string;
+  covid?: string;
+  purpose?: string;
+  purposeDetail?: string;
+  toothExtraction?: string;
+  sideEffect?: string;
+  allergic?: string;
+  medicalIllness?: string;
+  toothCleaningTimes?: number;
+  request?: string;
+  medicalInsurance?: string;
+  condition?: string;
 }

@@ -36,23 +36,11 @@
           </div>
 
           <div class="form-group">
-            <label>性別 <span class="icon-danger">*</span></label>
-            <angular2-multiselect
-              [data]="dropdownGenderList"
-              [settings]="dropdownGenderSettings"
-              (ngModel)="(newReport.gender)"
-              name="gender"
-              required
-            ></angular2-multiselect>
-          </div>
-
-          <div class="form-group">
             <label>生年月日 <span class="icon-danger">*</span></label>
             <div class="input-group date">
               <input
-                [(ngModel)]="birthDay"
-                (ngModelChange)="onDateSelect($event)"
-                name="birthDay"
+                (ngModel)="(newReport.birthday)"
+                name="birthday"
                 [readonly]="true"
                 [owlDateTime]="dt1"
                 [owlDateTimeTrigger]="dt1"
@@ -69,6 +57,26 @@
                 </span>
               </div>
             </div>
+          </div>
+
+          <div class="form-group">
+            <label>性別 <span class="icon-danger">*</span></label>
+            <select
+              class="custom-select"
+              [(ngModel)]="newReport.gender"
+              name="gender"
+              required
+            >
+              <option [value]="undefined" disabled>
+                性別を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownGenderList of dropdownGenderLists"
+                [value]="dropdownGenderList.gender"
+              >
+                {{ dropdownGenderList.gender }}
+              </option>
+            </select>
           </div>
 
           <div class="form-group">
@@ -98,139 +106,435 @@
               >新型コロナウイルスワクチンは接種しましたか
               <span class="icon-danger">*</span></label
             >
-            <angular2-multiselect
-              [data]="dropdownAnswerList"
-              [settings]="dropdownAnswerSettings"
-              (ngModel)="(newReport.covid)"
+            <select
+              class="custom-select"
+              [(ngModel)]="newReport.covid"
               name="covid"
               required
-            ></angular2-multiselect>
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownAnswerList of dropdownAnswerLists"
+                [value]="dropdownAnswerList.answer"
+              >
+                {{ dropdownAnswerList.answer }}
+              </option>
+            </select>
           </div>
 
           <div class="form-group">
             <label
-              >今回来院された目的はなんですか?
+              >今回来院された目的はなんですか
               <span class="icon-danger">*</span></label
             >
-            <angular2-multiselect
-              [data]="dropdownPurposeList"
-              [settings]="dropdownPurposeSettings"
-              (ngModel)="(newReport.purpose)"
+            <select
+              class="custom-select"
+              [(ngModel)]="newReport.purpose"
               name="purpose"
               required
-            ></angular2-multiselect>
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownPurposeList of dropdownPurposeLists"
+                [value]="dropdownPurposeList.purpose"
+              >
+                {{ dropdownPurposeList.purpose }}
+              </option>
+            </select>
           </div>
 
-          <button (click)="aa()">aa</button>
-          <!-- <ng-container *ngIf="newReport.purpose === 'その他'">
-            {{ purpose }}
-          </ng-container> -->
+          <ng-container *ngIf="newReport.purpose === 'その他'">
+            <div class="form-group">
+              <label
+                >【その他を選択された方】来院目的の詳細を入力してください</label
+              >
+              <input
+                (ngModel)="(newReport.purposeDetail)"
+                name="purposeDetail"
+                type="text"
+                class="form-control border-input"
+                placeholder="来院目的を入力してください"
+              />
+            </div>
+          </ng-container>
 
           <div class="form-group">
             <label
               >抜歯の経験はありますか？
               <span class="icon-danger">*</span></label
             >
-            <angular2-multiselect
-              [data]="dropdownAnswerList"
-              [settings]="dropdownAnswerSettings"
-              (ngModel)="(toothExtraction)"
+            <select
+              class="custom-select"
+              [(ngModel)]="newReport.toothExtraction"
               name="toothExtraction"
               required
-            ></angular2-multiselect>
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownAnswerList of dropdownAnswerLists"
+                [value]="dropdownAnswerList.answer"
+              >
+                {{ dropdownAnswerList.answer }}
+              </option>
+            </select>
           </div>
+
+          <ng-container *ngIf="newReport.toothExtraction === 'はい'">
+            <div class="form-group">
+              <label>どのくらい前に抜歯しましたか？</label>
+              <input
+                (ngModel)="(newReport.purposeDetail)"
+                name="purposeDetail"
+                type="text"
+                class="form-control border-input"
+                placeholder="3年前"
+              />
+              <label>その時に何か異常はありましたか？　</label>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  血が止まらなかった
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  何日も痛んだ
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  熱が出た
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  貧血を起こした
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <label>上記以外の異常はありましたか？　</label>
+              <input
+                (ngModel)="(newReport.purposeDetail)"
+                name="purposeDetail"
+                type="text"
+                class="form-control border-input"
+                placeholder="上記以外の症状があれば入力してください"
+              />
+            </div>
+          </ng-container>
 
           <div class="form-group">
             <label
-              >その時に何か異常はありましたか？　
+              >薬を飲んで副作用はありませんか？
               <span class="icon-danger">*</span></label
             >
-            <input
-              (ngModel)="(phoneNumber)"
-              name="phoneNumber"
-              type="text"
-              class="form-control border-input"
-              placeholder="08012341234"
-            />
-          </div>
-
-          <div class="form-group">
-            <label>薬を飲んで副作用〜</label>
-            <input
-              (ngModel)="(phoneNumber)"
-              name="phoneNumber"
-              type="text"
-              class="form-control border-input"
-              placeholder="08012341234"
-            />
-          </div>
-
-          <div class="form-group">
-            <label>特異体質やアレルギー〜</label>
-            <input
-              (ngModel)="(phoneNumber)"
-              name="phoneNumber"
-              type="text"
-              class="form-control border-input"
-              placeholder="08012341234"
-            />
-          </div>
-
-          <div class="form-group">
-            <label>内科的な病気〜</label>
-            <input
-              (ngModel)="(phoneNumber)"
-              name="phoneNumber"
-              type="text"
-              class="form-control border-input"
-              placeholder="08012341234"
-            />
-          </div>
-
-          <div class="form-group">
-            <label>歯の清掃回数 <span class="icon-danger">*</span></label>
-            <angular2-multiselect
-              [data]="dropdownAnswerList"
-              [settings]="dropdownAnswerSettings"
-              (ngModel)="(toothExtraction)"
-              name="toothExtraction"
+            <select
+              class="custom-select"
+              [(ngModel)]="newReport.sideEffect"
+              name="sideEffect"
               required
-            ></angular2-multiselect>
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownAnswerList of dropdownAnswerLists"
+                [value]="dropdownAnswerList.answer"
+              >
+                {{ dropdownAnswerList.answer }}
+              </option>
+            </select>
+          </div>
+
+          <ng-container *ngIf="newReport.sideEffect === 'はい'">
+            <div class="form-group">
+              <label>その時の症状を選択してください</label>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  胃が痛くなる
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  発作が出る
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  痒くなる
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <label>上記以外の副作用はありましたか？　</label>
+              <input
+                (ngModel)="(newReport.purposeDetail)"
+                name="purposeDetail"
+                type="text"
+                class="form-control border-input"
+                placeholder="上記以外の副作用があれば入力してください"
+              />
+            </div>
+          </ng-container>
+
+          <div class="form-group">
+            <label
+              >特異体質やアレルギーはありませんか？
+              <span class="icon-danger">*</span></label
+            >
+            <select
+              class="custom-select"
+              [(ngModel)]="newReport.allergic"
+              name="allergic"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownAnswerList of dropdownAnswerLists"
+                [value]="dropdownAnswerList.answer"
+              >
+                {{ dropdownAnswerList.answer }}
+              </option>
+            </select>
+          </div>
+
+          <ng-container *ngIf="newReport.allergic === 'はい'">
+            <div class="form-group">
+              <label>その時の症状を選択してください</label>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  かぶれやすい
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  蕁麻疹がある
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  喘息がある
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <label>上記以外の副作用はありましたか？　</label>
+              <input
+                (ngModel)="(newReport.purposeDetail)"
+                name="purposeDetail"
+                type="text"
+                class="form-control border-input"
+                placeholder="上記以外の副作用があれば入力してください"
+              />
+            </div>
+          </ng-container>
+
+          <div class="form-group">
+            <label
+              >内科的な病気はありませんか？
+              <span class="icon-danger">*</span></label
+            >
+            <select
+              class="custom-select"
+              [(ngModel)]="newReport.medicalIllness"
+              name="medicalIllness"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownAnswerList of dropdownAnswerLists"
+                [value]="dropdownAnswerList.answer"
+              >
+                {{ dropdownAnswerList.answer }}
+              </option>
+            </select>
+          </div>
+
+          <ng-container *ngIf="newReport.medicalIllness === 'はい'">
+            <div class="form-group">
+              <label>該当するものを選択してください</label>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  心臓
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  肝臓(肝炎)
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  腎臓
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  血友病
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  糖尿
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  高血圧
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  低血圧
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  喘息
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="" />
+                  結核
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <label>上記以外の症状はありましたか？　</label>
+              <input
+                (ngModel)="(newReport.purposeDetail)"
+                name="purposeDetail"
+                type="text"
+                class="form-control border-input"
+                placeholder="上記以外の症状があれば入力してください"
+              />
+            </div>
+          </ng-container>
+
+          <div class="form-group">
+            <label
+              >1日での歯の清掃回数 <span class="icon-danger">*</span></label
+            >
+            <select
+              class="custom-select"
+              [(ngModel)]="newReport.toothCleaningTimes"
+              name="toothCleaningTimes"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownNumberList of dropdownNumberLists"
+                [value]="dropdownNumberList.id"
+              >
+                {{ dropdownNumberList.id }}
+              </option>
+            </select>
           </div>
 
           <div class="form-group">
             <label>この機会に <span class="icon-danger">*</span></label>
-            <angular2-multiselect
-              [data]="dropdownAnswerList"
-              [settings]="dropdownAnswerSettings"
-              (ngModel)="(toothExtraction)"
-              name="toothExtraction"
+            <select
+              class="custom-select"
+              [(ngModel)]="newReport.request"
+              name="request"
               required
-            ></angular2-multiselect>
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownRequestList of dropdownRequestLists"
+                [value]="dropdownRequestList.request"
+              >
+                {{ dropdownRequestList.request }}
+              </option>
+            </select>
           </div>
 
           <div class="form-group">
             <label
               >診療についてのご希望 <span class="icon-danger">*</span></label
             >
-            <angular2-multiselect
-              [data]="dropdownAnswerList"
-              [settings]="dropdownAnswerSettings"
-              (ngModel)="(toothExtraction)"
-              name="toothExtraction"
+            <select
+              class="custom-select"
+              [(ngModel)]="newReport.medicalInsurance"
+              name="medicalInsurance"
               required
-            ></angular2-multiselect>
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="
+                  let dropdownMedicalInsuranceList of dropdownMedicalInsuranceLists
+                "
+                [value]="dropdownMedicalInsuranceList.medicalInsurance"
+              >
+                {{ dropdownMedicalInsuranceList.medicalInsurance }}
+              </option>
+            </select>
           </div>
 
           <div class="form-group">
             <label>現在の健康状態 <span class="icon-danger">*</span></label>
-            <angular2-multiselect
-              [data]="dropdownAnswerList"
-              [settings]="dropdownAnswerSettings"
-              (ngModel)="(toothExtraction)"
-              name="toothExtraction"
+            <select
+              class="custom-select"
+              [(ngModel)]="newReport.condition"
+              name="condition"
               required
-            ></angular2-multiselect>
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownConditionList of dropdownConditionLists"
+                [value]="dropdownConditionList.condition"
+              >
+                {{ dropdownConditionList.condition }}
+              </option>
+            </select>
           </div>
 
           <!-- <div class="row">
@@ -311,7 +615,7 @@
             type="submit"
             class="btn btn-primary btn-block btn-round btn-lg"
           >
-            アカウント発行
+            登録する
           </button>
         </form>
         <div class="space-top"></div>
