@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AdminService } from '../../service/admin.service';
+import { AdminService } from '../../shared/admin.service';
 // import { MatDialog } from '@angular/material/dialog';
 // import { ReportDialog } from "src/app/common/components/report-dialog/report-dialog";
 // import { Report } from "src/app/teacher/service/report.model";

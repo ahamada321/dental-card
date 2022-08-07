@@ -39,7 +39,7 @@
             <label>生年月日 <span class="icon-danger">*</span></label>
             <div class="input-group date">
               <input
-                (ngModel)="(newReport.birthday)"
+                [(ngModel)]="newReport.birthday"
                 name="birthday"
                 [readonly]="true"
                 [owlDateTime]="dt1"

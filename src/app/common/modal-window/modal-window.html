@@ -1,0 +1,39 @@
+<!-- <h2 mat-dialog-title>報告内容</h2> -->
+<mat-dialog-content>
+  <h5>レッスン日</h5>
+  <p>{{ startAt | date: "yyyy / MM / dd" }}</p>
+  <br />
+  <h5>レッスン開始時間</h5>
+  <p>{{ startAt | date: "HH:mm" }}</p>
+  <br />
+  <h5>レッスン方法</h5>
+  <p>{{ report.courseType }}</p>
+  <br />
+  <h5>レッスン場所</h5>
+  <p>{{ report.place }}</p>
+  <br />
+  <h5>領収証</h5>
+  <div *ngIf="report.receiptImageUrl" class="thumbnail img-no-padding">
+    <img src="{{report.receiptImageUrl}}" alt="..." />
+  </div>
+  <p *ngIf="!report.receiptImageUrl">領収証添付無し</p>
+  <br />
+  <h5>領収証金額</h5>
+  <p>{{ report.receiptPrice }} 円</p>
+  <br />
+  <h5>その他経費（交通費）</h5>
+  <p>{{ report.transportFee }} 円</p>
+  <br />
+  <h5>その他経費備考</h5>
+  <p>{{ report.memo }}</p>
+  <br />
+  <h5>内容</h5>
+  <p>{{ report.title }}</p>
+  <br />
+  <h5>進捗状況</h5>
+  <p>{{ report.progress }}</p>
+  <br />
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-dialog-close class="btn btn-primary btn-lg">閉じる</button>
+</mat-dialog-actions>

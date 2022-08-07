@@ -203,7 +203,7 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.newReport.birthday = new Date().toLocaleDateString();
+    this.newReport.birthday = new Date(1990, 5, 1); // Initialize birthday.
   }
 
   register(formData: NgForm) {
@@ -217,7 +217,7 @@ export class RegisterComponent implements OnInit {
     // }
 
     this.auth.register(formData.value).subscribe(
-      (newUser) => {
+      (newUser: any) => {
         Swal.fire({
           title: '登録完了',
           text: '受付にお伝えください',

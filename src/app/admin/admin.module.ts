@@ -13,7 +13,7 @@ import { AdminReportListComponent } from './admin-report/admin-report-list/admin
 // import { AdminReportListStudentComponent } from './admin-report/admin-report-list-student/admin-report-list-student.component';
 // import { AdminRevenueListComponent } from './admin-revenue/admin-revenue-list/admin-revenue-list.component';
 // import { AdminRevenueListTeacherComponent } from './admin-revenue/admin-revenue-list-teacher/admin-revenue-list-teacher.component';
-import { AdminService } from './service/admin.service';
+import { AdminService } from './shared/admin.service';
 import { AdminPatientListComponent } from './admin-patient/admin-patient-list/admin-patient-list.component';
 import { AdminPatientEditComponent } from './admin-patient/admin-patient-edit/admin-patient-edit.component';
 // import { TeacherService } from "../teacher/service/teacher.service";

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../../service/admin.service';
+import { AdminService } from '../../shared/admin.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { Report } from 'src/app/auth/shared/report.model';
+import { ModalWindow } from 'src/app/common/modal-window/modal-window';
 
 @Component({
   selector: 'app-admin-patient-list',
@@ -14,7 +16,10 @@ export class AdminPatientListComponent implements OnInit {
   pageSize: number = 50; // Displaying contents per page.
   pageCollectionSize: number = 1;
 
-  constructor(private adminService: AdminService) {}
+  constructor(
+    private adminService: AdminService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit() {
     this.getPatients();
@@ -28,11 +33,20 @@ export class AdminPatientListComponent implements OnInit {
   getPatients() {
     this.adminService
       .getTeachersByPages(this.pageIndex, this.pageSize)
-      .subscribe((result) => {
+      .subscribe((result: any) => {
         this.patients = result[0].foundUsers; // <- users
-        debugger;
         this.pageCollectionSize = result[0].metadata[0].total;
       });
+  }
+
+  openModal(report: any) {
+    this.modalService.open(ModalWindow, { backdrop: 'static' });
+    // const dialogRef = this.dialogService.open(ReportDialog, {
+    //   width: "600px",
+    //   position: { top: "80px" },
+    // });
+    // dialogRef.componentInstance.report = report;
+    // dialogRef.afterClosed().subscribe((result) => {});
   }
 
   onDelete(patientId: any) {
@@ -54,7 +68,7 @@ export class AdminPatientListComponent implements OnInit {
   }
 
   private deletePatient(patientId: any) {
-    this.adminService.deleteTeacher(patientId).subscribe((success) => {
+    this.adminService.deleteTeacher(patientId).subscribe((success: any) => {
       const index = this.patients.findIndex((x: any) => x._id === patientId);
       this.patients.splice(index, 1); // Dlete event from array.
       Swal.fire({
@@ -75,7 +89,7 @@ export class AdminPatientListComponent implements OnInit {
     } else {
       this.adminService
         .getTeachersByKeywords(searchWords)
-        .subscribe((patients) => {
+        .subscribe((patients: any) => {
           this.patients = patients; // <- users
         });
     }

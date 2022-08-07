@@ -19,24 +19,31 @@
                   <th>生年月日</th>
                   <th>性別</th>
                   <th>電話番号</th>
-                  <th>詳細</th>
+                  <th>操作</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let patient of patients">
                   <td>{{ patient.createdAt | date: "yyyy/MM/dd" }}</td>
                   <td>{{ patient.username }}</td>
-                  <td>{{ patient.birthDay }}</td>
+                  <td>{{ patient.birthday | date: "yyyy/MM/dd" }}</td>
                   <td>{{ patient.gender }}</td>
-                  <td><a [routerLink]="[patient._id]">詳細</a></td>
-                  <!-- <td>
+                  <td></td>
+                  <td>
                     <button
-                      (click)="onDelete(teacher._id)"
+                      (click)="openModal(patient)"
+                      class="btn btn-link btn-primary"
+                    >
+                      詳細
+                    </button>
+                    <!-- <a [routerLink]="[patient._id]">詳細</a> -->
+                    <button
+                      (click)="onDelete(patient._id)"
                       class="btn btn-link btn-danger"
                     >
                       削除
                     </button>
-                  </td> -->
+                  </td>
                 </tr>
               </tbody>
             </table>

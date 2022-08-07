@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AdminService } from '../../service/admin.service';
+import { AdminService } from '../../shared/admin.service';
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
 import { Report } from 'src/app/auth/shared/report.model';
