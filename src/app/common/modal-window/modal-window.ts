@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 import * as moment from 'moment-timezone';
+import { Report } from 'src/app/auth/shared/report.model';
 
 @Component({
   selector: 'app-modal-window',
@@ -8,9 +11,12 @@ import * as moment from 'moment-timezone';
   styleUrls: ['./modal-window.scss'],
 })
 export class ModalWindow implements OnInit {
-  @Input() profile: any;
+  @Input() patient!: Report;
 
-  constructor(private dialogService: MatDialog) {}
+  constructor(
+    private dialogService: MatDialog,
+    public activeModal: NgbActiveModal
+  ) {}
 
   ngOnInit() {}
 }

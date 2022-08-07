@@ -16,8 +16,8 @@ import { AdminReportListComponent } from './admin-report/admin-report-list/admin
 import { AdminService } from './shared/admin.service';
 import { AdminPatientListComponent } from './admin-patient/admin-patient-list/admin-patient-list.component';
 import { AdminPatientEditComponent } from './admin-patient/admin-patient-edit/admin-patient-edit.component';
+import { ModalWindowModule } from '../common/modal-window/modal-window.module';
 // import { TeacherService } from "../teacher/service/teacher.service";
-// import { ReportDialogModule } from "../common/components/report-dialog/report-dialog.module";
 // import { SearchbarModule } from "../common/components/searchbar/searchbar.module";
 // import { OwlDateTimeModule, OwlNativeDateTimeModule } from "ng-pick-datetime";
 
@@ -101,7 +101,7 @@ const routes: Routes = [
     JwBootstrapSwitchNg2Module,
     AngularMultiSelectModule,
     // CsvModule,
-    // ReportDialogModule,
+    ModalWindowModule,
     // SearchbarModule,
     // OwlDateTimeModule,
     // OwlNativeDateTimeModule,

@@ -326,7 +326,7 @@ exports.deleteUser = async function (req, res) {
     return res.status(422).send({
       errors: {
         title: "Invalid user!",
-        detail: "Cannot delete other user profile!",
+        detail: "管理者権限がない為削除できません",
       },
     });
   }

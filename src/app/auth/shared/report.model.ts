@@ -9,7 +9,7 @@ export class Report {
   email?: string;
   gender?: string;
   birthday?: Date;
-  phoneNumber?: number;
+  phoneNumber?: string;
   // prefecture?: string;
   address?: string;
   covid?: string;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../shared/admin.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { Report } from 'src/app/auth/shared/report.model';
 import { ModalWindow } from 'src/app/common/modal-window/modal-window';
@@ -39,14 +39,9 @@ export class AdminPatientListComponent implements OnInit {
       });
   }
 
-  openModal(report: any) {
-    this.modalService.open(ModalWindow, { backdrop: 'static' });
-    // const dialogRef = this.dialogService.open(ReportDialog, {
-    //   width: "600px",
-    //   position: { top: "80px" },
-    // });
-    // dialogRef.componentInstance.report = report;
-    // dialogRef.afterClosed().subscribe((result) => {});
+  openModal(patient: any) {
+    const dialogRef = this.modalService.open(ModalWindow);
+    dialogRef.componentInstance.patient = patient;
   }
 
   onDelete(patientId: any) {
@@ -59,7 +54,6 @@ export class AdminPatientListComponent implements OnInit {
       cancelButtonColor: '#9A9A9A',
       confirmButtonText: '削除',
       cancelButtonText: 'キャンセル',
-      allowOutsideClick: false,
     }).then((result) => {
       if (!result.dismiss) {
         this.deletePatient(patientId);
@@ -68,17 +62,16 @@ export class AdminPatientListComponent implements OnInit {
   }
 
   private deletePatient(patientId: any) {
-    this.adminService.deleteTeacher(patientId).subscribe((success: any) => {
+    this.adminService.deleteUser(patientId).subscribe((success: any) => {
       const index = this.patients.findIndex((x: any) => x._id === patientId);
       this.patients.splice(index, 1); // Dlete event from array.
       Swal.fire({
         text: '削除しました',
         icon: 'warning',
         customClass: {
-          confirmButton: 'btn btn-danger btn-round btn-lg',
+          confirmButton: 'btn btn-danger btn-lg',
         },
         buttonsStyling: false,
-        allowOutsideClick: false,
       });
     });
   }

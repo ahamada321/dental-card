@@ -17,17 +17,7 @@ export class RegisterComponent implements OnInit {
   isClicked: boolean = false;
   errors: any = [];
   max = new Date(); // Restrict selecting range of birthday
-
   newReport = new Report();
-  username!: string;
-  email!: string;
-  gender = {};
-  birthday!: Date;
-  phoneNumber!: number;
-  address!: string;
-  covid = {};
-  purpose = {};
-  toothExtraction = {};
 
   // Select gender
   dropdownGenderLists = [

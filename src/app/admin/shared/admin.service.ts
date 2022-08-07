@@ -33,8 +33,8 @@ export class AdminService {
     return this.http.get('/api/v1/users');
   }
 
-  public deleteTeacher(teacherId: string): Observable<any> {
-    return this.http.delete('/api/v1/users/' + teacherId);
+  public deleteUser(patientId: string): Observable<any> {
+    return this.http.delete('/api/v1/users/' + patientId);
   }
 
   public deleteStudent(studentId: string): Observable<any> {

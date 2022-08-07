@@ -23,7 +23,7 @@ const userSchema = new Schema({
   },
   birthday: Date,
   gender: String,
-  phoneNumber: Number,
+  phoneNumber: String,
   address: String,
   covid: String,
   purpose: String,

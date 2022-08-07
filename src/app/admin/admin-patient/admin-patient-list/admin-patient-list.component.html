@@ -2,7 +2,7 @@
   <div class="container text-center">
     <div class="row">
       <div class="col-md mr-auto ml-auto">
-        <h3 class="title text-center">講師一覧</h3>
+        <h3 class="title text-center">予診票一覧</h3>
       </div>
     </div>
     <!-- <app-searchbar (event)="getTeachersByKeywords($event)"></app-searchbar> -->
@@ -28,7 +28,7 @@
                   <td>{{ patient.username }}</td>
                   <td>{{ patient.birthday | date: "yyyy/MM/dd" }}</td>
                   <td>{{ patient.gender }}</td>
-                  <td></td>
+                  <td>{{ patient.phoneNumber }}</td>
                   <td>
                     <button
                       (click)="openModal(patient)"
