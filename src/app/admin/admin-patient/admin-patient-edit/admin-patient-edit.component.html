@@ -1,0 +1,423 @@
+<div class="wrapper">
+  <div class="container" *ngIf="teacherData">
+    <div class="row">
+      <div class="col-md-6 mr-auto ml-auto">
+        <h3 class="text-center">講師個別設定</h3>
+      </div>
+    </div>
+    <div class="space-top"></div>
+    <div class="row" *ngIf="teacherData">
+      <div class="col-md-6 mr-auto ml-auto">
+        <div class="card card-register">
+          <form
+            class="register-form"
+            #updateTeacherForm="ngForm"
+            (ngSubmit)="updateTeacher(updateTeacherForm)"
+          >
+            <div class="form-group">
+              <label>講師名 <span class="icon-danger">*</span></label>
+              <input
+                [ngModel]="teacherData.username"
+                name="username"
+                type="text"
+                class="form-control border-input"
+                required
+              />
+            </div>
+
+            <!-- <div class="form-group">
+              <label>講師の誕生日 <span class="icon-danger">*</span></label>
+              <div
+                class="input-group date"
+                [ngClass]="{ 'input-group-focus': focus === true }"
+              >
+                <input
+                  [(ngModel)]="teacherBirthday"
+                  name="teacherBirthday"
+                  [readonly]="true"
+                  [owlDateTime]="dt1"
+                  [owlDateTimeTrigger]="dt1"
+                  [max]="max"
+                  class="form-control"
+                  placeholder="講師誕生日を選択"
+                  (focus)="focus = true"
+                  (blur)="focus = false"
+                  required
+                />
+                <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                <div class="input-group-append">
+                  <span class="glyphicon glyphicon-calendar input-group-text">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </span>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>性別 <span class="icon-danger">*</span></label>
+              <input
+                [ngModel]="teacherData.gender"
+                name="noUseGender"
+                type="text"
+                class="form-control"
+                disabled
+              />
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>楽器 <span class="icon-danger">*</span></label>
+              <angular2-multiselect
+                [data]="dropdownInstrumentList"
+                [settings]="dropdownInstrumentSettings"
+                [(ngModel)]="teacherData.selectedInstrument"
+                name="selectedInstrument"
+                required
+              ></angular2-multiselect>
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>講師の電話番号 <span class="icon-danger">*</span></label>
+              <input
+                [(ngModel)]="teacherData.tel"
+                name="tel"
+                type="text"
+                class="form-control border-input"
+                placeholder="080-1234-5678"
+                required
+              />
+            </div> -->
+
+            <div class="form-group">
+              <label
+                >講師のメールアドレス <span class="icon-danger">*</span></label
+              >
+              <input
+                [(ngModel)]="teacherData.email"
+                name="email"
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="hanako.kimura@gmail.com"
+                required
+              />
+            </div>
+
+            <!-- <div class="form-group">
+              <label>講師時給 <span class="icon-danger">*</span></label>
+              <div
+                class="input-group"
+                [ngClass]="{ 'input-group-focus': focus2 === true }"
+              >
+                <input
+                  [(ngModel)]="teacherData.hourlyPrice"
+                  name="hourlyPrice"
+                  type="number"
+                  class="form-control"
+                  placeholder="2000"
+                  (focus)="focus2 = true"
+                  (blur)="focus2 = false"
+                  required
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text">円</span>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>郵便番号</label>
+              <input
+                [(ngModel)]="teacherData.postalcode"
+                name="postalcode"
+                type="text"
+                class="form-control border-input"
+                placeholder="160-0023"
+              />
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>都道府県</label>
+              <angular2-multiselect
+                [data]="dropdownPrefectureList"
+                [settings]="dropdownPrefectureSettings"
+                [(ngModel)]="teacherData.selectedPrefecture"
+                name="selectedPrefecture"
+              ></angular2-multiselect>
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>市区町村</label>
+              <input
+                [(ngModel)]="teacherData.city"
+                name="city"
+                type="text"
+                class="form-control border-input"
+                placeholder="新宿区"
+              />
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>住所</label>
+              <input
+                [(ngModel)]="teacherData.address"
+                name="address"
+                type="text"
+                class="form-control border-input"
+                placeholder="新宿1-1-1"
+              />
+            </div> -->
+
+            <!-- <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>最寄駅</label>
+                  <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    <input
+                      [(ngModel)]="teacherData.nearStation"
+                      name="nearStation"
+                      type="text"
+                      class="form-control border-input"
+                      placeholder="新宿"
+                      (focus)="focus1 = true"
+                      (blur)="focus1 = false"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text">駅</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>大学</label>
+              <input
+                [(ngModel)]="teacherData.school"
+                name="school"
+                type="text"
+                class="form-control border-input"
+                placeholder="東京学芸大学"
+              />
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>学科</label>
+              <input
+                [(ngModel)]="teacherData.major"
+                name="major"
+                type="text"
+                class="form-control border-input"
+                placeholder="音楽科ピアノ専攻"
+              />
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>講師アピールポイント</label>
+              <textarea
+                [(ngModel)]="teacherData.appeal"
+                name="appeal"
+                type="text"
+                rows="4"
+                class="form-control border-input"
+                placeholder="宝塚やディズニーシーで演奏・ジャズレッスンにも対応できる・突然のレッスンにも対応できる"
+              ></textarea>
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>楽器レンタル</label>
+              <input
+                [(ngModel)]="teacherData.instrumentRental"
+                name="instrumentRental"
+                type="text"
+                class="form-control border-input"
+                placeholder="レンタル不要"
+              />
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>LINEグループ</label>
+              <input
+                [(ngModel)]="teacherData.lineGroup"
+                name="lineGroup"
+                type="text"
+                class="form-control border-input"
+                placeholder="〇"
+              />
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>HP掲載</label>
+              <input
+                [(ngModel)]="teacherData.homepage"
+                name="homepage"
+                type="text"
+                class="form-control border-input"
+                placeholder="依頼中"
+              />
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>経歴文言</label>
+              <input
+                [(ngModel)]="teacherData.career"
+                name="career"
+                type="text"
+                class="form-control border-input"
+                placeholder="受取待ち"
+              />
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>写真受取</label>
+              <input
+                [(ngModel)]="teacherData.photo"
+                name="photo"
+                type="text"
+                class="form-control border-input"
+                placeholder="受取済"
+              />
+            </div> -->
+
+            <!-- <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>銀行名</label>
+                  <input
+                    [(ngModel)]="teacherData.bankName"
+                    name="bankName"
+                    type="text"
+                    class="form-control border-input"
+                    placeholder="みずほ銀行"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>支店</label>
+                  <input
+                    [(ngModel)]="teacherData.bankBranchName"
+                    name="bankBranchName"
+                    type="text"
+                    class="form-control border-input"
+                    placeholder="新宿支店"
+                  />
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>口座種類</label>
+                  <input
+                    [(ngModel)]="teacherData.bankAccountType"
+                    name="bankAccountType"
+                    type="text"
+                    class="form-control border-input"
+                    placeholder="普通"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>口座番号</label>
+                  <input
+                    [(ngModel)]="teacherData.bankAccountNumber"
+                    name="bankAccountNumber"
+                    type="number"
+                    class="form-control border-input"
+                    placeholder="12345678"
+                  />
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="form-group">
+              <label>口座名義</label>
+              <input
+                [(ngModel)]="teacherData.bankAccountName"
+                name="bankAccountName"
+                type="text"
+                class="form-control border-input"
+                placeholder="キムラハナコ"
+              />
+            </div> -->
+
+            <!-- <div class="form-group">
+                            <label>ステータス</label>
+                            <input [(ngModel)]="teacherData.address" 
+                                name="address" 
+                                type="text" 
+                                class="form-control border-input" 
+                                placeholder="稼働" 
+                                >
+                        </div> -->
+
+            <!-- <div class="form-group">
+                            <label>非表示に変える予定</label>
+                            <input (ngModel)="teacherData.password"
+                                    name="password"
+                                    type="password"
+                                    class="form-control"
+                                    id="password"
+                                    placeholder="Password"
+                                    required
+                                    >
+                        </div>
+                        <div class="form-group">
+                            <input (ngModel)="teacherData.passwordConfirmation"
+                                    name="passwordConfirmation"
+                                    type="password"
+                                    class="form-control"
+                                    id="passwordConfirmation"
+                                    placeholder="Confirm Password"
+                                    required
+                                    >
+                        </div> -->
+
+            <ul class="notifications">
+              <li class="notification-item">
+                講師の稼働ステータス
+                <bSwitch
+                  [switch-on-color]="'info'"
+                  [switch-off-color]="'info'"
+                  [(ngModel)]="teacherData.isVerified"
+                  name="isVerified"
+                >
+                </bSwitch>
+              </li>
+            </ul>
+
+            <button
+              *ngIf="updateTeacherForm.pristine || !updateTeacherForm.valid"
+              disabled
+              type="submit"
+              class="btn btn-block btn-round btn-lg"
+            >
+              更新
+            </button>
+            <button
+              *ngIf="!updateTeacherForm.pristine && updateTeacherForm.valid"
+              type="submit"
+              class="btn btn-primary btn-block btn-round btn-lg"
+            >
+              更新
+            </button>
+          </form>
+          <div class="forgot">
+            <button (click)="onResetPassword()" class="btn btn-danger btn-link">
+              講師パスワード初期化
+            </button>
+          </div>
+          <div class="space-top"></div>
+          <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
+            <p *ngFor="let error of errors">{{ error.detail }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

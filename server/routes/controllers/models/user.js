@@ -3,10 +3,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  teacherId: Number,
   isVerified: { type: Boolean, default: true },
+  // shared: { type: Boolean, default: true },
   userRole: { type: String, default: "User" }, // User, Owner, OEM_Owner
-  shared: { type: Boolean, default: true },
   createdAt: { type: Date, default: Date.now },
 
   username: {
@@ -22,38 +21,21 @@ const userSchema = new Schema({
     min: [4, "Too short, min is 4 characters."],
     required: "Password is required",
   },
-  hourlyPrice: { type: Number, required: "hourlyPrice is required" },
-  // customer: {
-  //     id: { type: String, default: '' },
-  //     default_source: { type: String, default: '' }
-  // },
-  // rating: Number,
-  // description: String,
-  birthday: Object,
+  birthday: Date,
   gender: String,
-  selectedGender: Object,
-  selectedInstrument: Object,
-  tel: String,
-  postalcode: String,
-  selectedPrefecture: Object,
-  city: String,
+  phoneNumber: String,
   address: String,
-  nearStation: String,
-
-  school: String,
-  major: String,
-  appeal: String,
-  instrumentRental: String,
-  lineGroup: String,
-  homepage: String,
-  career: String,
-  photo: String,
-
-  bankName: String,
-  bankBranchName: String,
-  bankAccountType: String,
-  bankAccountNumber: Number,
-  bankAccountName: String,
+  covid: String,
+  purpose: String,
+  purposeDetail: String,
+  toothExtraction: String,
+  sideEffect: String,
+  allergic: String,
+  medicalIllness: String,
+  toothCleaningTimes: Number,
+  request: String,
+  medicalInsurance: String,
+  condition: String,
 
   rentals: [{ type: Schema.Types.ObjectId, ref: "Rental" }],
   bookings: [{ type: Schema.Types.ObjectId, ref: "Booking" }],
