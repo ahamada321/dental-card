@@ -66,7 +66,7 @@ export class AdminPatientListComponent implements OnInit {
       const index = this.patients.findIndex((x: any) => x._id === patientId);
       this.patients.splice(index, 1); // Dlete event from array.
       Swal.fire({
-        text: '削除しました',
+        title: '削除しました',
         icon: 'warning',
         customClass: {
           confirmButton: 'btn btn-danger btn-lg',
