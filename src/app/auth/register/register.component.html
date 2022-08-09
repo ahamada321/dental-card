@@ -632,13 +632,21 @@
           </div>
 
           <button
-            *ngIf="!registerForm.valid || isClicked"
+            *ngIf="!registerForm.valid && !isClicked"
             disabled
             type="submit"
             class="btn btn-block btn-round btn-lg"
           >
             <span class="icon-danger">*</span
             >の箇所で未入力が残っているため登録できません
+          </button>
+          <button
+            *ngIf="isClicked"
+            disabled
+            type="submit"
+            class="btn btn-block btn-round btn-lg"
+          >
+            登録する
           </button>
           <button
             *ngIf="registerForm.valid && !isClicked"
