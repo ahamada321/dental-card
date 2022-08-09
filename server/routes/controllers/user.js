@@ -13,7 +13,7 @@ exports.getUsers = function (req, res) {
       [
         { $match: { userRole: "User" } }, // Filtering to teachers
         { $project: { password: 0 } }, // Hide sensitive information.
-        { $sort: { patientId: -1 } }, // Sorting by patientId
+        { $sort: { _id: -1 } }, // Sorting by latest user.
         {
           $facet: {
             metadata: [{ $count: "total" }, { $addFields: { page: page } }],
