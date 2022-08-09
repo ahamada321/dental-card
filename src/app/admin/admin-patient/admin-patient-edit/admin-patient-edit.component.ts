@@ -161,7 +161,7 @@ export class AdminPatientEditComponent implements OnInit {
   private showSwalSuccess() {
     Swal.fire({
       // title: 'User infomation has been updated!',
-      text: '更新しました！',
+      title: '更新しました！',
       icon: 'success',
       customClass: {
         confirmButton: 'btn btn-primary btn-round btn-lg',
