@@ -2,8 +2,6 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { MyOriginAuthService } from '../shared/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-// import { AdminService } from "src/app/admin/service/admin.service";
-// import { NgbCalendar, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
 import { Report } from 'src/app/auth/shared/report.model';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -24,13 +22,6 @@ export class RegisterComponent implements OnInit {
     { id: 1, gender: '男性' },
     { id: 2, gender: '女性' },
   ];
-  dropdownGenderSettings = {
-    singleSelection: true,
-    text: '性別を選択してください',
-    labelKey: 'gender',
-    enableSearchFilter: false,
-    classes: '',
-  };
 
   // Select prefecture
   dropdownPrefectureList = [
@@ -95,20 +86,11 @@ export class RegisterComponent implements OnInit {
     classes: '',
   };
 
-  // Select COVID
   dropdownAnswerLists = [
     { id: 1, answer: 'はい' },
     { id: 2, answer: 'いいえ' },
   ];
-  dropdownAnswerSettings = {
-    singleSelection: true,
-    text: '回答を選択してください',
-    labelKey: 'answer',
-    enableSearchFilter: false,
-    classes: '',
-  };
 
-  // Select purpose
   dropdownPurposeLists = [
     { id: 1, purpose: '歯科検診を希望' },
     { id: 2, purpose: '詰め物が取れた' },
@@ -118,57 +100,17 @@ export class RegisterComponent implements OnInit {
     { id: 6, purpose: '歯並びが気になる' },
     { id: 7, purpose: 'その他' },
   ];
-  dropdownPurposeSettings = {
-    singleSelection: true,
-    text: '来院目的を選択してください',
-    labelKey: 'purpose',
-    enableSearchFilter: false,
-    classes: '',
-  };
 
-  // Select times
-  dropdownNumberLists = [
-    { id: 1, itemName: '' },
-    { id: 2, itemName: '' },
-    { id: 3, itemName: '' },
-    { id: 4, itemName: '' },
-    { id: 5, itemName: '' },
-  ];
-  dropdownNumberSettings = {
-    singleSelection: true,
-    text: '回数を選択',
-    enableSearchFilter: false,
-    classes: '',
-  };
-
-  // Select request
   dropdownRequestLists = [
     { id: 1, request: '悪いところは全て治したい' },
     { id: 2, request: '痛いところのみ治療したい' },
   ];
-  dropdownRequestSettings = {
-    singleSelection: true,
-    text: '回答を選択してください',
-    labelKey: 'request',
-    enableSearchFilter: false,
-    classes: '',
-  };
 
-  // Select request
   dropdownMedicalInsuranceLists = [
     { id: 1, medicalInsurance: '保険の範囲内で治療したい' },
     { id: 2, medicalInsurance: '保険のきかない所は自費でもいい' },
   ];
 
-  dropdownMedicalInsuranceSettings = {
-    singleSelection: true,
-    text: '回答を選択してください',
-    labelKey: 'medicalInsurance',
-    enableSearchFilter: false,
-    classes: '',
-  };
-
-  // Select request
   dropdownConditionLists = [
     { id: 1, condition: '良好' },
     { id: 2, condition: '普通' },
@@ -177,20 +119,7 @@ export class RegisterComponent implements OnInit {
     { id: 5, condition: '女性の方：妊娠中' },
   ];
 
-  dropdownConditionSettings = {
-    singleSelection: true,
-    text: '回答を選択してください',
-    labelKey: 'condition',
-    enableSearchFilter: false,
-    classes: '',
-  };
-
-  constructor(
-    private auth: MyOriginAuthService,
-    // private adminService: AdminService,
-    // private calendar: NgbCalendar,
-    private router: Router
-  ) {}
+  constructor(private auth: MyOriginAuthService, private router: Router) {}
 
   ngOnInit() {
     this.newReport.birthday = new Date(1990, 5, 1); // Initialize birthday.
@@ -198,13 +127,6 @@ export class RegisterComponent implements OnInit {
 
   register(formData: NgForm) {
     this.isClicked = true;
-    // if (this.birthDay) {
-    //   formData.value.birthday = {
-    //     year: this.birthDay.getFullYear(),
-    //     month: this.birthDay.getMonth() + 1,
-    //     day: this.birthDay.getDate(),
-    //   };
-    // }
 
     this.auth.register(formData.value).subscribe(
       (newUser: any) => {

@@ -13,7 +13,7 @@ exports.getUsers = function (req, res) {
       [
         { $match: { userRole: "User" } }, // Filtering to teachers
         { $project: { password: 0 } }, // Hide sensitive information.
-        { $sort: { teacherId: -1 } }, // Sorting by teacherId
+        { $sort: { patientId: -1 } }, // Sorting by patientId
         {
           $facet: {
             metadata: [{ $count: "total" }, { $addFields: { page: page } }],
@@ -35,7 +35,7 @@ exports.getUsers = function (req, res) {
     User.find({ userRole: "User" })
       // .populate('user') // Need to consider security in future.
       .select("-password")
-      .sort({ teacherId: -1 })
+      .sort({ patientId: -1 })
       .exec(function (err, foundUsers) {
         return res.json(foundUsers);
       });
@@ -56,7 +56,7 @@ exports.searchUsers = function (req, res) {
           },
         },
       },
-      { $sort: { teacherId: -1 } },
+      { $sort: { patientId: -1 } },
     ],
     function (err, foundUsers) {
       return res.json(foundUsers);
@@ -163,9 +163,31 @@ exports.register = function (req, res) {
     purpose,
     purposeDetail,
     toothExtraction,
+    whenDidYouExtractTooth,
+    BleedingDidntStop,
+    HadPainForDays,
+    HadFever,
+    HadAnemia,
+    OtherTroubleAfterToothExtraction,
     sideEffect,
+    GetStomach,
+    GetRash,
+    GetItchy,
     allergic,
+    HaveRashEasily,
+    HaveUrticaria,
+    HaveAsthma,
     medicalIllness,
+    Heart,
+    Liver,
+    Kidney,
+    Hemophilia,
+    Diabetes,
+    HighBloodPressure,
+    LowBloodPressure,
+    Asthma,
+    Tuberculosis,
+    OtherMedicalIllness,
     toothCleaningTimes,
     request,
     medicalInsurance,
@@ -185,9 +207,31 @@ exports.register = function (req, res) {
     purpose,
     purposeDetail,
     toothExtraction,
+    whenDidYouExtractTooth,
+    BleedingDidntStop,
+    HadPainForDays,
+    HadFever,
+    HadAnemia,
+    OtherTroubleAfterToothExtraction,
     sideEffect,
+    GetStomach,
+    GetRash,
+    GetItchy,
     allergic,
+    HaveRashEasily,
+    HaveUrticaria,
+    HaveAsthma,
     medicalIllness,
+    Heart,
+    Liver,
+    Kidney,
+    Hemophilia,
+    Diabetes,
+    HighBloodPressure,
+    LowBloodPressure,
+    Asthma,
+    Tuberculosis,
+    OtherMedicalIllness,
     toothCleaningTimes,
     request,
     medicalInsurance,

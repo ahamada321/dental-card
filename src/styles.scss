@@ -16,5 +16,18 @@
   z-index: 99999 !important; // Adding due to mobile header has broken when opened owl calendar.
 }
 
-// html, body { height: 100%; }
-// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Placeholder color
+.form-control {
+  &::-moz-placeholder {
+    color: #d2d2d2;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder {
+    color: #d2d2d2;
+  }
+
+  &::-webkit-input-placeholder {
+    color: #d2d2d2;
+  }
+}

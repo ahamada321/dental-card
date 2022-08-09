@@ -29,30 +29,27 @@ export class AdminService {
     return this.http.get('/api/v1/rentals/' + studentId);
   }
 
-  public getTeachers(): Observable<any> {
-    return this.http.get('/api/v1/users');
-  }
-
-  public deleteUser(patientId: string): Observable<any> {
-    return this.http.delete('/api/v1/users/' + patientId);
-  }
-
   public deleteStudent(studentId: string): Observable<any> {
     return this.http.delete('/api/v1/rentals/' + studentId);
   }
 
-  public getTeachersByPages(
-    pageIndex: number,
-    pageSize: number
-  ): Observable<any> {
+  public getUsers(): Observable<any> {
+    return this.http.get('/api/v1/users');
+  }
+
+  public getUserById(userId: string): Observable<any> {
+    return this.http.get('/api/v1/users/' + userId);
+  }
+
+  public deleteUser(userId: string): Observable<any> {
+    return this.http.delete('/api/v1/users/' + userId);
+  }
+
+  public getUsersByPages(pageIndex: number, pageSize: number): Observable<any> {
     return this.http.get(`/api/v1/users?page=${pageIndex}&limit=${pageSize}`);
   }
 
-  public getTeachersByKeywords(searchWords?: string): Observable<any> {
+  public getUsersByKeywords(searchWords?: string): Observable<any> {
     return this.http.get('/api/v1/users/search/' + searchWords);
-  }
-
-  public getTeacherById(teacherId: string): Observable<any> {
-    return this.http.get('/api/v1/users/' + teacherId);
   }
 }

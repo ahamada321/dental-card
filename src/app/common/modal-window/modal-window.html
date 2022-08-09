@@ -18,72 +18,348 @@
   </div> -->
   <div class="form-group">
     <h5>氏名</h5>
-    <p>{{patient.username}}</p>
+    <p>{{ patient.username }}</p>
   </div>
   <div class="form-group">
     <h5>メールアドレス</h5>
-    <p>{{patient.email}}</p>
+    <p>{{ patient.email }}</p>
   </div>
   <div class="form-group">
     <h5>生年月日</h5>
-    <p>{{patient.birthday | date: "yyyy/MM/dd"}}</p>
+    <p>{{ patient.birthday | date: "yyyy/MM/dd" }}</p>
   </div>
   <div class="form-group">
     <h5>性別</h5>
-    <p>{{patient.gender}}</p>
+    <p>{{ patient.gender }}</p>
   </div>
   <div class="form-group">
     <h5>電話番号</h5>
-    <p>{{patient.phoneNumber}}</p>
+    <p>{{ patient.phoneNumber }}</p>
   </div>
   <div class="form-group">
     <h5>住所</h5>
-    <p>{{patient.address}}</p>
+    <p>{{ patient.address }}</p>
   </div>
   <div class="form-group">
     <h5>新型コロナウイルスワクチンは接種しましたか？</h5>
-    <p>{{patient.covid}}</p>
+    <p>{{ patient.covid }}</p>
   </div>
+
   <div class="form-group">
     <h5>今回来院された目的はなんですか？</h5>
-    <p>{{patient.purpose}}</p>
+    <p>{{ patient.purpose }}</p>
   </div>
+  <ng-container *ngIf="patient.purpose === 'その他'">
+    <div class="form-group">
+      <label>【その他を選択された方】来院目的の詳細を入力してください</label>
+      <p>{{ patient.purposeDetail }}</p>
+    </div>
+  </ng-container>
+
   <div class="form-group">
     <h5>抜歯の経験はありますか？</h5>
-    <p>{{patient.toothExtraction}}</p>
+    <p>{{ patient.toothExtraction }}</p>
   </div>
+  <ng-container *ngIf="patient.toothExtraction === 'はい'">
+    <div class="form-group">
+      <label>どのくらい前に抜歯しましたか？</label>
+      <p>{{ patient.whenDidYouExtractTooth || "未入力" }}</p>
+
+      <label>その時に何か異常はありましたか？　</label>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.BleedingDidntStop"
+            type="checkbox"
+            disabled
+          />
+          血が止まらなかった
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.HadPainForDays"
+            type="checkbox"
+            disabled
+          />
+          何日も痛んだ
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.HadFever"
+            type="checkbox"
+            disabled
+          />
+          熱が出た
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.HadAnemia"
+            type="checkbox"
+            disabled
+          />
+          貧血を起こした
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <label>上記以外の異常はありましたか？　</label>
+      <p>{{ patient.OtherTroubleAfterToothExtraction || "未入力" }}</p>
+    </div>
+  </ng-container>
+
   <div class="form-group">
     <h5>薬を飲んで副作用はありませんか？</h5>
-    <p>{{patient.sideEffect}}</p>
+    <p>{{ patient.sideEffect }}</p>
   </div>
+  <ng-container *ngIf="patient.sideEffect === 'はい'">
+    <div class="form-group">
+      <label>その時の症状を選択してください</label>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.GetStomach"
+            type="checkbox"
+            disabled
+          />
+          胃が痛くなる
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.GetRash"
+            type="checkbox"
+            disabled
+          />
+          発作が出る
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.GetItchy"
+            type="checkbox"
+            disabled
+          />
+          痒くなる
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <label>上記以外の副作用はありましたか？　</label>
+      <p>{{ patient.purposeDetail || "未入力" }}</p>
+    </div>
+  </ng-container>
+
   <div class="form-group">
     <h5>特異体質やアレルギーはありませんか？</h5>
-    <p>{{patient.allergic}}</p>
+    <p>{{ patient.allergic }}</p>
   </div>
+  <ng-container *ngIf="patient.allergic === 'はい'">
+    <div class="form-group">
+      <label>その時の症状を選択してください</label>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.HaveRashEasily"
+            type="checkbox"
+            disabled
+          />
+          かぶれやすい
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.HaveUrticaria"
+            type="checkbox"
+            disabled
+          />
+          蕁麻疹がある
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.HaveAsthma"
+            type="checkbox"
+            disabled
+          />
+          喘息がある
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <label>上記以外の副作用はありましたか？　</label>
+      <p>{{ patient.OtherAllergic || "未入力" }}</p>
+    </div>
+  </ng-container>
+
   <div class="form-group">
     <h5>内科的な病気はありませんか？</h5>
-    <p>{{patient.medicalIllness}}</p>
+    <p>{{ patient.medicalIllness }}</p>
   </div>
+  <ng-container *ngIf="patient.medicalIllness === 'はい'">
+    <div class="form-group">
+      <label>該当するものを選択してください</label>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.Heart"
+            type="checkbox"
+            disabled
+          />
+          心臓
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.Liver"
+            type="checkbox"
+            disabled
+          />
+          肝臓(肝炎)
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.Kidney"
+            type="checkbox"
+            disabled
+          />
+          腎臓
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.Hemophilia"
+            type="checkbox"
+            disabled
+          />
+          血友病
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.Diabetes"
+            type="checkbox"
+            disabled
+          />
+          糖尿
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.HighBloodPressure"
+            type="checkbox"
+            disabled
+          />
+          高血圧
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.LowBloodPressure"
+            type="checkbox"
+            disabled
+          />
+          低血圧
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.Asthma"
+            type="checkbox"
+            disabled
+          />
+          喘息
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            [ngModel]="patient.Tuberculosis"
+            type="checkbox"
+            disabled
+          />
+          結核
+          <span class="form-check-sign"></span>
+        </label>
+      </div>
+      <label>上記以外の症状はありましたか？　</label>
+      <p>{{ patient.OtherMedicalIllness || "未入力" }}</p>
+    </div>
+  </ng-container>
+
   <div class="form-group">
     <h5>1日での歯の清掃回数</h5>
-    <p>{{patient.toothCleaningTimes}}</p>
+    <p>{{ patient.toothCleaningTimes }}</p>
   </div>
   <div class="form-group">
     <h5>この機会に</h5>
-    <p>{{patient.request}}</p>
+    <p>{{ patient.request }}</p>
   </div>
   <div class="form-group">
     <h5>診療についてのご希望</h5>
-    <p>{{patient.medicalInsurance}}</p>
+    <p>{{ patient.medicalInsurance }}</p>
   </div>
   <div class="form-group">
     <h5>現在の健康状態</h5>
-    <p>{{patient.condition}}</p>
+    <p>{{ patient.condition }}</p>
   </div>
 </div>
 <div class="modal-footer">
   <div class="left-side">
-    <button class="btn btn-default btn-link">修正する</button>
+    <a
+      (click)="activeModal.close('Close click')"
+      [routerLink]="['/admin/patients', patient._id]"
+      class="btn btn-default btn-link"
+      >修正する</a
+    >
   </div>
   <div class="divider"></div>
   <div class="right-side">
@@ -95,19 +371,3 @@
     </button>
   </div>
 </div>
-
-<!-- </ng-template> -->
-
-<!-- 
-<h2 mat-dialog-title>報告内容</h2>
-<mat-dialog-content>
-  <h5>レッスン日</h5>
-  <br />
-  <h5>レッスン方法</h5>
-  <p>{{ patient.username }}</p>
-  <br />
-  <br />
-</mat-dialog-content>
-<mat-dialog-actions align="center">
-  <button mat-dialog-close class="btn btn-primary btn-lg">閉じる</button>
-</mat-dialog-actions> -->
