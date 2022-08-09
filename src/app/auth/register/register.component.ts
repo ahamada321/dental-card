@@ -205,6 +205,7 @@ export class RegisterComponent implements OnInit {
     //     day: this.birthDay.getDate(),
     //   };
     // }
+    debugger;
 
     this.auth.register(formData.value).subscribe(
       (newUser: any) => {

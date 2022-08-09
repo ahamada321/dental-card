@@ -191,8 +191,8 @@
             <div class="form-group">
               <label>どのくらい前に抜歯しましたか？</label>
               <input
-                (ngModel)="(newReport.purposeDetail)"
-                name="purposeDetail"
+                (ngModel)="(newReport.whenDidYouExtractTooth)"
+                name="whenDidYouExtractTooth"
                 type="text"
                 class="form-control border-input"
                 placeholder="3年前"
@@ -200,36 +200,56 @@
               <label>その時に何か異常はありましたか？　</label>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.BleedingDidntStop)"
+                    name="BleedingDidntStop"
+                    type="checkbox"
+                  />
                   血が止まらなかった
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.HadPainForDays)"
+                    name="HadPainForDays"
+                    type="checkbox"
+                  />
                   何日も痛んだ
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.HadFever)"
+                    name="HadFever"
+                    type="checkbox"
+                  />
                   熱が出た
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.HadAnemia)"
+                    name="HadAnemia"
+                    type="checkbox"
+                  />
                   貧血を起こした
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <label>上記以外の異常はありましたか？　</label>
               <input
-                (ngModel)="(newReport.purposeDetail)"
-                name="purposeDetail"
+                (ngModel)="(newReport.OtherTroubleAfterToothExtraction)"
+                name="OtherTroubleAfterToothExtraction"
                 type="text"
                 class="form-control border-input"
                 placeholder="上記以外の症状があれば入力してください"
@@ -265,21 +285,36 @@
               <label>その時の症状を選択してください</label>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.GetStomach)"
+                    name="GetStomach"
+                    type="checkbox"
+                  />
                   胃が痛くなる
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.GetRash)"
+                    name="GetRash"
+                    type="checkbox"
+                  />
                   発作が出る
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.GetItchy)"
+                    name="GetItchy"
+                    type="checkbox"
+                  />
                   痒くなる
                   <span class="form-check-sign"></span>
                 </label>
@@ -323,29 +358,44 @@
               <label>その時の症状を選択してください</label>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.HaveRashEasily)"
+                    name="HaveRashEasily"
+                    type="checkbox"
+                  />
                   かぶれやすい
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.HaveUrticaria)"
+                    name="HaveUrticaria"
+                    type="checkbox"
+                  />
                   蕁麻疹がある
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.HaveAsthma)"
+                    name="HaveAsthma"
+                    type="checkbox"
+                  />
                   喘息がある
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <label>上記以外の副作用はありましたか？　</label>
               <input
-                (ngModel)="(newReport.purposeDetail)"
-                name="purposeDetail"
+                (ngModel)="(newReport.OtherAllergic)"
+                name="OtherAllergic"
                 type="text"
                 class="form-control border-input"
                 placeholder="上記以外の副作用があれば入力してください"
@@ -381,71 +431,116 @@
               <label>該当するものを選択してください</label>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.Heart)"
+                    name="Heart"
+                    type="checkbox"
+                  />
                   心臓
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.Liver)"
+                    name="Liver"
+                    type="checkbox"
+                  />
                   肝臓(肝炎)
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.Kidney)"
+                    name="Kidney"
+                    type="checkbox"
+                  />
                   腎臓
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.Hemophilia)"
+                    name="Hemophilia"
+                    type="checkbox"
+                  />
                   血友病
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.Diabetes)"
+                    name="Diabetes"
+                    type="checkbox"
+                  />
                   糖尿
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.HighBloodPressure)"
+                    name="HighBloodPressure"
+                    type="checkbox"
+                  />
                   高血圧
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.LowBloodPressure)"
+                    name="LowBloodPressure"
+                    type="checkbox"
+                  />
                   低血圧
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.Asthma)"
+                    name="Asthma"
+                    type="checkbox"
+                  />
                   喘息
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="" />
+                  <input
+                    class="form-check-input"
+                    (ngModel)="(newReport.Tuberculosis)"
+                    name="Tuberculosis"
+                    type="checkbox"
+                  />
                   結核
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <label>上記以外の症状はありましたか？　</label>
               <input
-                (ngModel)="(newReport.purposeDetail)"
-                name="purposeDetail"
+                (ngModel)="(newReport.OtherMedicalIllness)"
+                name="OtherMedicalIllness"
                 type="text"
                 class="form-control border-input"
                 placeholder="上記以外の症状があれば入力してください"
@@ -539,78 +634,14 @@
             </select>
           </div>
 
-          <!-- <div class="row">
-                <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <label>銀行名</label>
-                    <input
-                      (ngModel)="(newTeacher.bankName)"
-                      name="bankName"
-                      type="text"
-                      class="form-control border-input"
-                      placeholder="みずほ銀行"
-                    />
-                  </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <label>支店</label>
-                    <input
-                      (ngModel)="(newTeacher.bankBranchName)"
-                      name="bankBranchName"
-                      type="text"
-                      class="form-control border-input"
-                      placeholder="新宿支店"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <label>口座種類</label>
-                    <input
-                      (ngModel)="(newTeacher.bankAccountType)"
-                      name="bankAccountType"
-                      type="text"
-                      class="form-control border-input"
-                      placeholder="普通"
-                    />
-                  </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <label>口座番号</label>
-                    <input
-                      (ngModel)="(newTeacher.bankAccountNumber)"
-                      name="bankAccountNumber"
-                      type="number"
-                      class="form-control border-input"
-                      placeholder="12345678"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>口座名義</label>
-                <input
-                  (ngModel)="(newTeacher.bankAccountName)"
-                  name="bankAccountName"
-                  type="text"
-                  class="form-control border-input"
-                  placeholder="ｷﾑﾗ ﾘﾖｳｺ（半角ｶﾅ/スペース有/ｮ→ﾖ）"
-                />
-              </div> -->
-
           <button
             *ngIf="!registerForm.valid || isClicked"
             disabled
             type="submit"
             class="btn btn-block btn-round btn-lg"
           >
-            登録する
+            <span class="icon-danger">*</span
+            >の箇所で未入力が残っているため登録できません
           </button>
           <button
             *ngIf="registerForm.valid && !isClicked"
