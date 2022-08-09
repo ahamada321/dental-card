@@ -1,421 +1,657 @@
-<div class="wrapper">
-  <div class="container" *ngIf="teacherData">
-    <div class="row">
-      <div class="col-md-6 mr-auto ml-auto">
-        <h3 class="text-center">講師個別設定</h3>
-      </div>
-    </div>
-    <div class="space-top"></div>
-    <div class="row" *ngIf="teacherData">
-      <div class="col-md-6 mr-auto ml-auto">
-        <div class="card card-register">
-          <form
-            class="register-form"
-            #updateTeacherForm="ngForm"
-            (ngSubmit)="updateTeacher(updateTeacherForm)"
-          >
-            <div class="form-group">
-              <label>講師名 <span class="icon-danger">*</span></label>
-              <input
-                [ngModel]="teacherData.username"
-                name="username"
-                type="text"
-                class="form-control border-input"
-                required
-              />
-            </div>
+<div class="container" *ngIf="patientData">
+  <h3 class="title text-center">登録内容修正</h3>
+  <div class="row" *ngIf="patientData">
+    <div class="col-md-6 mr-auto ml-auto">
+      <div class="card card-register">
+        <form
+          class="register-form"
+          #updatePatientForm="ngForm"
+          (ngSubmit)="updateUser(updatePatientForm)"
+        >
+          <div class="form-group">
+            <label>氏名 <span class="icon-danger">*</span></label>
+            <input
+              [(ngModel)]="patientData.username"
+              name="username"
+              type="text"
+              class="form-control border-input"
+              required
+            />
+          </div>
 
-            <!-- <div class="form-group">
-              <label>講師の誕生日 <span class="icon-danger">*</span></label>
-              <div
-                class="input-group date"
-                [ngClass]="{ 'input-group-focus': focus === true }"
-              >
-                <input
-                  [(ngModel)]="teacherBirthday"
-                  name="teacherBirthday"
-                  [readonly]="true"
-                  [owlDateTime]="dt1"
-                  [owlDateTimeTrigger]="dt1"
-                  [max]="max"
-                  class="form-control"
-                  placeholder="講師誕生日を選択"
-                  (focus)="focus = true"
-                  (blur)="focus = false"
-                  required
-                />
-                <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
-                <div class="input-group-append">
-                  <span class="glyphicon glyphicon-calendar input-group-text">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                  </span>
-                </div>
-              </div>
-            </div> -->
+          <div class="form-group">
+            <label>メールアドレス <span class="icon-danger">*</span></label>
+            <input
+              [(ngModel)]="patientData.email"
+              name="email"
+              type="email"
+              id="email"
+              class="form-control"
+              required
+            />
+          </div>
 
-            <!-- <div class="form-group">
-              <label>性別 <span class="icon-danger">*</span></label>
+          <div class="form-group">
+            <label>生年月日 <span class="icon-danger">*</span></label>
+            <div class="input-group date">
               <input
-                [ngModel]="teacherData.gender"
-                name="noUseGender"
-                type="text"
+                [(ngModel)]="patientData.birthday"
+                name="birthday"
+                [readonly]="true"
+                [owlDateTime]="dt1"
+                [owlDateTimeTrigger]="dt1"
+                [max]="max"
                 class="form-control"
-                disabled
-              />
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>楽器 <span class="icon-danger">*</span></label>
-              <angular2-multiselect
-                [data]="dropdownInstrumentList"
-                [settings]="dropdownInstrumentSettings"
-                [(ngModel)]="teacherData.selectedInstrument"
-                name="selectedInstrument"
-                required
-              ></angular2-multiselect>
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>講師の電話番号 <span class="icon-danger">*</span></label>
-              <input
-                [(ngModel)]="teacherData.tel"
-                name="tel"
-                type="text"
-                class="form-control border-input"
-                placeholder="080-1234-5678"
+                placeholder="生年月日を選択"
                 required
               />
-            </div> -->
+              <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
 
+              <div class="input-group-append">
+                <span class="glyphicon glyphicon-calendar input-group-text">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>性別 <span class="icon-danger">*</span></label>
+            <select
+              class="custom-select"
+              [(ngModel)]="patientData.gender"
+              name="gender"
+              required
+            >
+              <option [value]="undefined" disabled>
+                性別を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownGenderList of dropdownGenderLists"
+                [value]="dropdownGenderList.gender"
+              >
+                {{ dropdownGenderList.gender }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>電話番号 <span class="icon-danger">*</span></label>
+            <input
+              [(ngModel)]="patientData.phoneNumber"
+              name="phoneNumber"
+              type="text"
+              class="form-control border-input"
+              placeholder="08012341234"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>住所 <span class="icon-danger">*</span></label>
+            <input
+              [(ngModel)]="patientData.address"
+              name="address"
+              type="text"
+              class="form-control border-input"
+              placeholder="東京都〇〇区〇〇1-1-1"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label
+              >新型コロナウイルスワクチンは接種しましたか？
+              <span class="icon-danger">*</span></label
+            >
+            <select
+              class="custom-select"
+              [(ngModel)]="patientData.covid"
+              name="covid"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownAnswerList of dropdownAnswerLists"
+                [value]="dropdownAnswerList.answer"
+              >
+                {{ dropdownAnswerList.answer }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label
+              >今回来院された目的はなんですか？
+              <span class="icon-danger">*</span></label
+            >
+            <select
+              class="custom-select"
+              [(ngModel)]="patientData.purpose"
+              name="purpose"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownPurposeList of dropdownPurposeLists"
+                [value]="dropdownPurposeList.purpose"
+              >
+                {{ dropdownPurposeList.purpose }}
+              </option>
+            </select>
+          </div>
+
+          <ng-container *ngIf="patientData.purpose === 'その他'">
             <div class="form-group">
               <label
-                >講師のメールアドレス <span class="icon-danger">*</span></label
+                >【その他を選択された方】来院目的の詳細を入力してください</label
               >
               <input
-                [(ngModel)]="teacherData.email"
-                name="email"
-                type="email"
-                id="email"
-                class="form-control"
-                placeholder="hanako.kimura@gmail.com"
-                required
+                [(ngModel)]="patientData.purposeDetail"
+                name="purposeDetail"
+                type="text"
+                class="form-control border-input"
+                placeholder="来院目的を入力してください"
               />
             </div>
+          </ng-container>
 
-            <!-- <div class="form-group">
-              <label>講師時給 <span class="icon-danger">*</span></label>
-              <div
-                class="input-group"
-                [ngClass]="{ 'input-group-focus': focus2 === true }"
+          <div class="form-group">
+            <label
+              >抜歯の経験はありますか？
+              <span class="icon-danger">*</span></label
+            >
+            <select
+              class="custom-select"
+              [(ngModel)]="patientData.toothExtraction"
+              name="toothExtraction"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownAnswerList of dropdownAnswerLists"
+                [value]="dropdownAnswerList.answer"
               >
-                <input
-                  [(ngModel)]="teacherData.hourlyPrice"
-                  name="hourlyPrice"
-                  type="number"
-                  class="form-control"
-                  placeholder="2000"
-                  (focus)="focus2 = true"
-                  (blur)="focus2 = false"
-                  required
-                />
-                <div class="input-group-append">
-                  <span class="input-group-text">円</span>
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>郵便番号</label>
-              <input
-                [(ngModel)]="teacherData.postalcode"
-                name="postalcode"
-                type="text"
-                class="form-control border-input"
-                placeholder="160-0023"
-              />
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>都道府県</label>
-              <angular2-multiselect
-                [data]="dropdownPrefectureList"
-                [settings]="dropdownPrefectureSettings"
-                [(ngModel)]="teacherData.selectedPrefecture"
-                name="selectedPrefecture"
-              ></angular2-multiselect>
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>市区町村</label>
-              <input
-                [(ngModel)]="teacherData.city"
-                name="city"
-                type="text"
-                class="form-control border-input"
-                placeholder="新宿区"
-              />
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>住所</label>
-              <input
-                [(ngModel)]="teacherData.address"
-                name="address"
-                type="text"
-                class="form-control border-input"
-                placeholder="新宿1-1-1"
-              />
-            </div> -->
-
-            <!-- <div class="row">
-              <div class="col-md-6 col-sm-6">
-                <div class="form-group">
-                  <label>最寄駅</label>
-                  <div
-                    class="input-group"
-                    [ngClass]="{ 'input-group-focus': focus1 === true }"
-                  >
-                    <input
-                      [(ngModel)]="teacherData.nearStation"
-                      name="nearStation"
-                      type="text"
-                      class="form-control border-input"
-                      placeholder="新宿"
-                      (focus)="focus1 = true"
-                      (blur)="focus1 = false"
-                    />
-                    <div class="input-group-append">
-                      <span class="input-group-text">駅</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>大学</label>
-              <input
-                [(ngModel)]="teacherData.school"
-                name="school"
-                type="text"
-                class="form-control border-input"
-                placeholder="東京学芸大学"
-              />
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>学科</label>
-              <input
-                [(ngModel)]="teacherData.major"
-                name="major"
-                type="text"
-                class="form-control border-input"
-                placeholder="音楽科ピアノ専攻"
-              />
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>講師アピールポイント</label>
-              <textarea
-                [(ngModel)]="teacherData.appeal"
-                name="appeal"
-                type="text"
-                rows="4"
-                class="form-control border-input"
-                placeholder="宝塚やディズニーシーで演奏・ジャズレッスンにも対応できる・突然のレッスンにも対応できる"
-              ></textarea>
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>楽器レンタル</label>
-              <input
-                [(ngModel)]="teacherData.instrumentRental"
-                name="instrumentRental"
-                type="text"
-                class="form-control border-input"
-                placeholder="レンタル不要"
-              />
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>LINEグループ</label>
-              <input
-                [(ngModel)]="teacherData.lineGroup"
-                name="lineGroup"
-                type="text"
-                class="form-control border-input"
-                placeholder="〇"
-              />
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>HP掲載</label>
-              <input
-                [(ngModel)]="teacherData.homepage"
-                name="homepage"
-                type="text"
-                class="form-control border-input"
-                placeholder="依頼中"
-              />
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>経歴文言</label>
-              <input
-                [(ngModel)]="teacherData.career"
-                name="career"
-                type="text"
-                class="form-control border-input"
-                placeholder="受取待ち"
-              />
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>写真受取</label>
-              <input
-                [(ngModel)]="teacherData.photo"
-                name="photo"
-                type="text"
-                class="form-control border-input"
-                placeholder="受取済"
-              />
-            </div> -->
-
-            <!-- <div class="row">
-              <div class="col-md-6 col-sm-6">
-                <div class="form-group">
-                  <label>銀行名</label>
-                  <input
-                    [(ngModel)]="teacherData.bankName"
-                    name="bankName"
-                    type="text"
-                    class="form-control border-input"
-                    placeholder="みずほ銀行"
-                  />
-                </div>
-              </div>
-              <div class="col-md-6 col-sm-6">
-                <div class="form-group">
-                  <label>支店</label>
-                  <input
-                    [(ngModel)]="teacherData.bankBranchName"
-                    name="bankBranchName"
-                    type="text"
-                    class="form-control border-input"
-                    placeholder="新宿支店"
-                  />
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="row">
-              <div class="col-md-6 col-sm-6">
-                <div class="form-group">
-                  <label>口座種類</label>
-                  <input
-                    [(ngModel)]="teacherData.bankAccountType"
-                    name="bankAccountType"
-                    type="text"
-                    class="form-control border-input"
-                    placeholder="普通"
-                  />
-                </div>
-              </div>
-              <div class="col-md-6 col-sm-6">
-                <div class="form-group">
-                  <label>口座番号</label>
-                  <input
-                    [(ngModel)]="teacherData.bankAccountNumber"
-                    name="bankAccountNumber"
-                    type="number"
-                    class="form-control border-input"
-                    placeholder="12345678"
-                  />
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="form-group">
-              <label>口座名義</label>
-              <input
-                [(ngModel)]="teacherData.bankAccountName"
-                name="bankAccountName"
-                type="text"
-                class="form-control border-input"
-                placeholder="キムラハナコ"
-              />
-            </div> -->
-
-            <!-- <div class="form-group">
-                            <label>ステータス</label>
-                            <input [(ngModel)]="teacherData.address" 
-                                name="address" 
-                                type="text" 
-                                class="form-control border-input" 
-                                placeholder="稼働" 
-                                >
-                        </div> -->
-
-            <!-- <div class="form-group">
-                            <label>非表示に変える予定</label>
-                            <input (ngModel)="teacherData.password"
-                                    name="password"
-                                    type="password"
-                                    class="form-control"
-                                    id="password"
-                                    placeholder="Password"
-                                    required
-                                    >
-                        </div>
-                        <div class="form-group">
-                            <input (ngModel)="teacherData.passwordConfirmation"
-                                    name="passwordConfirmation"
-                                    type="password"
-                                    class="form-control"
-                                    id="passwordConfirmation"
-                                    placeholder="Confirm Password"
-                                    required
-                                    >
-                        </div> -->
-
-            <ul class="notifications">
-              <li class="notification-item">
-                講師の稼働ステータス
-                <bSwitch
-                  [switch-on-color]="'info'"
-                  [switch-off-color]="'info'"
-                  [(ngModel)]="teacherData.isVerified"
-                  name="isVerified"
-                >
-                </bSwitch>
-              </li>
-            </ul>
-
-            <button
-              *ngIf="updateTeacherForm.pristine || !updateTeacherForm.valid"
-              disabled
-              type="submit"
-              class="btn btn-block btn-round btn-lg"
-            >
-              更新
-            </button>
-            <button
-              *ngIf="!updateTeacherForm.pristine && updateTeacherForm.valid"
-              type="submit"
-              class="btn btn-primary btn-block btn-round btn-lg"
-            >
-              更新
-            </button>
-          </form>
-          <div class="forgot">
-            <button (click)="onResetPassword()" class="btn btn-danger btn-link">
-              講師パスワード初期化
-            </button>
+                {{ dropdownAnswerList.answer }}
+              </option>
+            </select>
           </div>
-          <div class="space-top"></div>
-          <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
-            <p *ngFor="let error of errors">{{ error.detail }}</p>
+
+          <ng-container *ngIf="patientData.toothExtraction === 'はい'">
+            <div class="form-group">
+              <label>どのくらい前に抜歯しましたか？</label>
+              <input
+                [(ngModel)]="patientData.whenDidYouExtractTooth"
+                name="whenDidYouExtractTooth"
+                type="text"
+                class="form-control border-input"
+                placeholder="3年前"
+              />
+              <label>その時に何か異常はありましたか？　</label>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.BleedingDidntStop"
+                    name="BleedingDidntStop"
+                    type="checkbox"
+                  />
+                  血が止まらなかった
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.HadPainForDays"
+                    name="HadPainForDays"
+                    type="checkbox"
+                  />
+                  何日も痛んだ
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.HadFever"
+                    name="HadFever"
+                    type="checkbox"
+                  />
+                  熱が出た
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.HadAnemia"
+                    name="HadAnemia"
+                    type="checkbox"
+                  />
+                  貧血を起こした
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <label>上記以外の異常はありましたか？　</label>
+              <input
+                [(ngModel)]="patientData.OtherTroubleAfterToothExtraction"
+                name="OtherTroubleAfterToothExtraction"
+                type="text"
+                class="form-control border-input"
+                placeholder="上記以外の症状があれば入力してください"
+              />
+            </div>
+          </ng-container>
+
+          <div class="form-group">
+            <label
+              >薬を飲んで副作用はありませんか？
+              <span class="icon-danger">*</span></label
+            >
+            <select
+              class="custom-select"
+              [(ngModel)]="patientData.sideEffect"
+              name="sideEffect"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownAnswerList of dropdownAnswerLists"
+                [value]="dropdownAnswerList.answer"
+              >
+                {{ dropdownAnswerList.answer }}
+              </option>
+            </select>
           </div>
+
+          <ng-container *ngIf="patientData.sideEffect === 'はい'">
+            <div class="form-group">
+              <label>その時の症状を選択してください</label>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.GetStomach"
+                    name="GetStomach"
+                    type="checkbox"
+                  />
+                  胃が痛くなる
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.GetRash"
+                    name="GetRash"
+                    type="checkbox"
+                  />
+                  発作が出る
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.GetItchy"
+                    name="GetItchy"
+                    type="checkbox"
+                  />
+                  痒くなる
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <label>上記以外の副作用はありましたか？　</label>
+              <input
+                [(ngModel)]="patientData.purposeDetail"
+                name="purposeDetail"
+                type="text"
+                class="form-control border-input"
+                placeholder="上記以外の副作用があれば入力してください"
+              />
+            </div>
+          </ng-container>
+
+          <div class="form-group">
+            <label
+              >特異体質やアレルギーはありませんか？
+              <span class="icon-danger">*</span></label
+            >
+            <select
+              class="custom-select"
+              [(ngModel)]="patientData.allergic"
+              name="allergic"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownAnswerList of dropdownAnswerLists"
+                [value]="dropdownAnswerList.answer"
+              >
+                {{ dropdownAnswerList.answer }}
+              </option>
+            </select>
+          </div>
+
+          <ng-container *ngIf="patientData.allergic === 'はい'">
+            <div class="form-group">
+              <label>その時の症状を選択してください</label>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.HaveRashEasily"
+                    name="HaveRashEasily"
+                    type="checkbox"
+                  />
+                  かぶれやすい
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.HaveUrticaria"
+                    name="HaveUrticaria"
+                    type="checkbox"
+                  />
+                  蕁麻疹がある
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.HaveAsthma"
+                    name="HaveAsthma"
+                    type="checkbox"
+                  />
+                  喘息がある
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <label>上記以外の副作用はありましたか？　</label>
+              <input
+                [(ngModel)]="patientData.OtherAllergic"
+                name="OtherAllergic"
+                type="text"
+                class="form-control border-input"
+                placeholder="上記以外の副作用があれば入力してください"
+              />
+            </div>
+          </ng-container>
+
+          <div class="form-group">
+            <label
+              >内科的な病気はありませんか？
+              <span class="icon-danger">*</span></label
+            >
+            <select
+              class="custom-select"
+              [(ngModel)]="patientData.medicalIllness"
+              name="medicalIllness"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownAnswerList of dropdownAnswerLists"
+                [value]="dropdownAnswerList.answer"
+              >
+                {{ dropdownAnswerList.answer }}
+              </option>
+            </select>
+          </div>
+
+          <ng-container *ngIf="patientData.medicalIllness === 'はい'">
+            <div class="form-group">
+              <label>該当するものを選択してください</label>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.Heart"
+                    name="Heart"
+                    type="checkbox"
+                  />
+                  心臓
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.Liver"
+                    name="Liver"
+                    type="checkbox"
+                  />
+                  肝臓(肝炎)
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.Kidney"
+                    name="Kidney"
+                    type="checkbox"
+                  />
+                  腎臓
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.Hemophilia"
+                    name="Hemophilia"
+                    type="checkbox"
+                  />
+                  血友病
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.Diabetes"
+                    name="Diabetes"
+                    type="checkbox"
+                  />
+                  糖尿
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.HighBloodPressure"
+                    name="HighBloodPressure"
+                    type="checkbox"
+                  />
+                  高血圧
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.LowBloodPressure"
+                    name="LowBloodPressure"
+                    type="checkbox"
+                  />
+                  低血圧
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.Asthma"
+                    name="Asthma"
+                    type="checkbox"
+                  />
+                  喘息
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input"
+                    [(ngModel)]="patientData.Tuberculosis"
+                    name="Tuberculosis"
+                    type="checkbox"
+                  />
+                  結核
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <label>上記以外の症状はありましたか？　</label>
+              <input
+                [(ngModel)]="patientData.OtherMedicalIllness"
+                name="OtherMedicalIllness"
+                type="text"
+                class="form-control border-input"
+                placeholder="上記以外の症状があれば入力してください"
+              />
+            </div>
+          </ng-container>
+
+          <div class="form-group">
+            <label
+              >1日での歯の清掃回数 <span class="icon-danger">*</span></label
+            >
+            <select
+              class="custom-select"
+              [(ngModel)]="patientData.toothCleaningTimes"
+              name="toothCleaningTimes"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option [value]="1">1回</option>
+              <option [value]="2">2回</option>
+              <option [value]="3">3回</option>
+              <option [value]="4">4回以上</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>この機会に <span class="icon-danger">*</span></label>
+            <select
+              class="custom-select"
+              [(ngModel)]="patientData.request"
+              name="request"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownRequestList of dropdownRequestLists"
+                [value]="dropdownRequestList.request"
+              >
+                {{ dropdownRequestList.request }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label
+              >診療についてのご希望 <span class="icon-danger">*</span></label
+            >
+            <select
+              class="custom-select"
+              [(ngModel)]="patientData.medicalInsurance"
+              name="medicalInsurance"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="
+                  let dropdownMedicalInsuranceList of dropdownMedicalInsuranceLists
+                "
+                [value]="dropdownMedicalInsuranceList.medicalInsurance"
+              >
+                {{ dropdownMedicalInsuranceList.medicalInsurance }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>現在の健康状態 <span class="icon-danger">*</span></label>
+            <select
+              class="custom-select"
+              [(ngModel)]="patientData.condition"
+              name="condition"
+              required
+            >
+              <option [value]="undefined" disabled>
+                回答を選択してください
+              </option>
+              <option
+                *ngFor="let dropdownConditionList of dropdownConditionLists"
+                [value]="dropdownConditionList.condition"
+              >
+                {{ dropdownConditionList.condition }}
+              </option>
+            </select>
+          </div>
+
+          <button
+            *ngIf="updatePatientForm.pristine || !updatePatientForm.valid"
+            disabled
+            type="submit"
+            class="btn btn-block btn-round btn-lg"
+          >
+            更新する
+          </button>
+          <button
+            *ngIf="!updatePatientForm.pristine && updatePatientForm.valid"
+            type="submit"
+            class="btn btn-primary btn-block btn-round btn-lg"
+          >
+            更新する
+          </button>
+        </form>
+        <!-- <div class="forgot">
+          <button (click)="onResetPassword()" class="btn btn-danger btn-link">
+            講師パスワード初期化
+          </button>
+        </div> -->
+        <div class="space-top"></div>
+        <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
+          <p *ngFor="let error of errors">{{ error.detail }}</p>
         </div>
       </div>
     </div>

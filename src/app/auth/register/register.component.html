@@ -1,7 +1,6 @@
 <div class="container">
   <div class="space-110"></div>
   <h2 class="title text-center">予診票</h2>
-
   <div class="row">
     <div class="col-md-6 mr-auto ml-auto">
       <div class="card card-register">
@@ -561,12 +560,10 @@
               <option [value]="undefined" disabled>
                 回答を選択してください
               </option>
-              <option
-                *ngFor="let dropdownNumberList of dropdownNumberLists"
-                [value]="dropdownNumberList.id"
-              >
-                {{ dropdownNumberList.id }}
-              </option>
+              <option [value]="1">1回</option>
+              <option [value]="2">2回</option>
+              <option [value]="3">3回</option>
+              <option [value]="4">4回以上</option>
             </select>
           </div>
 

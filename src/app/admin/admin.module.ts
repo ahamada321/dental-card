@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 // import { CsvModule } from "@ctrl/ngx-csv";
@@ -19,7 +19,10 @@ import { AdminPatientEditComponent } from './admin-patient/admin-patient-edit/ad
 import { ModalWindowModule } from '../common/modal-window/modal-window.module';
 // import { TeacherService } from "../teacher/service/teacher.service";
 // import { SearchbarModule } from "../common/components/searchbar/searchbar.module";
-// import { OwlDateTimeModule, OwlNativeDateTimeModule } from "ng-pick-datetime";
+import {
+  OwlDateTimeModule,
+  OwlNativeDateTimeModule,
+} from '@danielmoncada/angular-datetime-picker';
 
 const routes: Routes = [
   {
@@ -37,7 +40,7 @@ const routes: Routes = [
       //   canActivate: [AuthGuard],
       // },
       // {
-      //   path: 'reports/teacher/:teacherId',
+      //   path: 'reports/teacher/:patientId',
       //   component: AdminReportListTeacherComponent,
       //   canActivate: [AuthGuard],
       // },
@@ -48,7 +51,7 @@ const routes: Routes = [
       //   canActivate: [AuthGuard],
       // },
       // {
-      //   path: 'revenue/teacher/:teacherId',
+      //   path: 'revenue/teacher/:patientId',
       //   component: AdminRevenueListTeacherComponent,
       //   canActivate: [AuthGuard],
       // },
@@ -69,7 +72,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'patients/:teacherId',
+        path: 'patients/:patientId',
         component: AdminPatientEditComponent,
         canActivate: [AuthGuard],
       },
@@ -97,14 +100,14 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    // NgbModule,
+    NgbModule,
     JwBootstrapSwitchNg2Module,
     AngularMultiSelectModule,
     // CsvModule,
     ModalWindowModule,
     // SearchbarModule,
-    // OwlDateTimeModule,
-    // OwlNativeDateTimeModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   providers: [AdminService],
 })

@@ -37,6 +37,18 @@
             <i class="nc-icon nc-lock-circle-open"></i> 管理者用
           </a>
         </li>
+        <ng-container *ngIf="auth.isAuthenticated()">
+          <li class="nav-item clickable">
+            <a class="nav-link" [routerLink]="['/admin/patients']"
+              ><i class="nc-icon nc-bullet-list-67"></i> 予診表一覧</a
+            >
+          </li>
+          <!-- <li class="nav-item clickable">
+            <a class="nav-link" [routerLink]="['/teacher']"
+              ><i class="nc-icon nc-bullet-list-67"></i> 担当生徒一覧</a
+            >
+          </li> -->
+        </ng-container>
 
         <li class="nav-item" *ngIf="auth.isAuthenticated()">
           <a class="nav-link clickable" (click)="logout()"

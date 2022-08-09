@@ -32,7 +32,7 @@ export class AdminPatientListComponent implements OnInit {
 
   getPatients() {
     this.adminService
-      .getTeachersByPages(this.pageIndex, this.pageSize)
+      .getUsersByPages(this.pageIndex, this.pageSize)
       .subscribe((result: any) => {
         this.patients = result[0].foundUsers; // <- users
         this.pageCollectionSize = result[0].metadata[0].total;
@@ -76,12 +76,12 @@ export class AdminPatientListComponent implements OnInit {
     });
   }
 
-  getTeachersByKeywords(searchWords?: string) {
+  getUsersByKeywords(searchWords?: string) {
     if (!searchWords) {
       this.getPatients();
     } else {
       this.adminService
-        .getTeachersByKeywords(searchWords)
+        .getUsersByKeywords(searchWords)
         .subscribe((patients: any) => {
           this.patients = patients; // <- users
         });
