@@ -15,14 +15,14 @@ import { TermsTextModule } from './terms/helpers/terms-text/terms-text.module';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 
 const routes: Routes = [
-  { path: '', component: TopComponent },
+  // { path: '', component: TopComponent },
   { path: 'saas', component: LandingSaasComponent },
 
   { path: 'aboutus', component: AboutusComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'maintenance', component: MaintenanceComponent },
-  // { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
   // { path: '**', component: Page404Component },
 ];
 

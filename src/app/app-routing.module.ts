@@ -7,9 +7,7 @@ import { AdminModule } from './admin/admin.module';
 import { ClinicModule } from './clinic/clinic.module';
 import { StaticModule } from './static/static.module';
 
-const routes: Routes = [
-  { path: '', redirectTo: 'register', pathMatch: 'full' },
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [
