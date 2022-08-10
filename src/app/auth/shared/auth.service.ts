@@ -64,16 +64,16 @@ export class MyOriginAuthService {
       .pipe(map((token) => this.saveToken(token)));
   }
 
-  public updateUser(userId: string, userData: any): Observable<any> {
-    return this.http
-      .patch('/api/v1/users/' + userId, userData)
-      .pipe(map((token) => this.saveToken(token)));
-  }
-
   public logout() {
     localStorage.removeItem('app-auth');
     localStorage.removeItem('app-meta');
     this.decodedToken = new DecodedToken();
+  }
+
+  public updateUser(userId: string, userData: any): Observable<any> {
+    return this.http
+      .patch('/api/v1/users/' + userId, userData)
+      .pipe(map((token) => this.saveToken(token)));
   }
 
   public sendPasswordResetLink(userData: any): Observable<any> {
@@ -86,9 +86,5 @@ export class MyOriginAuthService {
 
   public userActivation(verifyToken: string): Observable<any> {
     return this.http.get('api/v1/users/register/' + verifyToken);
-  }
-
-  public getUserById(userId: string): Observable<any> {
-    return this.http.get('/api/v1/users/' + userId);
   }
 }

@@ -165,7 +165,7 @@ exports.deleteRental = async function (req, res) {
 
 exports.updateRental = function (req, res) {
   const rentalData = req.body;
-  const { teacherId } = req.body;
+  const { patientId } = req.body;
   const rentalId = req.params.id;
   const user = res.locals.user;
 
@@ -178,13 +178,13 @@ exports.updateRental = function (req, res) {
       // if(foundRental.user.id !== user.id) {
       //     return res.status(422).send({errors: {title: "Invalid user!", detail: "You are not rental owner!"}})
       // }
-      if (!teacherId) {
+      if (!patientId) {
         return res.status(422).send({
           errors: [{ title: "Error!", detail: "講師IDを入力してください！" }],
         });
       }
 
-      User.findOne({ teacherId }, function (err, foundUser) {
+      User.findOne({ patientId }, function (err, foundUser) {
         if (err) {
           return res.status(422).send({ errors: normalizeErrors(err.errors) });
         }
@@ -207,7 +207,7 @@ exports.updateRental = function (req, res) {
 exports.createRental = function (req, res) {
   const {
     shared,
-    teacherId,
+    patientId,
     rentalname,
     selectedInstrument,
     selectedCourse,
@@ -226,13 +226,13 @@ exports.createRental = function (req, res) {
     memo,
   });
 
-  if (!teacherId) {
+  if (!patientId) {
     return res.status(422).send({
       errors: [{ title: "Error!", detail: "講師IDを入力してください！" }],
     });
   }
 
-  User.findOne({ teacherId }, function (err, foundUser) {
+  User.findOne({ patientId }, function (err, foundUser) {
     if (err) {
       return res.status(422).send({ errors: normalizeErrors(err.errors) });
     }

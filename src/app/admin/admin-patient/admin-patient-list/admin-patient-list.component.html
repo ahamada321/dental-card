@@ -1,73 +1,56 @@
-<div class="main">
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-md mr-auto ml-auto">
-        <h3 class="title text-center">予診票一覧</h3>
+<div class="container text-center" *ngIf="patients">
+  <h3 class="title">予診票一覧</h3>
+  <!-- <app-searchbar (event)="getUsersByKeywords($event)"></app-searchbar> -->
+  <div class="row">
+    <div class="col-md ml-auto mr-auto">
+      <div class="table-responsive">
+        <table class="table table-hover table-shopping">
+          <thead>
+            <tr>
+              <th>登録日</th>
+              <th>氏名</th>
+              <th>生年月日</th>
+              <th>性別</th>
+              <th>電話番号</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let patient of patients">
+              <td>{{ patient.createdAt | date: "yyyy/MM/dd" }}</td>
+              <td>{{ patient.username }}</td>
+              <td>{{ patient.birthday | date: "yyyy/MM/dd" }}</td>
+              <td>{{ patient.gender }}</td>
+              <td>{{ patient.phoneNumber }}</td>
+              <td>
+                <button
+                  (click)="openModal(patient)"
+                  class="btn btn-link btn-primary"
+                >
+                  詳細
+                </button>
+                <!-- <a [routerLink]="[patient._id]">詳細</a> -->
+                <button
+                  (click)="onDelete(patient._id)"
+                  class="btn btn-link btn-danger"
+                >
+                  削除
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <!-- <app-searchbar (event)="getTeachersByKeywords($event)"></app-searchbar> -->
-
-    <ng-container *ngIf="patients">
-      <div class="row">
-        <div class="col-md ml-auto mr-auto">
-          <div class="table-responsive">
-            <table class="table table-hover table-shopping">
-              <thead>
-                <tr>
-                  <th>登録日</th>
-                  <th>氏名</th>
-                  <th>生年月日</th>
-                  <th>性別</th>
-                  <th>電話番号</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let patient of patients">
-                  <td>{{ patient.createdAt | date: "yyyy/MM/dd" }}</td>
-                  <td>{{ patient.username }}</td>
-                  <td>{{ patient.birthday | date: "yyyy/MM/dd" }}</td>
-                  <td>{{ patient.gender }}</td>
-                  <td>{{ patient.phoneNumber }}</td>
-                  <td>
-                    <button
-                      (click)="openModal(patient)"
-                      class="btn btn-link btn-primary"
-                    >
-                      詳細
-                    </button>
-                    <!-- <a [routerLink]="[patient._id]">詳細</a> -->
-                    <button
-                      (click)="onDelete(patient._id)"
-                      class="btn btn-link btn-danger"
-                    >
-                      削除
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="pagination-area pagination-primary text-center">
-        <!-- <ngb-pagination
-          [collectionSize]="pageCollectionSize"
-          [(page)]="pageIndex"
-          [pageSize]="pageSize"
-          [maxSize]="5"
-          [boundaryLinks]="true"
-          aria-label="Default pagination"
-          (pageChange)="pageChange()"
-        ></ngb-pagination> -->
-      </div>
-    </ng-container>
-    <ng-container *ngIf="!patients">
-      <div class="row">
-        <div class="col-md-4 ml-auto mr-auto">
-          <h3>Loading...</h3>
-        </div>
-      </div>
-    </ng-container>
   </div>
+  <ngb-pagination
+    class="d-flex justify-content-center"
+    [collectionSize]="pageCollectionSize"
+    [(page)]="pageIndex"
+    [pageSize]="pageSize"
+    [maxSize]="5"
+    [boundaryLinks]="true"
+    aria-label="Default pagination"
+    (pageChange)="pageChange()"
+  ></ngb-pagination>
 </div>

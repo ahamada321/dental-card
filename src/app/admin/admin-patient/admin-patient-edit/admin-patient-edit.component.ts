@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AdminService } from '../../shared/admin.service';
-import * as moment from 'moment';
 import Swal from 'sweetalert2';
 import { Report } from 'src/app/auth/shared/report.model';
 import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
+import { AdminService } from '../../shared/admin.service';
 
 @Component({
   selector: 'app-admin-patient-edit',
@@ -15,23 +14,17 @@ import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 })
 export class AdminPatientEditComponent implements OnInit {
   errors: any = [];
-  teacherData!: Report;
+  patientData!: Report;
 
   // Restrict selecting range of birthday
   max = new Date();
   teacherBirthday!: Date;
 
   // Select gender
-  dropdownGenderList = [
-    { id: 1, itemName: '男性' },
-    { id: 2, itemName: '女性' },
+  dropdownGenderLists = [
+    { id: 1, gender: '男性' },
+    { id: 2, gender: '女性' },
   ];
-  dropdownGenderSettings = {
-    singleSelection: true,
-    text: '性別を選択',
-    enableSearchFilter: false,
-    classes: '',
-  };
 
   // Select prefecture
   dropdownPrefectureList = [
@@ -96,43 +89,38 @@ export class AdminPatientEditComponent implements OnInit {
     classes: '',
   };
 
-  // Select instrument
-  dropdownInstrumentList = [
-    { id: 1, itemName: 'ピアノ' },
-    { id: 2, itemName: '声楽' },
-    { id: 3, itemName: 'ボーカル' },
-    { id: 4, itemName: 'ヴァイオリン' },
-    { id: 5, itemName: 'ヴィオラ' },
-    { id: 6, itemName: 'チェロ' },
-    { id: 7, itemName: 'コントラバス' },
-    { id: 8, itemName: 'フルート' },
-    { id: 9, itemName: 'サックス' },
-    { id: 10, itemName: 'クラリネット' },
-    { id: 11, itemName: 'オーボエ' },
-    { id: 12, itemName: 'トランペット' },
-    { id: 13, itemName: 'トロンボーン' },
-    { id: 14, itemName: 'アコースティックギター' },
-    { id: 15, itemName: 'エレキギター' },
-    { id: 16, itemName: 'エレキベース' },
-    { id: 17, itemName: 'ドラム' },
-    { id: 18, itemName: 'DTM' },
-    { id: 19, itemName: 'ソルフェージュ・楽典' },
-    // { id: 20, itemName: "和楽器" },
-    { id: 22, itemName: 'ウクレレ' },
-    { id: 23, itemName: '三味線' },
-    { id: 24, itemName: '琴' },
-    { id: 25, itemName: 'ファゴット' },
-    { id: 26, itemName: 'チューバ' },
-    { id: 27, itemName: 'ホルン' },
-    { id: 28, itemName: 'ユーフォニアム' },
-    { id: 21, itemName: 'それ以外' },
+  dropdownAnswerLists = [
+    { id: 1, answer: 'はい' },
+    { id: 2, answer: 'いいえ' },
   ];
-  dropdownInstrumentSettings = {
-    singleSelection: true,
-    text: '楽器を選択',
-    enableSearchFilter: false,
-    classes: '',
-  };
+
+  dropdownPurposeLists = [
+    { id: 1, purpose: '歯科検診を希望' },
+    { id: 2, purpose: '詰め物が取れた' },
+    { id: 3, purpose: '歯が痛い' },
+    { id: 4, purpose: '歯肉が痛い' },
+    { id: 5, purpose: '入れ歯を入れたい' },
+    { id: 6, purpose: '歯並びが気になる' },
+    { id: 7, purpose: 'その他' },
+  ];
+
+  dropdownRequestLists = [
+    { id: 1, request: '悪いところは全て治したい' },
+    { id: 2, request: '痛いところのみ治療したい' },
+  ];
+
+  dropdownMedicalInsuranceLists = [
+    { id: 1, medicalInsurance: '保険の範囲内で治療したい' },
+    { id: 2, medicalInsurance: '保険のきかない所は自費でもいい' },
+  ];
+
+  dropdownConditionLists = [
+    { id: 1, condition: '良好' },
+    { id: 2, condition: '普通' },
+    { id: 3, condition: '不良' },
+    { id: 4, condition: '女性の方：生理中' },
+    { id: 5, condition: '女性の方：妊娠中' },
+  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -143,19 +131,14 @@ export class AdminPatientEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.getTeacherById(params['teacherId']);
+      this.getUserById(params['patientId']);
     });
   }
 
-  getTeacherById(teacherId: string) {
-    this.adminService.getTeacherById(teacherId).subscribe(
-      (foundTeacher) => {
-        this.teacherData = foundTeacher;
-        // this.teacherBirthday = new Date(
-        //   foundTeacher.birthday.year,
-        //   foundTeacher.birthday.month - 1,
-        //   foundTeacher.birthday.day
-        // );
+  getUserById(patientId: string) {
+    this.adminService.getUserById(patientId).subscribe(
+      (foundUser) => {
+        this.patientData = foundUser;
       },
       (errorResponse: HttpErrorResponse) => {
         this.errors = errorResponse.error.errors;
@@ -163,15 +146,8 @@ export class AdminPatientEditComponent implements OnInit {
     );
   }
 
-  updateTeacher(teacherForm: NgForm) {
-    // if (this.teacherBirthday) {
-    //   teacherForm.value.birthday = {
-    //     year: this.teacherBirthday.getFullYear(),
-    //     month: this.teacherBirthday.getMonth() + 1,
-    //     day: this.teacherBirthday.getDate(),
-    //   };
-    // }
-    this.auth.updateUser(this.teacherData._id, teacherForm.value).subscribe(
+  updateUser(patientForm: NgForm) {
+    this.auth.updateUser(this.patientData._id, patientForm.value).subscribe(
       (Updated: any) => {
         this.showSwalSuccess();
       },
@@ -185,15 +161,15 @@ export class AdminPatientEditComponent implements OnInit {
   private showSwalSuccess() {
     Swal.fire({
       // title: 'User infomation has been updated!',
-      text: '更新しました！',
-      // type: 'success',
+      title: '更新しました！',
+      icon: 'success',
       customClass: {
         confirmButton: 'btn btn-primary btn-round btn-lg',
       },
       buttonsStyling: false,
       // timer: 5000
     }).then(() => {
-      this.router.navigate(['/admin/teachers']);
+      this.router.navigate(['/admin/patients']);
     });
   }
 
@@ -228,7 +204,7 @@ export class AdminPatientEditComponent implements OnInit {
   }
 
   private setInitialPassword() {
-    this.auth.setInitialPassword(this.teacherData._id).subscribe(
+    this.auth.setInitialPassword(this.patientData._id).subscribe(
       () => {
         Swal.fire({
           // title: 'この操作は取り消せません',
