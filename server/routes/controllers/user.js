@@ -139,6 +139,9 @@ exports.auth = function (req, res) {
         { expiresIn: "12h" }
       );
 
+      foundUser.lastLogin = Date.now();
+      foundUser.save();
+
       return res.json(token);
     } else {
       return res.status(422).send({
