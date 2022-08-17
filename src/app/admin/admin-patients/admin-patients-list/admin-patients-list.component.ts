@@ -6,11 +6,11 @@ import { Report } from 'src/app/auth/shared/report.model';
 import { ModalWindow } from 'src/app/common/modal-window/modal-window';
 
 @Component({
-  selector: 'app-admin-patient-list',
-  templateUrl: './admin-patient-list.component.html',
-  // styleUrls: ['./admin-patient-list.component.scss']
+  selector: 'app-admin-patients-list',
+  templateUrl: './admin-patients-list.component.html',
+  // styleUrls: ['./admin-patients-list.component.scss']
 })
-export class AdminPatientListComponent implements OnInit {
+export class AdminPatientsListComponent implements OnInit {
   patients: Report[] = [];
   pageIndex: number = 1;
   pageSize: number = 50; // Displaying contents per page.

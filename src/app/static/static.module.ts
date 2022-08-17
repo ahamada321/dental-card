@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TopComponent } from './top/top.component';
+import { LandingComponent } from './landing/landing.component';
 import { LandingSaasComponent } from './landing-saas/landing-saas.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
@@ -16,8 +17,8 @@ import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 
 const routes: Routes = [
   // { path: '', component: TopComponent },
+  { path: 'landing', component: LandingComponent },
   { path: 'saas', component: LandingSaasComponent },
-
   { path: 'aboutus', component: AboutusComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'privacy', component: PrivacyComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     TopComponent,
+    LandingComponent,
     LandingSaasComponent,
     AboutusComponent,
     MaintenanceComponent,

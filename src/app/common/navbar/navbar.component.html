@@ -36,7 +36,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" *ngIf="!auth.isAuthenticated()">
           <a class="btn btn-round btn-primary" [routerLink]="['/login']">
-            <i class="nc-icon nc-lock-circle-open"></i> 管理者用
+            <i class="nc-icon nc-lock-circle-open"></i> ログイン
           </a>
         </li>
         <ng-container *ngIf="auth.isAuthenticated()">
@@ -45,11 +45,11 @@
               ><i class="nc-icon nc-bullet-list-67"></i> 予診表一覧</a
             >
           </li>
-          <!-- <li class="nav-item clickable">
-            <a class="nav-link" [routerLink]="['/teacher']"
-              ><i class="nc-icon nc-bullet-list-67"></i> 担当生徒一覧</a
+          <li class="nav-item clickable">
+            <a class="nav-link" [routerLink]="['/admin/bookings']"
+              ><i class="nc-icon nc-bullet-list-67"></i> 予約一覧</a
             >
-          </li> -->
+          </li>
         </ng-container>
 
         <li class="nav-item" *ngIf="auth.isAuthenticated()">

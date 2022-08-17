@@ -5,18 +5,20 @@
   >
     <div class="filter"></div>
     <div class="text-center">
-      <div *ngIf="innerWidth > 768" class="space-110"></div>
+      <!-- <div *ngIf="innerWidth > 768" class="space-110"></div> -->
       <div class="container">
         <div class="row">
           <div class="col-md-6 ml-auto">
-            <h1 class="title title-top">少し憧れだったあの人に会おう</h1>
-            <h5 class="description">
-              臆せず会いたい人と会えるプラットフォーム
-            </h5>
-            <br />
+            <h1 class="title title-top">80%仕事を減らそう</h1>
+            <h3 class="description">
+              個人事業主やフリーランスからの業務報告や経費申請管理などの事務仕事を平均80%自動化できます。
+              他にも商品（講師など）の作成から出品、予約受付・事前決済・顧客（生徒）管理まで。
+              スマホで完結、だれでもカンタン。
+            </h3>
+            <!-- <br />
             <a class="btn btn-lg btn-primary" [routerLink]="['/rentals']">
-              <i class="fa fa-search"></i> さっそく探しに行く
-            </a>
+              <i class="fa fa-search"></i> デモサイトを見に行く
+            </a> -->
           </div>
           <div class="col-md-5">
             <div class="phone-top">
@@ -29,11 +31,14 @@
   </div>
 
   <!--     *********    WHO ARE USING THIS SERVICE?     *********      -->
-  <div class="team-3 text-center">
+  <!-- <div class="team-3 text-center">
     <div class="container">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
-          <h2 class="title">こんな人が使っています</h2>
+          <h2 class="title">様々な事業目的に対応</h2>
+          <h6 class="category">
+            外注フリーランスの報酬管理・予約・Eラーニング機能も対応可能
+          </h6>
         </div>
       </div>
       <br /><br />
@@ -41,10 +46,20 @@
         <div class="col-12 col-md-4">
           <div class="info">
             <div class="phone-top">
-              <img src="./assets/img/lp/phone-top.png" alt="..." />
+              <img src="./assets/img/lp/phone-dentist.png" alt="..." />
             </div>
             <div class="description">
-              <p>カラオケトレーナー</p>
+              <p>歯医者の予約システム</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="info">
+            <div class="phone-top">
+              <img src="./assets/img/lp/phone-training.png" alt="..." />
+            </div>
+            <div class="description">
+              <p>パーソナルトレーニング</p>
             </div>
           </div>
         </div>
@@ -54,297 +69,428 @@
               <img src="./assets/img/lp/phone-top.png" alt="..." />
             </div>
             <div class="description">
-              <p>ファッショントレーナー</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-md-4">
-          <div class="info">
-            <div class="phone-top">
-              <img src="./assets/img/lp/phone-top.png" alt="..." />
-            </div>
-            <div class="description">
-              <p>お菓子作りトレーナー</p>
+              <p>その他レッスン</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+  <div class="space-50"></div>
 
-  <!--     *********    APPEAL POINT     *********      -->
-  <div class="project-4 section section-dark">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 ml-auto mr-auto text-center">
-          <h2 class="title">かんたん！綺麗！自分を売れる！</h2>
-          <!-- <h5 class="description">かんたん！綺麗！自分を売れる！</h5> -->
-        </div>
-      </div>
-      <div class="space-top"></div>
-      <div class="row">
-        <div class="col-md-4 ml-auto">
-          <div class="phone-top">
-            <img src="./assets/img/lp/phone-training.png" alt="..." />
-          </div>
-        </div>
-
-        <div class="col-md-5 mr-auto">
-          <div class="card card-plain">
-            <div class="card-body">
-              <h6 class="card-category">Technology</h6>
-              <a href="javascript:void(0)">
-                <h3 class="card-title">かんたん！綺麗！</h3>
-              </a>
-              <p class="card-description">
-                オシャレな貴方だけのショーケースが持てるのはもちろんのこと、
-                ちょっと憧れだった貴方に会いたかった人が、
-                貴方のサービスに対価を払う事で億劫せず会えるようになります。
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-      <hr />
-      <br />
-      <div class="row">
-        <div class="col-md-5 ml-auto">
-          <div class="card card-plain">
-            <div class="card-body">
-              <h6 class="card-category">Design</h6>
-              <a href="javascript:void(0)">
-                <h3 class="card-title">安心双方レビュー！</h3>
-              </a>
-              <p class="card-description">
-                利用者がサービス提供者の評価を見て安心して利用できるのはもちろん、
-                サービス提供者側も安心してレビューができるよう、利用者側のレビューは見れない仕様です。
-                システムが利用者の平均評価が著しく悪いと判断した場合、サービスが利用ができなくなります。
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-5 mr-auto">
-          <div class="card-image text-center">
-            <a href="javascript:void(0)">
-              <img
-                src="assets/img/lp/review.png"
-                alt="Rounded Image"
-                class="img-rounded img-responsive"
-              />
-            </a>
-          </div>
-        </div>
+  <!--     *********    COMPANIES ISSUES     *********      -->
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-md-8 ml-auto mr-auto">
+        <h2 class="title">圧倒的な業務効率化にコミットします</h2>
+        <h6 class="category">
+          御社業務フローをヒアリングしながら自動化可能箇所の抽出とご提案。導入実行支援まで行います
+        </h6>
       </div>
     </div>
   </div>
-
-  <!--     *********    USERS VOICE     *********      -->
-  <div class="testimonials-3">
+  <div class="space-50"></div>
+  <div class="blog-3">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 ml-auto mr-auto text-center">
-          <h2 class="title">ユーザーの感想</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ml-auto">
-          <div class="card" data-background="color" data-color="orange">
-            <div class="card-body">
-              <div class="author">
-                <a href="javascript:void(0)">
-                  <img
-                    src="./assets/img/faces/joe-gardner-2.jpg"
-                    alt="..."
-                    class="avatar img-raised"
-                  />
-                  <span>Erik Johnson</span>
-                </a>
-              </div>
-              <span class="category-social pull-right">
-                <i class="fa fa-quote-right"></i>
-              </span>
-              <div class="clearfix"></div>
-              <p class="card-description">
-                "このサービスを利用してみて本当に簡単にオフィシャルサイトが作れました！そして、わからない事は丁寧にサポートして教えてくれます。😊ヨガインストラクターとして活動を始めるにあたり、アエルミーと出会ったおかげで自分の新しい挑戦がとても簡単にそしてスムーズに始める事ができました。とても感謝しています。ありがとうございます。"
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card" data-background="color" data-color="green">
-            <div class="card-body">
-              <div class="author">
-                <a href="javascript:void(0)">
-                  <img
-                    src="./assets/img/faces/erik-lucatero-2.jpg"
-                    alt="..."
-                    class="avatar img-raised"
-                  />
-                  <span>Erik Johnson</span>
-                </a>
-              </div>
-              <span class="category-social pull-right">
-                <i class="fa fa-quote-right"></i>
-              </span>
-              <div class="clearfix"></div>
-              <p class="card-description">
-                "このサービスとの出会いは今年の9月。インスタの使い方が今ひとつで、既存のHP、ブログからの反応も勢いがなかった頃に、スマホで見やすいサイトで興味を持ちました。今ではご予約が2倍近くに！同じサービスをしていても見せ方でこんなに違うなんて、私1人では到底無理でした。今でもわからないことはすぐに聞いて、レスポンスがとても早くてとても心強いです‼️いつもありがとうございます😆"
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="row">
-                    <div class="col-md-5 ml-auto">
-                        <div class="card" data-background="color" data-color="blue">
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="javascript:void(0)">
-                                        <img src="./assets/img/faces/clem-onojeghuo-2.jpg" alt="..." class="avatar img-raised">
-                                        <span>Erik Johnson</span>
-                                    </a>
-                                </div>
-                                <span class="category-social pull-right">
-                                    <i class="fa fa-quote-right"></i>
-                                </span>
-                                <div class="clearfix"></div>
-                                <p class="card-description">
-                                    "Machine learning for motion recognition and trajectory generation of human movement for rehabilitation with non-essentials. Back to purity, back to simplicity. At best, it is self-explanatory."
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mr-auto">
-                        <div class="card" data-background="color" data-color="purple">
-                        <div class="card-body">
-                            <div class="author">
-                                <a href="javascript:void(0)">
-                                    <img src="./assets/img/faces/ayo-ogunseinde-2.jpg" alt="..." class="avatar img-raised">
-                                    <span>Erik Johnson</span>
-                                </a>
-                            </div>
-                            <span class="category-social pull-right">
-                                <i class="fa fa-quote-right"></i>
-                            </span>
-                            <div class="clearfix"></div>
-                            <p class="card-description">
-                                "Less, but better – because it concentrates on the essential aspects, and the products are not burdened with non-essentials. Back to purity, back to simplicity. At best, it is self-explanatory. The entire AI Grant project reminds me of a cross between a Thiel Fellowship and a Kaggle competition."
-                            </p>
-                        </div>
-                    </div>
+        <div class="col-md-10 ml-auto mr-auto">
+          <div class="card card-plain card-blog">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card-image">
+                  <img class="img" src="assets/img/faces/problem.svg" />
                 </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h6 class="card-category text-danger">
+                    <i class="fa fa-free-code-camp" aria-hidden="true"></i>
+                    Problem
+                  </h6>
+                  <h3 class="card-title">
+                    事務作業が多く時間がかかってしまっている
+                  </h3>
+                  <p class="card-description">
+                    「事務員が手作業で行うことでヒューマンエラーが起きてしまう。」<br />
+                    「人材を新しく採用するにも、採用コストや人件費がかかるのでためらっている。」<br />
+                    「マンパワー比重が高いため、受注数を増やせず会社の売上を増やし辛い。」<br />
+                    <br />
+                    といった課題はございませんか？
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-plain card-blog">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h6 class="card-category text-info">Hearing and Propose</h6>
+                  <h3 class="card-title">Hearing and Propose</h3>
+                  <p class="card-subtitle">ヒアリング</p>
+                  <p class="card-description">
+                    現状の業務フローをプロのITコンサルタントがヒアリング。
+                    工数を要してしまっている箇所の特定と、大まかな作業時間を
+                    再確認します。
+                  </p>
+                  <p class="card-subtitle">ご提案</p>
+                  <p class="card-description">
+                    どこの箇所の業務を効率化でるか整理を行い、効率化のご提案
+                    をさせていただきます。
+                    大まかな導入効果予測(削減可能時間など)も合わせてご提案。
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card-image">
+                  <img class="img" src="assets/img/faces/propose.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="card card-plain card-blog">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card-image">
+                  <img class="img" src="assets/img/faces/trust.svg" />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h6 class="card-category text-primary">Trust</h6>
+                  <h3 class="card-title">安心サポート</h3>
+                  <p class="card-description">
+                    導入から最初の定着までおおよそ1ヶ月かけて
+                    しっかりサポートし「導入したけど使いこなせなかった」を
+                    未然に防ぎます。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="card card-plain card-blog">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h6 class="card-category text-primary">Trust</h6>
+                  <h3 class="card-title">安心サポート</h3>
+                  <p class="card-description">
+                    導入から最初の定着までおおよそ1ヶ月かけて
+                    しっかりサポートし「導入したけど使いこなせなかった」を
+                    未然に防ぎます。
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card-image">
+                  <img class="img" src="assets/img/faces/trust.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-plain card-blog">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h6 class="card-category text-success">Work and life</h6>
+                  <h3 class="card-title">自分の時間が充実したことを実感</h3>
+                  <p class="card-description">
+                    「仕事が効率化して業務ストレスが減った。」<br />
+                    「処理数が大幅に増えて会社の売上が伸びた。」<br />
+                    「プライベートの時間が取れるようになった。」 <br />
+                    <br />
+                    など、お客様からお声をいただいています。
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card-image">
+                  <img class="img" src="assets/img/faces/work-life.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--     *********    HOW IT WORKS     *********      -->
+  <div class="section section-team cd-section team-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">事例紹介</h2>
+          <h6 class="category">24時間いつでも稼働。人的ミスも最小限に。</h6>
+          <div class="space-top"></div>
+          <h5 class="description">バックオフィス業務の大幅な効率化に貢献</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-top"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 ml-auto mr-auto">
+          <div class="card card-plain card-blog">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card-image2">
+                  <img class="img" src="assets/img/results/before.svg" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h3 class="card-title">Before</h3>
+                  <p class="card-description">
+                    御社業務フローの再確認と各工程の洗い出し、工数を要してしまっている箇所の抽出などを御社現場担当責任者と弊社ITコンサルタントが共同で約２週間ほどかけてしっかり行います。
+                  </p>
+                  <p class="card-description">
+                    業務効率化・自動化へ向けて出来ることを弊社ITコンサルタントとエンジニアで協議の上ご提案します。各ご提案に対する効果シミュレーションも同時に作成します。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-plain card-blog">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h3 class="card-title">After</h3>
+                  <p class="card-description">
+                    実際にご提案を実現する為のシステム開発を実施します。
+                  </p>
+                  <p class="card-description">
+                    納品後も現場定着のために約1ヶ月かけながらしっかりサポート。必要に応じてシステムの微修正も行います。
+                  </p>
+                  <p class="card-description">
+                    安定稼動期へ移行時に効果確認と振り返りを行います。
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card-image2">
+                  <img class="img" src="assets/img/results/after.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--     *********    TESTIMONIALS     *********      -->
+  <div class="section section-team cd-section team-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">Happy clients</h2>
+          <h6 class="category">お客様の声</h6>
+          <div class="space-top"></div>
+          <h5 class="description">
+            ご導入させていただいている企業様に感想をお伺いしました。
+          </h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- <div class="col-md-4 ml-auto"> -->
+        <div class="col-md-4 ml-auto">
+          <a href="https://tsubaki-musicschool.com/" target="_blank">
+            <div class="card card-profile">
+              <div class="card-body">
+                <div class="card-avatar">
+                  <img src="assets/img/clients/tsubaki-music.jpg" alt="..." />
+                </div>
+                <p class="card-description text-center">
+                  月1000件以上発生する経費申請をシステムを部分的に導入することで簡単に集計できるようになりました。
+                  集計作業のためにかかる時間は約20％ほどになり、管理のしやすさを感じています。
+                  システム化により申請する側にとっても快適になったため、ミスや申請漏れが大幅に改善しました。
+                </p>
+                <br />
+                <h4 class="card-title">椿音楽教室 様</h4>
+                <h6 class="card-category">マンツーマン音楽教室</h6>
+              </div>
+              <div class="card-footer text-center">
+                <!-- 
+                  <a
+                    href="javascript:void(0)"
+                    class="btn btn-just-icon btn-dribbble mr-1"
+                    ><i class="fa fa-dribbble"></i>
+                  </a> 
+                -->
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mr-auto">
+          <a href="https://tech.timeticket.jp/" target="_blank">
+            <div class="card card-profile">
+              <div class="card-body">
+                <div class="card-avatar">
+                  <img src="assets/img/clients/time-ticket.png" alt="..." />
+                </div>
+                <p class="card-description text-center">
+                  弊社が抱える大手製造メーカーが直面しているDX課題に対して
+                  業務効率化支援やIT導入に関わる知見をご提供いただき、
+                  停滞していたDXプロジェクト推進に大きく貢献いただき感謝しています。
+                  <br /><br /><br />
+                </p>
+                <br />
+                <h4 class="card-title">株式会社タイムチケット 様</h4>
+                <h6 class="card-category">プロ人材・プロ顧問サービス</h6>
+              </div>
+              <div class="card-footer text-center">
+                <!-- 
+                  <a
+                    href="javascript:void(0)"
+                    class="btn btn-just-icon btn-dribbble mr-1"
+                    ><i class="fa fa-dribbble"></i>
+                  </a> 
+                -->
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--     *********    RPA SYSTEM     *********      -->
+  <div class="section section-components section-gray">
+    <div class="space-top"></div>
+    <div class="row">
+      <div class="col-md-12 col-lg-6">
+        <div class="image-container">
+          <img
+            class="components-macbook"
+            src="./assets/img/lp/laptop-automation.png"
+            alt=""
+          />
+          <img
+            class="table-img"
+            src="./assets/img/presentation-page/reporting.jpg"
+            alt=""
+          />
+          <img
+            class="share-btn-img"
+            src="./assets/img/presentation-page/login-btn.png"
+            alt=""
+          />
+          <img
+            class="coloured-card-btn-img"
+            src="./assets/img/presentation-page/coloured-card-with-btn.png"
+            alt=""
+          />
+          <img
+            class="social-img"
+            src="./assets/img/presentation-page/social-row.png"
+            alt=""
+          />
+          <img
+            class="pin-btn-img"
+            src="./assets/img/presentation-page/pin-btn.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="col-md-10 col-lg-4 ml-auto mr-auto">
+        <div class="container basic-container">
+          <h3 class="title">事業拡大時の様々な悩みを解消できます。</h3>
+          <h6 class="category">御社業務フローに合わせて最適開発を実施します</h6>
+          <h5 class="description">
+            <p>・バックオフィス業務の人員増による人件費の増加</p>
+            <p>・人員増によるマネジメント工数の肥大化問題</p>
+            <p>・人員増による属人化やコミュニケーションロス</p>
+            <p>・属人化した社員の離職後の引き継ぎ問題</p>
+            <br />
+            <p>これらの悩みを全て解決できます。</p>
+          </h5>
+          <!-- <div class="space-top"></div>
+            <div class="row">
+              <div class="col-md-10">
+                <a
+                  class="btn btn-block btn-lg btn-primary"
+                  [routerLink]="['/rpa']"
+                >
+                  <i class="fa fa-search"></i> 詳細はこちら
+                </a>
+              </div>
             </div> -->
+        </div>
+      </div>
     </div>
   </div>
 
   <!--     *********    PRICING     *********      -->
-  <div class="pricing-5 section-gray">
+  <!-- <div class="pricing-5 section-gray">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <h2 class="title text-center">無料からサービス開始できます</h2>
+          <h2 class="title text-center">10万円/月から導入開始できます</h2>
           <br />
           <p class="description text-gray">
-            あらゆるサービスを自分の好きな価格で出品できます。歌、ダンス、ヨガのコースなどをそれぞれ別々に出品も可能です。
+            システム導入することで、事務力一人あたりの業務負荷を約８割も削減可能。従業員の給与UPや事業拡大の追い風になります。
           </p>
           <br />
         </div>
         <div class="col-md-8">
           <div class="choose-plan">
-            <!-- <div class="nav-tabs-navigation">
-                            <div class="nav-tabs-wrapper"> -->
-            <!-- <ngb-tabset type="pills" [justify]="'center'" class="nav-pills-primary justify-content-center">
-              <ngb-tab title="個人の方">
-                <ng-template ngbTabContent>
-                  <div class="space-top"></div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="card card-pricing">
-                        <div class="card-body">
-                          <h6 class="card-category text-primary">
-                            サイト掲載料
-                          </h6>
-                          <h1 class="card-title">無料〜</h1>
-                          <ul>
-                            <li><b>1</b> Developer</li>
-                            <li><b>99+</b> Components</li>
-                            <li><b>HTML</b> Elements</li>
-                            <li><b>14</b> Page Examples</li>
-                          </ul>
-                          <a [routerLink]="['/register']" class="btn btn-primary btn-round">自分を出品する</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="card card-pricing" data-color="orange">
-                        <div class="card-body">
-                          <h6 class="card-category text-success">決済手数料</h6>
-                          <h1 class="card-title">10%</h1>
-                          <ul>
-                            <li><b>5</b> Developer</li>
-                            <li><b>129+</b> Components</li>
-                            <li><b>HTML</b> Elements</li>
-                            <li><b>24</b> Page Examples</li>
-                          </ul>
-                          <a [routerLink]="['/register']" class="btn btn-neutral btn-round">自分を出品する</a>
-                        </div>
-                      </div>
-                    </div>
+            <div class="space-top"></div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card card-pricing">
+                  <div class="card-body">
+                    <h6 class="card-category text-info">OEMリース利用料</h6>
+                    <h1 class="card-title">10万円/月~</h1>
+                    <ul>
+                      <li><b>〜30人</b> 基本講師人数</li>
+                      <li><b>講師31人以上</b> +30人毎に3万円/月</li>
+                      <li><b>講師名簿管理機能</b> ◎</li>
+                      <li><b>生徒名簿管理機能</b> ◎</li>
+                      <li><b>講師個別時給設定</b> ◎</li>
+                      <li><b>講師明細確認機能</b> ◎</li>
+                    </ul>
+                    <a
+                      [routerLink]="['/form/contactus']"
+                      class="btn btn-info btn-round"
+                      >お問い合わせする</a
+                    >
                   </div>
-                </ng-template>
-              </ngb-tab>
-              <ngb-tab title="法人の方">
-                <ng-template ngbTabContent>
-                  <div class="space-top"></div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="card card-pricing">
-                        <div class="card-body">
-                          <h6 class="card-category text-info">
-                            OEMリース利用料
-                          </h6>
-                          <h1 class="card-title">ASK~</h1>
-                          <ul>
-                            <li><b>5+</b> Developers</li>
-                            <li><b>199+</b> Components</li>
-                            <li><b>HTML</b> Elements</li>
-                            <li><b>34</b> Page Examples</li>
-                          </ul>
-                          <a [routerLink]="['/form/contactus']" class="btn btn-info btn-round">問い合わせする</a>
-                        </div>
-                      </div>
-                    </div>
+                </div>
+              </div>
 
-                    <div class="col-md-6">
-                      <div class="card card-pricing" data-color="orange">
-                        <div class="card-body">
-                          <h6 class="card-category text-success">
-                            決済システム利用料
-                          </h6>
-                          <h1 class="card-title">ASK~</h1>
-                          <ul>
-                            <li><b>15</b> Developer</li>
-                            <li><b>229+</b> Components</li>
-                            <li><b>HTML</b> Elements</li>
-                            <li><b>44</b> Page Examples</li>
-                          </ul>
-                          <a [routerLink]="['/form/contactus']" class="btn btn-neutral btn-round">問い合わせする</a>
-                        </div>
-                      </div>
-                    </div>
+              <div class="col-md-6">
+                <div class="card card-pricing" data-color="orange">
+                  <div class="card-body">
+                    <h6 class="card-category text-success">追加オプション</h6>
+                    <h1 class="card-title">ASK</h1>
+                    <ul>
+                      <li><b>決済機能</b> オプション</li>
+                      <li><b>カレンダー予約</b> オプション</li>
+                      <li><b>メルマガ機能</b> オプション</li>
+                      <li><b>その他開発</b> オプション</li>
+                    </ul>
+                    <a
+                      [routerLink]="['/form/contactus']"
+                      class="btn btn-neutral btn-round"
+                      >お問い合わせする</a
+                    >
                   </div>
-                </ng-template>
-              </ngb-tab>
-            </ngb-tabset> -->
-            <!-- </div>
-                        </div> -->
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!--     *********    CALL TO ACTION     *********      -->
   <div class="section section-icons">
@@ -369,23 +515,19 @@
           </div>
         </div>
         <div class="col-md-6 text-center">
-          <h2 class="title revealOnScroll">あなたもはじめよう</h2>
+          <h2 class="title revealOnScroll">
+            オンラインデモはこちらからお申込みいただけます
+          </h2>
           <br />
-          <a [routerLink]="['/rentals']" class="btn btn-primary btn-lg">
-            <i class="fa fa-search"></i> トレーナーを見に行く！
-          </a>
-          <br />
-          <br />
-          <a [routerLink]="['/register']" class="btn btn-primary btn-lg">
-            <i class="fa fa-search"></i> トレーナーになる！
-          </a>
+          <!-- <app-booking-demo></app-booking-demo> -->
           <br />
           <br />
           <a
-            [routerLink]="['/form/contactus']"
+            href="/assets/pdf/ebook.pdf"
+            download
             class="btn btn-primary btn-link btn-lg"
           >
-            法人の方はこちら
+            EBOOKダウンロードはこちら
           </a>
         </div>
         <div class="col-md-3">
@@ -409,4 +551,26 @@
       </div>
     </div>
   </div>
+
+  <!--     *********    CALL TO ACTION2     *********      -->
+  <!-- <div class="subscribe-line subscribe-line-transparent"
+    style="background-image: url('./assets/img/sections/pavel-kosov.jpg')">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 col-sm-8">
+          <h3>法人の方は30日間無料でご試用いただけます</h3>
+          <h5>
+            自社ブランド・独自ドメインでプラットフォーム運用可能。試用期間中に登録したデータは正式契約時にそのまま引き継げます。<br />
+            （※差分開発が必要な場合はカスタマイズ費用が発生する場合があります。）
+          </h5>
+        </div>
+        <div class="col-md-3 col-sm-4">
+          <br />
+          <br />
+          <a [routerLink]="['/form/contactus']"
+            class="btn btn-outline-neutral btn-round btn-lg btn-block">無料お試しを申し込む</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
 </div>

@@ -8,11 +8,11 @@ import Swal from 'sweetalert2';
 import { Booking } from 'src/app/clinic/shared/booking.model';
 
 @Component({
-  selector: 'app-admin-report-list',
-  templateUrl: './admin-report-list.component.html',
-  styleUrls: ['./admin-report-list.component.scss'],
+  selector: 'app-admin-reports-list',
+  templateUrl: './admin-reports-list.component.html',
+  styleUrls: ['./admin-reports-list.component.scss'],
 })
-export class AdminReportListComponent implements OnInit {
+export class AdminReportsListComponent implements OnInit {
   bookings: Booking[] = [];
   pageIndex: number = 1;
   pageSize: number = 30; // Displaying contents per page.

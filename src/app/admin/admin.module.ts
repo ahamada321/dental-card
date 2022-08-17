@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,17 +8,17 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 // import { CsvModule } from "@ctrl/ngx-csv";
 import { AuthGuard } from '../auth/shared/auth.guard';
 import { AdminComponent } from './admin.component';
-import { AdminReportListComponent } from './admin-report/admin-report-list/admin-report-list.component';
-// import { AdminReportListTeacherComponent } from './admin-report/admin-report-list-teacher/admin-report-list-teacher.component';
-// import { AdminReportListStudentComponent } from './admin-report/admin-report-list-student/admin-report-list-student.component';
+import { AdminReportsListComponent } from './admin-reports/admin-reports-list/admin-reports-list.component';
+// import { AdminReportListTeacherComponent } from './admin-reports/admin-reports-list-teacher/admin-reports-list-teacher.component';
+// import { AdminReportListStudentComponent } from './admin-reports/admin-reports-list-student/admin-reports-list-student.component';
 // import { AdminRevenueListComponent } from './admin-revenue/admin-revenue-list/admin-revenue-list.component';
 // import { AdminRevenueListTeacherComponent } from './admin-revenue/admin-revenue-list-teacher/admin-revenue-list-teacher.component';
 import { AdminService } from './shared/admin.service';
-import { AdminPatientListComponent } from './admin-patient/admin-patient-list/admin-patient-list.component';
-import { AdminPatientEditComponent } from './admin-patient/admin-patient-edit/admin-patient-edit.component';
+import { AdminPatientsListComponent } from './admin-patients/admin-patients-list/admin-patients-list.component';
+import { AdminPatientsEditComponent } from './admin-patients/admin-patients-edit/admin-patients-edit.component';
+import { AdminBookingsListComponent } from './admin-bookings/admin-bookings-list/admin-bookings-list.component';
 import { ModalWindowModule } from '../common/modal-window/modal-window.module';
-// import { TeacherService } from "../teacher/service/teacher.service";
-// import { SearchbarModule } from "../common/components/searchbar/searchbar.module";
+import { SearchbarModule } from '../common/searchbar/searchbar.module';
 import {
   OwlDateTimeModule,
   OwlNativeDateTimeModule,
@@ -31,7 +31,7 @@ const routes: Routes = [
     children: [
       {
         path: 'reports',
-        component: AdminReportListComponent,
+        component: AdminReportsListComponent,
         canActivate: [AuthGuard],
       },
       // {
@@ -56,11 +56,11 @@ const routes: Routes = [
       //   canActivate: [AuthGuard],
       // },
 
-      // {
-      //   path: 'students',
-      //   component: AdminStudentListComponent,
-      //   canActivate: [AuthGuard],
-      // },
+      {
+        path: 'bookings',
+        component: AdminBookingsListComponent,
+        canActivate: [AuthGuard],
+      },
       // {
       //   path: 'students/:studentId',
       //   component: AdminStudentEditComponent,
@@ -68,12 +68,12 @@ const routes: Routes = [
       // },
       {
         path: 'patients',
-        component: AdminPatientListComponent,
+        component: AdminPatientsListComponent,
         canActivate: [AuthGuard],
       },
       {
         path: 'patients/:patientId',
-        component: AdminPatientEditComponent,
+        component: AdminPatientsEditComponent,
         canActivate: [AuthGuard],
       },
 
@@ -85,14 +85,14 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AdminComponent,
-    AdminReportListComponent,
+    AdminReportsListComponent,
     // AdminReportListTeacherComponent,
     // AdminReportListStudentComponent,
     // AdminRevenueListComponent,
     // AdminRevenueListTeacherComponent,
-    AdminPatientListComponent,
-    AdminPatientEditComponent,
-    // AdminStudentListComponent,
+    AdminPatientsListComponent,
+    AdminPatientsEditComponent,
+    AdminBookingsListComponent,
     // AdminStudentEditComponent,
   ],
   imports: [
@@ -105,10 +105,11 @@ const routes: Routes = [
     AngularMultiSelectModule,
     // CsvModule,
     ModalWindowModule,
-    // SearchbarModule,
+    SearchbarModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
   ],
   providers: [AdminService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AdminModule {}

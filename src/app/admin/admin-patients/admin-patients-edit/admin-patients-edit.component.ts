@@ -8,11 +8,11 @@ import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 import { AdminService } from '../../shared/admin.service';
 
 @Component({
-  selector: 'app-admin-patient-edit',
-  templateUrl: './admin-patient-edit.component.html',
-  styleUrls: ['./admin-patient-edit.component.scss'],
+  selector: 'app-admin-patients-edit',
+  templateUrl: './admin-patients-edit.component.html',
+  styleUrls: ['./admin-patients-edit.component.scss'],
 })
-export class AdminPatientEditComponent implements OnInit {
+export class AdminPatientsEditComponent implements OnInit {
   errors: any = [];
   patientData!: Report;
 
