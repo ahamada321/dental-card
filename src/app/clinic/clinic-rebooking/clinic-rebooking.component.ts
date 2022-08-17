@@ -10,14 +10,13 @@ import { Booking } from '../shared/booking.model';
 import { Clinic } from '../shared/clinic.model';
 import Swal from 'sweetalert2';
 import * as moment from 'moment';
-import { ClinicService } from '../shared/clinic.service';
 
 @Component({
-  selector: 'app-clinic-booking',
-  templateUrl: './clinic-booking.component.html',
-  styleUrls: ['./clinic-booking.component.scss'],
+  selector: 'app-clinic-rebooking',
+  templateUrl: './clinic-rebooking.component.html',
+  styleUrls: ['./clinic-rebooking.component.scss'],
 })
-export class ClinicBookingComponent implements OnInit {
+export class ClinicRebookingComponent implements OnInit {
   // Focus and change border line color
   focus!: boolean;
   focus1!: boolean;
@@ -31,13 +30,10 @@ export class ClinicBookingComponent implements OnInit {
 
   timeTables: any = [];
   currentBooking!: Booking;
-  newBooking = new Booking();
-  bookingForm!: FormGroup;
   isDateBlock_flg: boolean = false;
   isClicked: boolean = false;
   errors: any[] = [];
 
-  courseType!: string;
   // Date picker params
   selectedDate!: Date;
   minDate = new Date();
@@ -50,8 +46,7 @@ export class ClinicBookingComponent implements OnInit {
     public auth: MyOriginAuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private bookingService: BookingService, //  private dateTimeAdapter: DateTimeAdapter<any>
-    private clinicService: ClinicService
+    private bookingService: BookingService //  private dateTimeAdapter: DateTimeAdapter<any>
   ) {
     // Initiate Datepicker
     this.minDate.setDate(this.minDate.getDate() + 7);
@@ -59,22 +54,23 @@ export class ClinicBookingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getClinic('5fcf5214db4b798effe54805');
-  }
-
-  getClinic(rentalId: string) {
-    this.clinicService.getRentalById(rentalId).subscribe((clinic: Clinic) => {
-      this.clinic = clinic;
-      // this.getAvgRating(rental._id)
-      // this.getReviews(rental._id);
-      // this.getSafeUrl(rental.course1Img);
+    // this.onDateSelect(this.selectedDate);
+    this.route.params.subscribe((params) => {
+      this.getBooking(params['bookingId']);
     });
   }
 
-  onCourseSelected(courseType: string, stepper: MatStepper) {
-    this.newBooking.courseType = courseType;
-    this.isSelectedCourseType = true;
-    stepper.next();
+  private getBooking(bookingId: string) {
+    this.bookingService
+      .getBookingById(bookingId)
+      .subscribe((booking: Booking) => {
+        this.currentBooking = booking;
+      });
+  }
+
+  isExpired() {
+    const timeNow = moment(); // Attention: just "moment()" is already applied timezone!
+    return moment(this.currentBooking.startAt).diff(timeNow) < 0;
   }
 
   onDateSelect(date: Date) {
@@ -108,16 +104,17 @@ export class ClinicBookingComponent implements OnInit {
   selectDateTime(startAt: Date, stepper: MatStepper) {
     this.isSelectedDateTime = true;
     this.isClicked = false;
-    this.newBooking.startAt = startAt;
+    this.currentBooking.oldStartAt = this.currentBooking.startAt;
+    this.currentBooking.startAt = startAt;
 
     Swal.fire({
       html: `<h5>診療内容</h5>
-          ${this.newBooking.courseType}
+          ${this.currentBooking.courseType}
           <br><br>
-          <h5>予約日時</h5>
+          <h5>変更後の予約日時</h5>
           ${moment(startAt).format('YYYY/MM/DD/HH:mm')}スタート
           <br><br>
-          で予約しますか？`,
+          に変更しますか？`,
       icon: 'info',
       showCancelButton: true,
       confirmButtonColor: '#51cbce',
@@ -127,27 +124,15 @@ export class ClinicBookingComponent implements OnInit {
       allowOutsideClick: false,
     }).then((result) => {
       if (!result.dismiss) {
-        this.createBooking();
+        this.updateBooking();
       }
     });
   }
 
-  isInvalidForm(fieldname: string): boolean {
-    return (
-      this.bookingForm.controls[fieldname].invalid &&
-      this.bookingForm.controls[fieldname].touched
-    );
-    //  (this.contactForm.controls[fieldname].dirty ||
-    //  this.contactForm.controls[fieldname].touched)
-  }
-
-  createBooking() {
+  updateBooking() {
     this.isClicked = true;
-    this.newBooking.courseTime = 30;
-    this.newBooking.clinic = this.clinic;
-    this.bookingService.createBooking(this.newBooking).subscribe(
-      (newBooking) => {
-        this.newBooking = new Booking();
+    this.bookingService.updateBooking(this.currentBooking).subscribe(
+      (Message) => {
         this.isClicked = false;
         this.showSwalSuccess();
       },

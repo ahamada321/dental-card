@@ -1,10 +1,10 @@
 <div class="space-top"></div>
+<div *ngIf="newBooking && newBooking.courseType" class="card-description">
+  <h6>【選択中の診療内容】</h6>
+  <h6>{{ newBooking.courseType }}</h6>
+</div>
 <mat-horizontal-stepper [linear]="false" #stepper>
-  <mat-step
-    *ngIf="!currentBooking"
-    label="診療内容"
-    [completed]="isSelectedCourseType"
-  >
+  <mat-step label="診療内容" [completed]="isSelectedCourseType">
     <div class="row">
       <div class="col-md-10 mr-auto ml-auto">
         <div class="section section-summary">
@@ -31,7 +31,7 @@
               </div>
             </a>
 
-            <a>
+            <a (click)="onCourseSelected('詰め物が取れた', stepper)">
               <div
                 class="card"
                 data-background="image"
@@ -52,7 +52,7 @@
               </div>
             </a>
 
-            <a>
+            <a (click)="onCourseSelected('歯が痛い', stepper)">
               <div
                 class="card"
                 data-background="image"
@@ -71,7 +71,7 @@
               </div>
             </a>
 
-            <a>
+            <a (click)="onCourseSelected('歯ぐきが痛い', stepper)">
               <div
                 class="card"
                 data-background="image"
@@ -92,7 +92,7 @@
               </div>
             </a>
 
-            <a>
+            <a (click)="onCourseSelected('口臭が気になる', stepper)">
               <div
                 class="card"
                 data-background="image"
@@ -103,6 +103,25 @@
                   <p class="card-description">
                     虫歯や歯周病チェックを行います。
                   </p>
+                  <div class="card-footer">
+                    <a class="btn btn-primary btn-round">
+                      <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                      選択する
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a (click)="onCourseSelected('その他', stepper)">
+              <div
+                class="card"
+                data-background="image"
+                style="background-image: url('assets/img/clinic-img.jpg')"
+              >
+                <div class="card-body">
+                  <h3 class="card-title">その他</h3>
+                  <p class="card-description">上記項目に当てはまらない場合</p>
                   <div class="card-footer">
                     <a class="btn btn-primary btn-round">
                       <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
@@ -169,26 +188,3 @@
     </div>
   </mat-step>
 </mat-horizontal-stepper>
-<!-- <section id="clinic-booking">
-  <form>
-    <div class="form-group">
-      
-    </div>
-  </form> -->
-
-<!--
-  <ng-container *ngIf="timeTables.length == 0 || isDateBlock_flg">
-    <div class="separator"></div>
-    <div class="info">
-      <div class="icon icon-warning">
-        <i class="nc-icon nc-cart-simple"></i>
-      </div>
-      <div class="description">
-        <h4 class="info-title">Thank you</h4>
-        <p>本日分は完売しました</p>
-        <div class="space-top"></div>
-      </div>
-    </div>
-    <div class="separator"></div>
-  </ng-container>
-</section> -->

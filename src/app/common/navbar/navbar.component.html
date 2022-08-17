@@ -8,12 +8,14 @@
           [routerLink]="['/register']"
           >Yoshinhyo</a
         >
-        <a
-          class="navbar-brand"
-          *ngIf="auth.isAuthenticated()"
-          [routerLink]="['/admin']"
-          >Yoshinhyo</a
-        >
+        <ng-container *ngIf="auth.isAuthenticated()">
+          <ng-container *ngIf="auth.getUserRole() === 'Owner'">
+            <a class="navbar-brand" [routerLink]="['/admin']">Yoshinhyo</a>
+          </ng-container>
+          <ng-container *ngIf="auth.getUserRole() === 'User'">
+            <a class="navbar-brand" [routerLink]="['/clinic']">Yoshinhyo</a>
+          </ng-container>
+        </ng-container>
       </div>
       <button
         class="navbar-toggler navbar-burger"

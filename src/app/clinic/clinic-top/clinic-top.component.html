@@ -25,35 +25,36 @@
 </ng-container>
 <!-- After login -->
 <ng-container *ngIf="auth.isAuthenticated()">
-  <h5
-    *ngIf="foundBookings && foundBookings.length === 0"
+  <h6
+    *ngIf="(foundBookings && foundBookings.length === 0) || isExpired()"
     class="card-description text-center"
   >
     次回診察日時：予約なし
-  </h5>
+  </h6>
   <div
     class="card-description text-center"
-    *ngIf="foundBookings && foundBookings.length > 0"
+    *ngIf="foundBookings && foundBookings.length > 0 && !isExpired()"
   >
-    <h5>
+    <h6>
       次回診察日時：{{ foundBookings[0].startAt | date: "yyyy年 MM月 dd日" }}
-    </h5>
-    <h5>{{ foundBookings[0].startAt | date: "HH:mmスタート" }}</h5>
+    </h6>
+    <h6>{{ foundBookings[0].startAt | date: "HH:mmスタート" }}</h6>
   </div>
   <br />
   <div class="row">
     <div class="col-md mr-auto ml-auto">
       <a
         class="btn btn-magnify btn-primary btn-round btn-lg"
-        *ngIf="foundBookings && foundBookings.length === 0"
-        [routerLink]="['/login']"
+        *ngIf="(foundBookings && foundBookings.length === 0) || isExpired()"
+        [routerLink]="['booking']"
       >
         <i class="nc-icon nc-send"></i> &nbsp; 再来予約をする
       </a>
+
       <a
         class="btn btn-magnify btn-primary btn-round btn-lg"
-        *ngIf="foundBookings && foundBookings.length > 0"
-        [routerLink]="['booking', foundBookings[0]._id]"
+        *ngIf="foundBookings && foundBookings.length > 0 && !isExpired()"
+        [routerLink]="['rebooking', foundBookings[0]._id]"
       >
         <i class="nc-icon nc-send"></i> &nbsp; 予約日時を変更する
       </a>
@@ -64,7 +65,7 @@
     <div class="col-md mr-auto ml-auto">
       <button
         class="btn btn-magnify btn-neutral btn-round btn-lg"
-        *ngIf="foundBookings && foundBookings.length > 0"
+        *ngIf="foundBookings && foundBookings.length > 0 && !isExpired()"
         (click)="deleteConfirmation()"
       >
         <i class="nc-icon nc-send"></i> &nbsp; 予約をキャンセルする
