@@ -7,6 +7,7 @@ const userSchema = new Schema({
   // shared: { type: Boolean, default: true },
   userRole: { type: String, default: "User" }, // User, Owner, OEM_Owner
   createdAt: { type: Date, default: Date.now },
+  lastLogin: Date,
 
   username: {
     type: String,

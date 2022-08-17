@@ -128,7 +128,12 @@ exports.auth = function (req, res) {
     }
 
     if (foundUser.hasSamePassword(password)) {
-      // return JWT token
+      User.updateOne(
+        { _id: foundUser.id },
+        { lastLogin: Date.now() },
+        () => {}
+      );
+
       const token = jwt.sign(
         {
           userId: foundUser.id,
@@ -137,7 +142,7 @@ exports.auth = function (req, res) {
         },
         config.SECRET,
         { expiresIn: "12h" }
-      );
+      ); // return JWT token
 
       return res.json(token);
     } else {
@@ -327,22 +332,19 @@ exports.updateUser = function (req, res) {
       });
     }
 
-    User.findById(reqUserId, function (err, foundUser) {
-      foundUser.password = password;
-      foundUser.save();
+    User.updateOne({ _id: reqUserId }, userData, () => {});
 
-      const token = jwt.sign(
-        {
-          userId: user.id,
-          username: userData.username,
-          userRole: user.userRole,
-        },
-        config.SECRET,
-        { expiresIn: "12h" }
-      );
+    const token = jwt.sign(
+      {
+        userId: user.id,
+        username: userData.username,
+        userRole: user.userRole,
+      },
+      config.SECRET,
+      { expiresIn: "12h" }
+    );
 
-      return res.json(token);
-    });
+    return res.json(token);
   } else {
     return res.status(422).send({
       errors: {

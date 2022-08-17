@@ -5,7 +5,7 @@ import { AdminService } from '../../shared/admin.service';
 // import { Report } from "src/app/teacher/service/report.model";
 import * as moment from 'moment-timezone';
 import Swal from 'sweetalert2';
-import { Booking } from 'src/app/clinic/clinic-booking/shared/booking.model';
+import { Booking } from 'src/app/clinic/shared/booking.model';
 
 @Component({
   selector: 'app-admin-report-list',

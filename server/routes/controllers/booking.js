@@ -7,6 +7,26 @@ const moment = require("moment-timezone");
 
 const config = require("../../config");
 
+function isValidBooking(requestBooking, rentalBookings) {
+  let isValid = true;
+  if (rentalBookings && rentalBookings.length > 0) {
+    isValid = rentalBookings.every(function (booking) {
+      const reqStart = moment(requestBooking.startAt);
+      const reqEnd = moment(requestBooking.startAt)
+        .add(requestBooking.courseTime, "minutes")
+        .subtract(1, "minute");
+      const acturalStart = moment(booking.startAt);
+      const acturalEnd = moment(booking.startAt)
+        .add(booking.courseTime, "minutes")
+        .subtract(1, "minute");
+      return (
+        (acturalStart < reqStart && acturalEnd < reqStart) ||
+        (reqEnd < acturalStart && reqEnd < acturalEnd)
+      );
+    });
+  }
+  return isValid;
+}
 exports.createBooking = function (req, res) {
   // Passed booking information from booking.component.ts
   const user = res.locals.user;
@@ -14,25 +34,21 @@ exports.createBooking = function (req, res) {
     startAt,
     courseType,
     courseTime,
-    place,
-    memo,
-    rental, // Room
+    clinic, // Room
     status,
   } = req.body;
 
   const booking = new Booking({
     // startAt: moment(Object.assign(startAt, lessonDate)).subtract(1, 'months'),
-    startAt: moment(startAt),
+    startAt,
     courseType,
     courseTime,
-    place,
-    memo,
     user, // Patient
-    rental, // Room
+    rental: clinic, // Room
     status,
   });
 
-  Rental.findById(rental._id)
+  Rental.findById(clinic._id)
     .populate("bookings")
     .populate("user", "id")
     .exec(function (err, foundRental) {
@@ -40,12 +56,12 @@ exports.createBooking = function (req, res) {
         return res.status(422).send({ errors: normalizeErrors(err.errors) });
       }
 
-      if (foundRental.user.id !== user.id) {
+      if (foundRental.user.id === user.id) {
         return res.status(422).send({
           errors: [
             {
               title: "Invalid user!",
-              detail: "Not allowed to create other teachers student report!",
+              detail: "Cannot make booking on your Rentals!",
             },
           ],
         });
@@ -62,43 +78,21 @@ exports.createBooking = function (req, res) {
         });
       }
 
-      if (booking.courseType === "対面レッスン（体験）") {
-        booking.teacherRevenue = 3000;
-      } else if (booking.courseType === "対面レッスン（60分）") {
-        booking.teacherRevenue = user.hourlyPrice + receiptPrice + transportFee;
-      } else if (booking.courseType === "対面レッスン（40分）") {
-        booking.teacherRevenue =
-          user.hourlyPrice * 0.7 + receiptPrice + transportFee;
-      } else if (booking.courseType === "オンライン（体験）") {
-        booking.teacherRevenue = 1500;
-      } else if (booking.courseType === "オンライン（60分）") {
-        booking.teacherRevenue =
-          user.hourlyPrice + receiptPrice + transportFee - 500;
-      } else if (booking.courseType === "オンライン（40分）") {
-        booking.teacherRevenue =
-          user.hourlyPrice * 0.7 + receiptPrice + transportFee - 500;
-      } else {
-        booking.teacherRevenue = receiptPrice + transportFee; // Expense only
-      }
-
       booking.rental = foundRental;
-      foundRental.bookings.push(booking); // This updates DB side.
-      foundRental.user.bookings.push(booking); // This updates DB side.
-      foundRental.save();
-      User.updateOne({ _id: user.id }, { $push: { bookings: booking } });
-
       booking.save(function (err) {
         if (err) {
           return res.status(422).send({ errors: normalizeErrors(err.errors) });
         }
-
+        foundRental.bookings.push(booking); // This updates DB side.
         foundRental.save();
+
         User.updateOne(
-          { _id: user.id },
-          { $push: { bookings: booking } },
-          function () {}
+          { _id: foundRental.user.id },
+          { $push: { bookings: booking } }
         );
-        return res.json({ startAt: booking.startAt, endAt: booking.endAt });
+        User.updateOne({ _id: user.id }, { $push: { bookings: booking } });
+
+        return res.json({ status: "success" });
       });
     });
 };
@@ -147,11 +141,13 @@ exports.deleteBooking = function (req, res) {
           { $pull: { bookings: foundBooking.id } },
           () => {}
         ); // Delete Booking from Rental
+
         User.updateOne(
           { _id: foundBooking.user.id },
           { $pull: { bookings: foundBooking.id } },
           () => {}
         ); // Delete Booking from User
+
         // Payment.updateOne({_id: foundBooking.payment.id}, {status: 'canseled by user'}, ()=>{})
         return res.json({ status: "deleted" });
       });
@@ -162,55 +158,9 @@ exports.updateBooking = function (req, res) {
   const bookingData = req.body;
   const user = res.locals.user;
 
-  Booking.findById(bookingData._id)
-    .populate("user", "-password")
-    .populate({
-      // populate both 'booking' and 'rental'
-      path: "rental",
-      populate: {
-        path: "user",
-        select: "_id email",
-      }, // This is using for repropose booking date from rental owner.
-    })
-    .exec(function (err, foundBooking) {
-      if (err) {
-        return res.status(422).send({ errors: normalizeErrors(err.errors) });
-      }
+  Booking.updateOne({ _id: bookingData._id }, bookingData, () => {});
 
-      if (foundBooking.user.id === user.id) {
-        sendEmailTo(
-          foundBooking.rental.user.email,
-          RE_RE_REQUEST_RECIEVED,
-          bookingData,
-          req.hostname
-        );
-      } else if (foundBooking.rental.user.id === user.id) {
-        sendEmailTo(
-          foundBooking.user.email,
-          RE_REQUEST_RECIEVED,
-          bookingData,
-          req.hostname
-        );
-      } else {
-        return res.status(422).send({
-          errors: {
-            title: "Invalid request!",
-            detail: "You cannot change other users booking!",
-          },
-        });
-      }
-
-      try {
-        const updatedBooking = Booking.updateOne(
-          { _id: foundBooking.id },
-          bookingData,
-          () => {}
-        );
-        return res.json({ status: "updated" });
-      } catch (err) {
-        return res.json(err);
-      }
-    });
+  return res.json({ status: "updated" });
 };
 
 exports.getUserBookings = function (req, res) {

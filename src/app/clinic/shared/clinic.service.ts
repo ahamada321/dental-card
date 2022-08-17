@@ -19,8 +19,8 @@ export class ClinicService {
     return this.http.get('/api/v1/payments/user/' + selectedId);
   }
 
-  public getRentalById(reportId: string): Observable<any> {
-    return this.http.get('/api/v1/reports/' + reportId);
+  public getRentalById(rentalId: string): Observable<any> {
+    return this.http.get('/api/v1/rentals/' + rentalId);
   }
 
   public createReport(reportData: any): Observable<any> {

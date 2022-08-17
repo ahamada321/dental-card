@@ -9,8 +9,9 @@ import { AuthGuard } from '../auth/shared/auth.guard';
 import { ClinicComponent } from './clinic.component';
 import { ClinicTopComponent } from './clinic-top/clinic-top.component';
 import { ClinicBookingComponent } from './clinic-booking/clinic-booking.component';
+import { ClinicRebookingComponent } from './clinic-rebooking/clinic-rebooking.component';
 import { ClinicService } from './shared/clinic.service';
-import { BookingService } from './clinic-booking/shared/booking.service';
+import { BookingService } from './shared/booking.service';
 import { MatStepperModule } from '@angular/material/stepper';
 import {
   OwlDateTimeModule,
@@ -28,21 +29,26 @@ const routes: Routes = [
         // canActivate: [AuthGuard],
       },
       {
-        path: 'booking/:bookingId',
-        component: ClinicBookingComponent,
-        // canActivate: [AuthGuard],
+        path: 'rebooking/:bookingId',
+        component: ClinicRebookingComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'booking',
         component: ClinicBookingComponent,
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
       },
     ],
   },
 ];
 
 @NgModule({
-  declarations: [ClinicComponent, ClinicTopComponent, ClinicBookingComponent],
+  declarations: [
+    ClinicComponent,
+    ClinicTopComponent,
+    ClinicBookingComponent,
+    ClinicRebookingComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
