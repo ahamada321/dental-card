@@ -18,7 +18,7 @@ import { AdminPatientListComponent } from './admin-patient/admin-patient-list/ad
 import { AdminPatientEditComponent } from './admin-patient/admin-patient-edit/admin-patient-edit.component';
 import { ModalWindowModule } from '../common/modal-window/modal-window.module';
 // import { TeacherService } from "../teacher/service/teacher.service";
-// import { SearchbarModule } from "../common/components/searchbar/searchbar.module";
+import { SearchbarModule } from '../common/searchbar/searchbar.module';
 import {
   OwlDateTimeModule,
   OwlNativeDateTimeModule,
@@ -105,7 +105,7 @@ const routes: Routes = [
     AngularMultiSelectModule,
     // CsvModule,
     ModalWindowModule,
-    // SearchbarModule,
+    SearchbarModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
   ],
