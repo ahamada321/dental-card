@@ -8,6 +8,8 @@ import {
   defineFullCalendarElement,
 } from '@fullcalendar/web-component';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { ClinicService } from 'src/app/clinic/shared/clinic.service';
+import { Clinic } from 'src/app/clinic/shared/clinic.model';
 
 // make the <full-calendar> element globally available by calling this function at the top-level
 defineFullCalendarElement();
@@ -22,73 +24,57 @@ export class AdminBookingsListComponent implements OnInit {
   pageIndex: number = 1;
   pageSize: number = 30; // Displaying contents per page.
 
+  rentals: Clinic[] = [];
+  events: any = [];
+
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin],
+    initialView: 'dayGridWeek',
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
       right: 'dayGridMonth,dayGridWeek,dayGridDay',
     },
-  };
-
-  // Select month
-  dropdownMonthList = [
-    { id: 1, itemName: moment().format('YYYY年 / MM月') },
-    { id: 2, itemName: moment().subtract(1, 'month').format('YYYY年 / MM月') },
-    { id: 3, itemName: moment().subtract(2, 'month').format('YYYY年 / MM月') },
-    { id: 4, itemName: moment().subtract(3, 'month').format('YYYY年 / MM月') },
-    { id: 5, itemName: moment().subtract(4, 'month').format('YYYY年 / MM月') },
-    { id: 6, itemName: moment().subtract(5, 'month').format('YYYY年 / MM月') },
-    { id: 7, itemName: moment().subtract(6, 'month').format('YYYY年 / MM月') },
-    { id: 8, itemName: moment().subtract(7, 'month').format('YYYY年 / MM月') },
-    { id: 9, itemName: moment().subtract(8, 'month').format('YYYY年 / MM月') },
-    { id: 10, itemName: moment().subtract(9, 'month').format('YYYY年 / MM月') },
-    {
-      id: 11,
-      itemName: moment().subtract(10, 'month').format('YYYY年 / MM月'),
+    // events: this.events,
+    events: {
+      start: new Date(),
+      end: moment().add(30, 'minutes'),
     },
-    {
-      id: 12,
-      itemName: moment().subtract(11, 'month').format('YYYY年 / MM月'),
-    },
-    {
-      id: 13,
-      itemName: moment().subtract(12, 'month').format('YYYY年 / MM月'),
-    },
-    {
-      id: 14,
-      itemName: moment().subtract(13, 'month').format('YYYY年 / MM月'),
-    },
-    {
-      id: 15,
-      itemName: moment().subtract(14, 'month').format('YYYY年 / MM月'),
-    },
-  ];
-  selectedItems = [{ id: 1, itemName: moment().format('YYYY年 / MM月') }];
-  dropdownMonthSettings = {
-    singleSelection: true,
-    text: '月を選択',
-    enableSearchFilter: false,
-    classes: '',
   };
 
   constructor(
-    private adminService: AdminService // private dialogService: MatDialog
+    private adminService: AdminService, // private dialogService: MatDialog
+    private clinicService: ClinicService
   ) {}
 
   ngOnInit() {
-    this.getReports(this.selectedItems[0].id);
+    this.getOwnerRentals();
   }
 
-  private getReports(selectedMonth: any) {
-    this.adminService.getReports(selectedMonth).subscribe((bookings) => {
-      this.bookings = bookings;
-    });
+  private getOwnerRentals() {
+    this.clinicService.getOwnerRentals(this.pageIndex, this.pageSize).subscribe(
+      (foundRentals) => {
+        this.rentals = foundRentals;
+        // this.pageCollectionSize = result[0].metadata[0].total;
+        this.initEvents();
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
   }
 
-  onItemSelect(selectedItem: any) {
-    this.bookings = [];
-    this.getReports(selectedItem.id);
+  private initEvents() {
+    for (let rental of this.rentals) {
+      for (let booking of rental.bookings!) {
+        this.events.push({
+          start: booking.startAt,
+          end: moment(booking.startAt)
+            .add(booking.courseTime, 'minutes')
+            .subtract(1, 'minute'),
+        });
+      }
+    }
   }
 
   onDelete(report: any) {

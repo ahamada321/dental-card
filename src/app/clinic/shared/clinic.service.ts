@@ -27,6 +27,12 @@ export class ClinicService {
     return this.http.post('/api/v1/bookings', reportData);
   }
 
+  public getOwnerRentals(pageIndex: number, pageSize: number): Observable<any> {
+    return this.http.get(
+      `/api/v1/rentals/manage?page=${pageIndex}&limit=${pageSize}`
+    );
+  }
+
   // public createReport(rentalData: any): Observable<any> {
   //   return this.http.post('/api/v1/rentals', rentalData)
   // }
