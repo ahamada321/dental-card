@@ -7,7 +7,7 @@ import {
   CalendarOptions,
   defineFullCalendarElement,
 } from '@fullcalendar/web-component';
-import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import { ClinicService } from 'src/app/clinic/shared/clinic.service';
 import { Clinic } from 'src/app/clinic/shared/clinic.model';
 
@@ -28,18 +28,19 @@ export class AdminBookingsListComponent implements OnInit {
   events: any = [];
 
   calendarOptions: CalendarOptions = {
-    plugins: [dayGridPlugin],
-    initialView: 'dayGridWeek',
+    // timeZone: 'JST',
+    // schedulerLicenseKey: 'XXX',
+    plugins: [timeGridPlugin],
+    initialView: 'timeGridWeek',
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,dayGridWeek,dayGridDay',
+      right: 'timeGridWeek',
     },
-    // events: this.events,
-    events: {
-      start: new Date(),
-      end: moment().add(30, 'minutes'),
-    },
+    // events: [{
+    //   "start": new Date("2022-08-22T12:00:00Z"),  // will NOT parse into object
+    //   "end": new Date("2022-08-22T13:00:00Z")
+    // }],
   };
 
   constructor(
@@ -67,13 +68,19 @@ export class AdminBookingsListComponent implements OnInit {
   private initEvents() {
     for (let rental of this.rentals) {
       for (let booking of rental.bookings!) {
-        this.events.push({
-          start: booking.startAt,
-          end: moment(booking.startAt)
-            .add(booking.courseTime, 'minutes')
-            .subtract(1, 'minute'),
-        });
+        if(booking.startAt){
+          let date = new Date(booking.startAt);
+          this.events.push({
+            start: new Date(booking.startAt),
+            end: new Date(date.setMinutes(date.getMinutes() + 30 - 1)),
+            title  : booking.courseType
+          });
+        }
       }
+    }
+    this.calendarOptions = {
+      ...this.calendarOptions,
+      events: this.events,
     }
   }
 
