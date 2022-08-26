@@ -1,47 +1,72 @@
-.phone-top {
-  // margin: 0 auto;
-  img {
-    margin-top: 15px;
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: auto;
-    margin-bottom: 15px;
+
+img.icon_step {
+  max-width: 36px;
+}
+.background-img{
+  position: relative;
+}
+.background-img .filter:after{
+  top:0;
+}
+.info-nomaxwidth{
+  max-width: 100%;
+}
+.info-nomaxwidth:first-child{
+  padding:16px 0 0 0;
+}
+.pricing-title{
+  font-size:24px;
+}
+.card-pricing-h1{
+  font-size :26px;
+  padding:8px 0;
+}
+.pricing-strong{
+  padding:8px 0;
+  font-size: 48px;
+}
+.landing_phone_end{
+  max-width: 400px;
+}
+.landing-last-buttons{
+  justify-content:center;
+}
+@media screen and (min-width:768px){
+
+  .landing_top{
+    padding:90px 0 0;
+  }
+  .landing_hero {
+    gap:24px;
+    .btn{
+      font-size: 18px;
+    }
+  }
+  .landing_top_iphone_img{
+    width:180px;
+  }
+  ._ngcontent-ewt-c380{
+    gap:16px;
+  }
+  .card_body_ne{
+    padding:36px 24px
   }
 }
-
-.title-top {
-  margin-top: 160px;
-}
-
-.card-subtitle {
-  margin-top: 10px;
-  margin-bottom: -10px;
-}
-
-.card-image {
-  img {
-    max-height: 15rem;
+@media screen and (max-width:768px){
+  h2, .h2 {
+    font-size: 2.4em;
   }
-}
-
-.card-image2 {
-  img {
-    max-height: 20rem;
+  .landing_top{
+    padding:60px 0 0;
+    display:block;
   }
-}
-
-.card-results {
-  img {
-    margin-top: 15px;
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: auto;
-    margin-bottom: 15px;
+  .landing_hero{
+    justify-content: center;
+    gap: 16px;
   }
-}
+  .landing_top_iphone_img{
+    display:none;
+  }
 
-.container-fluid .title {
-  margin-top: 60px;
+  
 }
