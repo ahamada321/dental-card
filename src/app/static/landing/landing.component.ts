@@ -13,6 +13,8 @@ import {
 })
 export class LandingComponent implements OnInit, OnDestroy {
   data: Date = new Date();
+  activeTab = 1;
+  activeTab1 = 1;
   // innerWidth: number; // Browser width
 
   constructor(public el: ElementRef) {}
