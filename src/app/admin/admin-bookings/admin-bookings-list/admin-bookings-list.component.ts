@@ -7,7 +7,8 @@ import {
   CalendarOptions,
   defineFullCalendarElement,
 } from '@fullcalendar/web-component';
-import timeGridPlugin from '@fullcalendar/timegrid';
+import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
+import dayGridPlugin from '@fullcalendar/daygrid';
 import { ClinicService } from 'src/app/clinic/shared/clinic.service';
 import { Clinic } from 'src/app/clinic/shared/clinic.model';
 
@@ -26,21 +27,24 @@ export class AdminBookingsListComponent implements OnInit {
 
   rentals: Clinic[] = [];
   events: any = [];
+  resources: any = [];
 
   calendarOptions: CalendarOptions = {
     // timeZone: 'JST',
     // schedulerLicenseKey: 'XXX',
-    plugins: [timeGridPlugin],
-    initialView: 'timeGridWeek',
+    plugins: [resourceTimelinePlugin, dayGridPlugin],
+    initialView: 'resourceTimelineDay',
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'timeGridWeek',
+      right: 'resourceTimelineDay,resourceTimelineWeek,dayGridMonth',
     },
+    nowIndicator: true,
     // events: [{
     //   "start": new Date("2022-08-22T12:00:00Z"),  // will NOT parse into object
     //   "end": new Date("2022-08-22T13:00:00Z")
     // }],
+    resourceAreaHeaderContent: 'Units',
   };
 
   constructor(
@@ -65,15 +69,25 @@ export class AdminBookingsListComponent implements OnInit {
     );
   }
 
+  private initResources() {
+    this.calendarOptions = {
+      ...this.calendarOptions,
+      resources: this.resources,
+
+    }
+  }
+
   private initEvents() {
     for (let rental of this.rentals) {
+      this.resources.push({ id: rental._id, title: rental.rentalname })
       for (let booking of rental.bookings!) {
         if(booking.startAt){
           let date = new Date(booking.startAt);
           this.events.push({
             start: new Date(booking.startAt),
             end: new Date(date.setMinutes(date.getMinutes() + 30 - 1)),
-            title  : booking.courseType
+            title: booking.courseType,
+            resourceId: rental._id
           });
         }
       }
@@ -81,6 +95,7 @@ export class AdminBookingsListComponent implements OnInit {
     this.calendarOptions = {
       ...this.calendarOptions,
       events: this.events,
+      resources: this.resources
     }
   }
 
