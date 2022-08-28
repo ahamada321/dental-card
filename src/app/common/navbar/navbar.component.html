@@ -6,14 +6,14 @@
           class="navbar-brand"
           *ngIf="!auth.isAuthenticated()"
           [routerLink]="['/register']"
-          >Yoshinhyo</a
+          >MONSHINHYO</a
         >
         <ng-container *ngIf="auth.isAuthenticated()">
           <ng-container *ngIf="auth.getUserRole() === 'Owner'">
-            <a class="navbar-brand" [routerLink]="['/admin']">Yoshinhyo</a>
+            <a class="navbar-brand" [routerLink]="['/admin']">Monshinhyo</a>
           </ng-container>
           <ng-container *ngIf="auth.getUserRole() === 'User'">
-            <a class="navbar-brand" [routerLink]="['/clinic']">Yoshinhyo</a>
+            <a class="navbar-brand" [routerLink]="['/clinic']">Monshinhyo</a>
           </ng-container>
         </ng-container>
       </div>
