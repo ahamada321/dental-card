@@ -35,8 +35,19 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" *ngIf="!auth.isAuthenticated()">
-          <a class="btn btn-round btn-primary" [routerLink]="['/login']">
-            <i class="nc-icon nc-bullet-list-67"></i>  お問い合わせ
+          <a
+            *ngIf="!isLanding()"
+            class="btn btn-round btn-primary"
+            [routerLink]="['/login']"
+          >
+            <i class="nc-icon nc-bullet-list-67"></i> ログイン
+          </a>
+          <a
+            *ngIf="isLanding()"
+            class="btn btn-round btn-primary"
+            [routerLink]="['/contactus']"
+          >
+            <i class="fa fa-envelope-open-o"></i> お問い合わせ
           </a>
         </li>
         <ng-container *ngIf="auth.isAuthenticated()">

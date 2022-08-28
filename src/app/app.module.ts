@@ -5,10 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { BookingDemoModule } from './common/booking-demo/booking-demo.module';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, FooterComponent],
-  imports: [BrowserAnimationsModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BookingDemoModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

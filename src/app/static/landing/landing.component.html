@@ -3,28 +3,42 @@
     <div class="col-md-8">
       <div class="row">
         <div class="container">
-          <h2 class="title">明日の診療からすぐに使える<br />
+          <h2 class="title">
+            明日の診療からすぐに使える<br />
             『デジタル問診票』を<br />
-            使ってみませんか？</h2>
-          <h4 class="info-title">今すぐ始められて誰でも簡単に使えるから<br>
-            手間なく、コストも削減できる</h4>
+            使ってみませんか？
+          </h2>
+          <h4 class="info-title">
+            今すぐ始められて誰でも簡単に使えるから<br />
+            手間なく、コストも削減できる
+          </h4>
           <div class="space-50"></div>
           <div class="row landing_hero">
-            <a [routerLink]="['/contactus']" class="btn btn-info mr-1">お問い合わせはこちら</a>
-            <button type="button" class="btn btn-info mr-1">無料オンラインデモ予約はこちら</button>
+            <a
+              [routerLink]="['/contactus']"
+              class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
+              ><i class="fa fa-envelope-o"></i> お問い合わせはこちら</a
+            >
+            <app-booking-demo></app-booking-demo>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4 ml-auto ">
+    <div class="col-md-4 ml-auto">
       <div class="iphone-container">
-        <img class="landing_top_iphone_img" src="assets/img/sections/iphone.png" />
+        <img
+          class="landing_top_iphone_img"
+          src="assets/img/sections/iphone.png"
+        />
       </div>
     </div>
   </div>
 </div>
 <div class="space-50"></div>
-<div class="background-img " style="background-image: url('./assets/img/landing/neck_back.png')">
+<div
+  class="background-img"
+  style="background-image: url('./assets/img/landing/neck_back.jpg')"
+>
   <div class="filter">
     <div class="container">
       <div class="container-cards">
@@ -46,7 +60,7 @@
             <div class="card card-hover-effect card-just-text">
               <div class="card-body text-center card_body_ne">
                 <img class="card" src="assets/img/landing/neck2.png" />
-                <p class="card-description">コロナ禍なのにガッツリ接触</p>
+                <p class="card-description">紙もペンもコロナ感染のリスクに</p>
               </div>
             </div>
           </div>
@@ -54,7 +68,9 @@
             <div class="card card-hover-effect card-just-text">
               <div class="card-body text-center card_body_ne">
                 <img class="card" src="assets/img/landing/neck3.png" />
-                <p class="card-description">字が読めない時は二度手間に</p>
+                <p class="card-description">
+                  患者さんに書いてもらった字が読めない
+                </p>
               </div>
             </div>
           </div>
@@ -69,7 +85,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 <!--     *********    COMPANIES ISSUES     *********      -->
@@ -93,7 +108,7 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card-image">
-                <img class="img" src="assets/img/landing/problem.png" />
+                <img class="img" src="assets/img/landing/monshinhyo.jpg" />
               </div>
             </div>
             <div class="col-md-8">
@@ -109,7 +124,7 @@
                   「あの問診票、どこに行ったかわからなくなっちゃった」<br />
                   「この前来た患者さんの問診票、検索でパッと出したいな」<br />
                   「コロナ禍で非接触対応が求められるようになったけど、問診票対応がまだ...」<br />
-                  「日本語があまりわからない患者さんが来たときに、多言語対応している問診票があったら困っていることを聞き出しやすいのになぁ」<br /><br /><br />
+                  「日本語があまりわからない患者さんが来たときに、多言語対応している問診票があったら困っていることを聞き出しやすいのになぁ」<br /><br />
                   といったことはございませんか？
                 </p>
               </div>
@@ -122,7 +137,9 @@
             <div class="col-md-8">
               <div class="card-body">
                 <h6 class="card-category text-info">Go to digital</h6>
-                <h3 class="card-title">家からでも登録できる問診票で待合室の混雑を解消</h3>
+                <h3 class="card-title">
+                  家からでも入力できる問診票で待合室の混雑を解消
+                </h3>
                 <p class="card-description">
                   初めて来院される患者さんには必ず記入してもらう問診票。
                   今までは実際に来院されてから書いてもらっていたものを事前にお家から入力できることにより、待合室の混雑を防ぐことができる！<br />
@@ -130,11 +147,9 @@
                 </p>
               </div>
             </div>
-            <div class="col-md-4">
-            </div>
+            <div class="col-md-4"></div>
           </div>
         </div>
-
 
         <div class="card card-plain card-blog">
           <div class="row">
@@ -161,9 +176,11 @@
             <div class="col-md-8">
               <div class="card-body">
                 <h6 class="card-category text-success">Improvement</h6>
-                <h3 class="card-title">最初にデータを取ったらその後は簡単に検索できて時短！</h3>
+                <h3 class="card-title">
+                  新患の電子カルテ登録もデジタル問診票を使えば時間短縮に！
+                </h3>
                 <p class="card-description">
-                  初回来院時にデジタル問診票を入力してもらえば、その後のデータ保管も検索もラクラク！<br />
+                  初回来院時にデジタル問診票を入力してもらえば、その後のデータ登録や保管、検索もラクラク！<br />
                   今まで時間のかかっていたことが解消されて一気に業務効率化を実現します
                 </p>
               </div>
@@ -186,7 +203,9 @@
     <div class="row">
       <div class="col-md-12 ml-auto mr-auto text-center">
         <h2 class="title">３ステップで完了するデジタル問診票</h2>
-        <h5 class="description">子供から高齢者まで難なく使える設計で簡単に予約ができます</h5>
+        <h5 class="description">
+          子供から高齢者まで難なく使える設計で簡単に予約ができます
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -195,15 +214,17 @@
           <img src="assets/img/sections/ipad.png" />
         </div>
       </div>
-      <div class="col-md-6" style="flex-grow:1;">
+      <div class="col-md-6" style="flex-grow: 1">
         <div class="info info-horizontal info-nomaxwidth">
           <div class="icon icon-info">
             <img class="icon_step" src="assets/img/landing/step1.png" />
           </div>
           <div class="description">
             <h4 class="info-title">01.用意されたQRコードをスマホで読み取り</h4>
-            <p>今や誰でも持っているスマホからQRコードを読み取るだけで簡単！<br />
-              万一スマホを持っていなくても医院側からも入力できます。</p>
+            <p>
+              今や誰でも持っているスマホからQRコードを読み取るだけで簡単！<br />
+              万一スマホを持っていなくても医院側からも入力できます。
+            </p>
           </div>
         </div>
         <div class="info info-horizontal info-nomaxwidth">
@@ -212,7 +233,9 @@
           </div>
           <div class="description">
             <h4 class="info-title">02.指示に沿って項目を入力</h4>
-            <p>デジタル問診票で指示に沿って項目を入力。見やすい画面で全世代が使いやすいデザイン</p>
+            <p>
+              デジタル問診票で指示に沿って項目を入力。見やすい画面で全世代が使いやすいデザイン
+            </p>
           </div>
         </div>
         <div class="info info-horizontal info-nomaxwidth">
@@ -221,17 +244,16 @@
           </div>
           <div class="description">
             <h4 class="info-title">03.送信ボタンをタップ</h4>
-            <p>入力が済んだら送信ボタンをタップするだけ！<br />
-              医院側の管理画面にデータが自動で保存、蓄積します</p>
+            <p>
+              入力が済んだら送信ボタンをタップするだけ！<br />
+              医院側の管理画面にデータが自動で保存、蓄積します
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
 
 <!--     *********    よくある質問     *********      -->
 <div class="section section-team cd-section team-4">
@@ -305,14 +327,21 @@
       <div class="col-md-4">
         <h2 class="title text-center">プランを選ぶ</h2>
         <br />
-        <p class="description text-gray">デンタルカードの管理画面はipad以上の画面サイズを推奨しています。ipadをお持ちでない方はリースコースをご利用ください</p>
+        <p class="description text-gray">
+          デンタルカードの管理画面はiPad以上の画面サイズを推奨しています。iPadをお持ちでない方はiPadレンタルプランをご利用ください
+        </p>
       </div>
       <div class="col-md-8">
         <div class="choose-plan">
           <!-- <div class="nav-tabs-navigation">
                   <div class="nav-tabs-wrapper"> -->
-          <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab1" type="pills"
-            class="nav-pills-danger justify-content-center">
+          <ul
+            ngbNav
+            #nav="ngbNav"
+            [(activeId)]="activeTab1"
+            type="pills"
+            class="nav-pills-danger justify-content-center"
+          >
             <li class="nav-item" [ngbNavItem]="1">
               <!-- <a class="nav-link" ngbNavLink> Personal</a> -->
               <ng-template ngbNavContent>
@@ -322,11 +351,18 @@
                     <div class="card card-pricing">
                       <div class="card-body">
                         <h6 class="card-category text-primary">通常プラン</h6>
-                        <h1 class="card-title card-pricing-h1"><span class="pricing-strong">10,000</span>円~/月</h1>
+                        <h1 class="card-title card-pricing-h1">
+                          <span class="pricing-strong">10,000</span>円~/月
+                        </h1>
                         <ul>
-                          <li><b>パソコンまたはipadを所持している</b></li>
-                          <li><b>インターネット環境がある</b> </li>
-                          <li><b>初回月は<s>10,000円</s>→5000円</b> </li>
+                          <li><b>パソコンまたはiPadを所持している</b></li>
+                          <li><b>インターネット環境がある</b></li>
+                          <li>
+                            <b
+                              >初回月は<s>10,000円</s>→
+                              <span class="red">5000円</span></b
+                            >
+                          </li>
                         </ul>
                         <!-- <a href="javascript:void(0)" class="btn btn-primary btn-round">お問い合わせはこち</a> -->
                       </div>
@@ -335,12 +371,16 @@
                   <div class="col-md-6">
                     <div class="card card-pricing" data-color="orange">
                       <div class="card-body">
-                        <h6 class="card-category text-success">iPadレンタルプラン</h6>
-                        <h1 class="card-title card-pricing-h1"><span class="pricing-strong">30,000</span>円〜/月</h1>
+                        <h6 class="card-category text-success">
+                          iPadレンタルプラン
+                        </h6>
+                        <h1 class="card-title card-pricing-h1">
+                          <span class="pricing-strong">30,000</span>円〜/月
+                        </h1>
                         <ul>
-                          <li><b>ネット環境不要</b> </li>
-                          <li><b>ipad一台貸し出し</b></li>
-                          <li><b>１３ヶ月継続利用でipad贈呈</b></li>
+                          <li><b>ネット環境不要</b></li>
+                          <li><b>iPad一台貸し出し</b></li>
+                          <li><b>13ヶ月継続利用でiPad贈呈</b></li>
                         </ul>
                       </div>
                     </div>
@@ -359,25 +399,32 @@
 </div>
 <!--     *********    TESTIMONIALS 1     *********      -->
 
-<div class="testimonials-1 section-image" style="background-image: url('assets/img/sections/uriel-soberanes.jpg')">
+<div
+  class="testimonials-1 section-image"
+  style="background-image: url('assets/img/sections/uriel-soberanes.jpg')"
+>
   <div class="container">
     <div class="text-center">
-      <h2 class="title">明日の診療からすぐに使える<br />
+      <h2 class="title">
+        明日の診療からすぐに使える<br />
         『デジタル問診票』<br />
-        を気軽に使ってみませんか？</h2>
-      <h5 class="description">今すぐ始められて誰でも簡単に使えるから
-        手間なく、コストも削減できる</h5>
+        を気軽に使ってみませんか？
+      </h2>
+      <h5 class="description">
+        今すぐ始められて誰でも簡単に使えるから 手間なく、コストも削減できる
+      </h5>
     </div>
     <div class="space-top"></div>
     <div class="row landing-last-buttons landing_hero">
-      <a [routerLink]="['/contactus']" class="btn btn-info mr-1">お問い合わせはこちら</a>
-      <button type="button" class="btn btn-info mr-1">無料オンラインデモ予約はこちら</button>
+      <a
+        [routerLink]="['/contactus']"
+        class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
+        ><i class="fa fa-envelope-o"></i> お問い合わせはこちら</a
+      >
+      <app-booking-demo></app-booking-demo>
     </div>
   </div>
 </div>
-
-
-
 
 <footer class="footer section-nude">
   <div class="container">
