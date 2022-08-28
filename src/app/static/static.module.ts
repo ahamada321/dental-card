@@ -15,6 +15,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsTextModule } from './terms/helpers/terms-text/terms-text.module';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BookingDemoModule } from '../common/booking-demo/booking-demo.module';
 
 const routes: Routes = [
   // { path: '', component: TopComponent },
@@ -48,7 +49,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     JwBootstrapSwitchNg2Module,
     TermsTextModule,
-    NgbModule
+    NgbModule,
+    BookingDemoModule,
   ],
   exports: [],
   providers: [],

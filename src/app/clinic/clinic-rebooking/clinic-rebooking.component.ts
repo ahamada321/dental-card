@@ -49,7 +49,7 @@ export class ClinicRebookingComponent implements OnInit {
     private bookingService: BookingService //  private dateTimeAdapter: DateTimeAdapter<any>
   ) {
     // Initiate Datepicker
-    this.minDate.setDate(this.minDate.getDate() + 7);
+    this.minDate.setDate(this.minDate.getDate() + 1);
     this.minDate.setHours(0, 0, 0, 0);
   }
 

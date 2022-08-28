@@ -54,7 +54,7 @@ export class ClinicBookingComponent implements OnInit {
     private clinicService: ClinicService
   ) {
     // Initiate Datepicker
-    this.minDate.setDate(this.minDate.getDate() + 7);
+    this.minDate.setDate(this.minDate.getDate() + 1);
     this.minDate.setHours(0, 0, 0, 0);
   }
 

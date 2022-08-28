@@ -73,6 +73,15 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  isLanding() {
+    var titlee = this.location.prepareExternalUrl(this.location.path());
+    if (titlee === '/landing') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   logout() {
     this.auth.logout();
     this.router.navigate(['/login']);

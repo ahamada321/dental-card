@@ -103,7 +103,7 @@ exports.getOwnerRentals = function (req, res) {
     .startOf("month")
     .subtract(1, "month");
 
-  Rental.find({ user, shared: true })
+  Rental.find({ user, isShared: true })
     .populate({
       path: "bookings",
       match: { createdAt: { $gte: monthStart } },
