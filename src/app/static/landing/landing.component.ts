@@ -58,11 +58,11 @@ export class LandingComponent implements OnInit, OnDestroy {
     }
   }
 
-  customEvent() {
+  clickEvent(eventDetail: string) {
     // push GTM data layer with a custom event
     const gtmTag = {
       event: 'button-click',
-      data: 'my-custom-event',
+      data: eventDetail,
     };
     this.gtmService.pushTag(gtmTag);
   }
