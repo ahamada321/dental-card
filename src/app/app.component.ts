@@ -95,7 +95,6 @@ export class AppComponent implements OnInit {
           this.gtmService.pushTag(gtmTag);
         }
       });
-      this.gtmService.addGtmToDom();
     }
 
     this._router = this.router.events
