@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GoogleTagManagerModule } from 'angular-google-tag-manager';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './admin/admin.module';
@@ -18,9 +17,6 @@ const routes: Routes = [];
     ContactFormModule,
     StaticModule,
     RouterModule.forRoot(routes),
-    GoogleTagManagerModule.forRoot({
-      id: 'G-TJ7D8V74DY',
-    }),
     SweetAlert2Module.forRoot({
       provideSwal: () =>
         import('sweetalert2').then(({ default: swal }) =>
