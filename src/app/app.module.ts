@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { GoogleTagManagerModule } from 'angular-google-tag-manager';
 import { NavbarComponent } from './common/navbar/navbar.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { BookingDemoModule } from './common/booking-demo/booking-demo.module';
@@ -13,6 +14,9 @@ import { BookingDemoModule } from './common/booking-demo/booking-demo.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    GoogleTagManagerModule.forRoot({
+      id: 'G-TJ7D8V74DY',
+    }),
     BookingDemoModule,
   ],
   providers: [],
