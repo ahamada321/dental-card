@@ -5,6 +5,7 @@ import {
   HostListener,
   ElementRef,
 } from '@angular/core';
+import { GoogleTagManagerService } from 'angular-google-tag-manager';
 
 @Component({
   selector: 'app-landing',
@@ -17,7 +18,10 @@ export class LandingComponent implements OnInit, OnDestroy {
   activeTab1 = 1;
   // innerWidth: number; // Browser width
 
-  constructor(public el: ElementRef) {}
+  constructor(
+    public el: ElementRef,
+    private gtmService: GoogleTagManagerService
+  ) {}
 
   ngOnInit() {
     var navbar = document.getElementsByTagName('nav')[0];
@@ -52,6 +56,15 @@ export class LandingComponent implements OnInit, OnDestroy {
         componentPosition[i].classList.remove('animated');
       }
     }
+  }
+
+  customEvent() {
+    // push GTM data layer with a custom event
+    const gtmTag = {
+      event: 'button-click',
+      data: 'my-custom-event',
+    };
+    this.gtmService.pushTag(gtmTag);
   }
 
   // @HostListener("window:resize")

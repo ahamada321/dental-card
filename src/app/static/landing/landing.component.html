@@ -16,6 +16,7 @@
           <div class="row landing_hero">
             <a
               [routerLink]="['/contactus']"
+              (click)="customEvent()"
               class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
               ><i class="fa fa-envelope-o"></i> お問い合わせはこちら</a
             >
@@ -418,6 +419,7 @@
     <div class="row landing-last-buttons landing_hero">
       <a
         [routerLink]="['/contactus']"
+        (click)="customEvent()"
         class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
         ><i class="fa fa-envelope-o"></i> お問い合わせはこちら</a
       >
