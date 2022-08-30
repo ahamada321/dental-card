@@ -10,6 +10,7 @@ import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
 import { NavbarComponent } from './common/navbar/navbar.component';
 import { filter, Subscription } from 'rxjs';
+import { GoogleTagManagerService } from 'angular-google-tag-manager';
 
 var lastScrollTop = 0;
 var delta = 5;
@@ -31,7 +32,8 @@ export class AppComponent implements OnInit {
     private renderer: Renderer2,
     private router: Router,
     private element: ElementRef,
-    public location: Location
+    public location: Location,
+    private gtmService: GoogleTagManagerService
   ) {}
 
   @HostListener('window:scroll', ['$event'])
@@ -81,6 +83,16 @@ export class AppComponent implements OnInit {
             this.lastPoppedUrl = undefined;
             window.scrollTo(0, this.yScrollStack.pop()!);
           } else window.scrollTo(0, 0);
+        }
+      });
+
+      this.router.events.forEach((item) => {
+        if (item instanceof NavigationEnd) {
+          const gtmTag = {
+            event: 'page',
+            pageName: item.url,
+          };
+          this.gtmService.pushTag(gtmTag);
         }
       });
     }
