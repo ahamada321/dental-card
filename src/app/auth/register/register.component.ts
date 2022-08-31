@@ -135,7 +135,7 @@ export class RegisterComponent implements OnInit {
           text: '受付にお伝えください',
           icon: 'success',
           customClass: {
-            confirmButton: 'btn btn-primary btn-round btn-lg',
+            confirmButton: 'btn btn-primary btn-lg',
           },
           buttonsStyling: false,
           allowOutsideClick: false,
@@ -159,7 +159,7 @@ export class RegisterComponent implements OnInit {
       text: 'もう一度登録ボタンを押してください',
       icon: 'error',
       customClass: {
-        confirmButton: 'btn btn-primary btn-round btn-lg',
+        confirmButton: 'btn btn-primary btn-lg',
       },
       buttonsStyling: false,
       allowOutsideClick: false,

@@ -164,7 +164,7 @@ export class AdminPatientsEditComponent implements OnInit {
       title: '更新しました！',
       icon: 'success',
       customClass: {
-        confirmButton: 'btn btn-primary btn-round btn-lg',
+        confirmButton: 'btn btn-primary btn-lg',
       },
       buttonsStyling: false,
       // timer: 5000
@@ -179,7 +179,7 @@ export class AdminPatientsEditComponent implements OnInit {
       text: 'もう一度更新ボタンを押しなおしてください',
       icon: 'error',
       customClass: {
-        confirmButton: 'btn btn-danger btn-round btn-lg',
+        confirmButton: 'btn btn-danger btn-lg',
       },
       buttonsStyling: false,
     });
@@ -210,7 +210,7 @@ export class AdminPatientsEditComponent implements OnInit {
           // title: 'この操作は取り消せません',
           text: 'パスワードを「tsubaki」に初期化しました',
           customClass: {
-            confirmButton: 'btn btn-danger btn-round btn-lg',
+            confirmButton: 'btn btn-danger btn-lg',
           },
           buttonsStyling: false,
           // timer: 5000

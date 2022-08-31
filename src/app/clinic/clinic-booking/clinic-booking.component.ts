@@ -165,7 +165,7 @@ export class ClinicBookingComponent implements OnInit {
       text: '当日のご来院をお待ちしております',
       icon: 'success',
       customClass: {
-        confirmButton: 'btn btn-primary btn-round btn-lg',
+        confirmButton: 'btn btn-primary btn-lg',
       },
       buttonsStyling: false,
     }).then(() => {
