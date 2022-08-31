@@ -1,16 +1,16 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { ContactForm } from "../shared/contactform.model";
-import { ContactFormService } from "../shared/contactform.service";
-import { HttpErrorResponse } from "@angular/common/http";
-import Swal from "sweetalert2";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ContactForm } from '../shared/contactform.model';
+import { ContactFormService } from '../shared/contactform.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: "app-contact-form-trial",
-  templateUrl: "./contact-form-trial.component.html",
-  styleUrls: ["./contact-form-trial.component.scss"],
+  selector: 'app-contact-form-trial',
+  templateUrl: './contact-form-trial.component.html',
+  styleUrls: ['./contact-form-trial.component.scss'],
 })
 export class ContactFormTrialComponent implements OnInit, OnDestroy {
   focus1!: boolean;
@@ -27,30 +27,30 @@ export class ContactFormTrialComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    var navbar = document.getElementsByTagName("nav")[0];
-    navbar.classList.add("navbar-transparent");
-    var body = document.getElementsByTagName("body")[0];
-    body.classList.add("contact-page");
+    var navbar = document.getElementsByTagName('nav')[0];
+    navbar.classList.add('navbar-transparent');
+    var body = document.getElementsByTagName('body')[0];
+    body.classList.add('contact-page');
 
     this.initForm();
   }
   ngOnDestroy() {
-    var navbar = document.getElementsByTagName("nav")[0];
-    navbar.classList.remove("navbar-transparent");
-    if (navbar.classList.contains("nav-up")) {
-      navbar.classList.remove("nav-up");
+    var navbar = document.getElementsByTagName('nav')[0];
+    navbar.classList.remove('navbar-transparent');
+    if (navbar.classList.contains('nav-up')) {
+      navbar.classList.remove('nav-up');
     }
-    var body = document.getElementsByTagName("body")[0];
-    body.classList.remove("contact-page");
+    var body = document.getElementsByTagName('body')[0];
+    body.classList.remove('contact-page');
   }
 
   initForm() {
     this.trialForm = this.formBuilder.group({
-      username: [""],
-      email: [""],
-      company: [""],
-      position: [""],
-      msg: [""],
+      username: [''],
+      email: [''],
+      company: [''],
+      position: [''],
+      msg: [''],
       terms: [false],
     });
   }
@@ -77,21 +77,21 @@ export class ContactFormTrialComponent implements OnInit, OnDestroy {
   }
 
   modalLoginOpen(content: any) {
-    this.modalService.open(content, { backdrop: "static" });
+    this.modalService.open(content, { backdrop: 'static' });
   }
 
   private showSwalSuccess() {
     Swal.fire({
-      icon: "success",
-      title: "送信されました",
-      text: "数日以内にトライアルIDを発行致します",
+      icon: 'success',
+      title: '送信されました',
+      text: '3日以内にトライアルIDを発行致します',
       customClass: {
-        confirmButton: 'btn btn-primary btn-round btn-lg',
+        confirmButton: 'btn btn-primary btn-lg',
       },
       buttonsStyling: false,
       timer: 5000,
     }).then(() => {
-      this.router.navigate(["/"]);
+      this.router.navigate(['/']);
     });
   }
 }

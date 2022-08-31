@@ -71,7 +71,7 @@ export class ClinicTopComponent implements OnInit {
             title: '予約キャンセルされました',
             icon: 'info',
             customClass: {
-              confirmButton: 'btn btn-primary btn-round btn-lg',
+              confirmButton: 'btn btn-primary btn-lg',
             },
             buttonsStyling: false,
             allowOutsideClick: false,

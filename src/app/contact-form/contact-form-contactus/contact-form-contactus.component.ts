@@ -6,24 +6,23 @@ import { ContactFormService } from '../shared/contactform.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-contact-form-contactus',
   templateUrl: './contact-form-contactus.component.html',
-  styleUrls: ['./contact-form-contactus.component.scss']
+  styleUrls: ['./contact-form-contactus.component.scss'],
 })
 export class ContactFormContactusComponent implements OnInit, OnDestroy {
-  focus1!: boolean
-  focus2!: boolean
-  contactusForm!: FormGroup
-  formData!: ContactForm
-  errorResponse!: HttpErrorResponse
+  focus1!: boolean;
+  focus2!: boolean;
+  contactusForm!: FormGroup;
+  formData!: ContactForm;
+  errorResponse!: HttpErrorResponse;
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private contactformService: ContactFormService
-  ) { }
+  ) {}
 
   ngOnInit() {
     var navbar = document.getElementsByTagName('nav')[0];
@@ -31,7 +30,7 @@ export class ContactFormContactusComponent implements OnInit, OnDestroy {
     var body = document.getElementsByTagName('body')[0];
     body.classList.add('contact-page');
 
-    this.initForm()
+    this.initForm();
   }
   ngOnDestroy() {
     var navbar = document.getElementsByTagName('nav')[0];
@@ -45,32 +44,33 @@ export class ContactFormContactusComponent implements OnInit, OnDestroy {
 
   initForm() {
     this.contactusForm = this.formBuilder.group({
-      username: ['', {nonNullable: true}],
-      email: ['', {nonNullable: true}],
-      company: ['', {nonNullable: true}],
-      position: ['', {nonNullable: true}],
-      msg: ['', {nonNullable: true}]
-    })
+      username: ['', { nonNullable: true }],
+      email: ['', { nonNullable: true }],
+      company: ['', { nonNullable: true }],
+      position: ['', { nonNullable: true }],
+      msg: ['', { nonNullable: true }],
+    });
   }
 
   isInvalidForm(fieldname: string): boolean {
-    return this.contactusForm.controls[fieldname].invalid &&
+    return (
+      this.contactusForm.controls[fieldname].invalid &&
       this.contactusForm.controls[fieldname].touched
-    //  (this.contactForm.controls[fieldname].dirty || 
+    );
+    //  (this.contactForm.controls[fieldname].dirty ||
     //  this.contactForm.controls[fieldname].touched)
   }
-
 
   sendMessage(contactusForm: FormGroup) {
     this.contactformService.sendFormMsg(contactusForm.value).subscribe(
       (Message) => {
-        contactusForm.reset()
-        this.showSwalSuccess()
+        contactusForm.reset();
+        this.showSwalSuccess();
       },
       (errorResponse: HttpErrorResponse) => {
-        this.errorResponse = errorResponse
+        this.errorResponse = errorResponse;
       }
-    )
+    );
   }
 
   private showSwalSuccess() {
@@ -79,12 +79,12 @@ export class ContactFormContactusComponent implements OnInit, OnDestroy {
       title: '送信されました',
       text: '確認次第折り返しご連絡させていただきます',
       customClass: {
-        confirmButton: 'btn btn-primary btn-round btn-lg',
+        confirmButton: 'btn btn-primary btn-lg',
       },
-       buttonsStyling: false,
-      timer: 5000
+      buttonsStyling: false,
+      timer: 5000,
     }).then(() => {
-      this.router.navigate(['/landing'])
-    })
+      this.router.navigate(['/landing']);
+    });
   }
 }
