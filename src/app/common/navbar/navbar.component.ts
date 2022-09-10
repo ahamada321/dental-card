@@ -6,6 +6,8 @@ import {
 } from '@angular/common';
 import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 import { Router } from '@angular/router';
+import { BookingDemoComponent } from '../booking-demo/booking-demo.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +22,8 @@ export class NavbarComponent implements OnInit {
     public location: Location,
     private element: ElementRef,
     public auth: MyOriginAuthService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) {
     this.sidebarVisible = false;
   }
@@ -80,6 +83,10 @@ export class NavbarComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  modalDemoBookingOpen() {
+    this.modalService.open(BookingDemoComponent, { backdrop: 'static' });
   }
 
   logout() {

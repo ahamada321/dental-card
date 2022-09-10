@@ -44,11 +44,18 @@
           </a>
           <a
             *ngIf="isLanding()"
-            class="btn btn-round btn-primary"
+            class="btn btn-round btn-outline-primary"
             [routerLink]="['/contactus']"
           >
-            <i class="fa fa-envelope-open-o"></i> お問い合わせ
+            お問い合わせ
           </a>
+          <button
+            *ngIf="isLanding()"
+            class="btn btn-round btn-primary"
+            (click)="modalDemoBookingOpen()"
+          >
+            <i class="fa fa-tv"></i> 無料オンラインデモ予約はこちら
+          </button>
         </li>
         <ng-container *ngIf="auth.isAuthenticated()">
           <li class="nav-item clickable">
