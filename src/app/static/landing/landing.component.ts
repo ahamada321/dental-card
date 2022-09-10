@@ -27,8 +27,8 @@ export class LandingComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    var navbar = document.getElementsByTagName('nav')[0];
-    navbar.classList.add('navbar-transparent');
+    // var navbar = document.getElementsByTagName('nav')[0];
+    // navbar.classList.add('navbar-transparent');
     var body = document.getElementsByTagName('body')[0];
     body.classList.add('landing-page');
     body.classList.add('presentation-page'); // temporary
@@ -36,7 +36,7 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     var navbar = document.getElementsByTagName('nav')[0];
-    navbar.classList.remove('navbar-transparent');
+    // navbar.classList.remove('navbar-transparent');
     if (navbar.classList.contains('nav-up')) {
       navbar.classList.remove('nav-up');
     }
