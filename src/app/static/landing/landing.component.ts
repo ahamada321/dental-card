@@ -5,7 +5,9 @@ import {
   HostListener,
   ElementRef,
 } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
+import { BookingDemoComponent } from 'src/app/common/booking-demo/booking-demo.component';
 
 @Component({
   selector: 'app-landing',
@@ -20,7 +22,8 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   constructor(
     public el: ElementRef,
-    private gtmService: GoogleTagManagerService
+    private gtmService: GoogleTagManagerService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -67,8 +70,7 @@ export class LandingComponent implements OnInit, OnDestroy {
     this.gtmService.pushTag(gtmTag);
   }
 
-  // @HostListener("window:resize")
-  // onResize() {
-  //   this.innerWidth = window.innerWidth;
-  // }
+  modalDemoBookingOpen() {
+    this.modalService.open(BookingDemoComponent, { backdrop: 'static' });
+  }
 }

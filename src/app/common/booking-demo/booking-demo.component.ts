@@ -5,22 +5,22 @@ import {
   Output,
   EventEmitter,
   ViewChild,
-} from "@angular/core";
-import * as moment from "moment-timezone";
+} from '@angular/core';
+import * as moment from 'moment-timezone';
 import {
   NgbActiveModal,
   NgbModal,
   NgbModalRef,
-} from "@ng-bootstrap/ng-bootstrap";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { HttpErrorResponse } from "@angular/common/http";
-import Swal from "sweetalert2";
-import { ContactFormService } from "src/app/contact-form/shared/contactform.service";
+} from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2';
+import { ContactFormService } from 'src/app/contact-form/shared/contactform.service';
 
 @Component({
-  selector: "app-booking-demo",
-  templateUrl: "./booking-demo.component.html",
-  styleUrls: ["./booking-demo.component.scss"],
+  selector: 'app-booking-demo',
+  templateUrl: './booking-demo.component.html',
+  styleUrls: ['./booking-demo.component.scss'],
 })
 export class BookingDemoComponent implements OnInit {
   isClicked: boolean = false;
@@ -39,6 +39,7 @@ export class BookingDemoComponent implements OnInit {
   contactusForm!: FormGroup;
 
   constructor(
+    public activeModal: NgbActiveModal,
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private contactformService: ContactFormService
@@ -55,18 +56,18 @@ export class BookingDemoComponent implements OnInit {
 
   initForm() {
     this.contactusForm = this.formBuilder.group({
-      bookingDate: [""],
-      username: [""],
-      email: [""],
-      company: [""],
-      position: [""],
-      msg: [""],
+      bookingDate: [''],
+      username: [''],
+      email: [''],
+      company: [''],
+      position: [''],
+      msg: [''],
     });
   }
 
-  open(content: any) {
-    this.modalRef = this.modalService.open(content);
-  }
+  // open(content: any) {
+  //   this.modalRef = this.modalService.open(content);
+  // }
 
   myFilter = (d: Date): boolean => {
     const day = d.getDay();
@@ -93,7 +94,7 @@ export class BookingDemoComponent implements OnInit {
 
     while (mStartAt < mEndAt) {
       mTimeTables.push(moment(mStartAt));
-      mStartAt.add(30, "minutes");
+      mStartAt.add(30, 'minutes');
     }
     this.timeTables = mTimeTables;
   }
@@ -127,15 +128,16 @@ export class BookingDemoComponent implements OnInit {
   sendBooking(contactusForm: any) {
     this.isClicked = true;
     if (!contactusForm.value.bookingDate) {
-      this.errors = [{ detail: "デモ希望日時が選択されてません！" }];
+      this.errors = [{ detail: 'デモ希望日時が選択されてません！' }];
       return;
     }
     this.contactformService.sendDemoRequest(contactusForm.value).subscribe(
       (Message) => {
         contactusForm.reset();
-        this.modalRef.close();
         this.showSwalSuccess();
         this.isClicked = false;
+        this.activeModal.close('Close click');
+        // this.modalRef.close();
       },
       (errorResponse: HttpErrorResponse) => {
         console.error(errorResponse);
@@ -147,9 +149,9 @@ export class BookingDemoComponent implements OnInit {
 
   private showSwalSuccess() {
     Swal.fire({
-      icon: "success",
-      title: "送信されました",
-      text: "確認次第ZoomURLをお送りさせていただきます",
+      icon: 'success',
+      title: '送信されました',
+      text: '確認次第ZoomURLをお送りさせていただきます',
       customClass: {
         confirmButton: 'btn btn-primary btn-lg',
       },

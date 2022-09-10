@@ -15,10 +15,15 @@
             <a
               [routerLink]="['/contactus']"
               (click)="clickEvent('Top contactus button clicked!')"
-              class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
+              class="btn btn-outline-primary btn-lg mr-1 ml-1 landing_hero_button"
               ><i class="fa fa-envelope-o"></i> お問い合わせはこちら</a
             >
-            <app-booking-demo class="landing_hero_button"></app-booking-demo>
+            <button
+              (click)="modalDemoBookingOpen()"
+              class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
+            >
+              <i class="fa fa-tv"></i> 無料オンラインデモ予約はこちら
+            </button>
           </div>
         </div>
       </div>
@@ -356,41 +361,51 @@
                 <div class="space-top"></div>
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="card card-pricing">
-                      <div class="card-body">
-                        <h6 class="card-category text-primary">通常プラン</h6>
-                        <h1 class="card-title card-pricing-h1">
-                          <span class="pricing-strong">10,000</span>円~/月
-                        </h1>
-                        <ul>
-                          <li><b>パソコンまたはiPadを所持している</b></li>
-                          <li><b>インターネット環境がある</b></li>
-                          <li>
-                            <b
-                              >初回月は<s>10,000円</s>→
-                              <span class="red">5000円</span></b
-                            >
-                          </li>
-                        </ul>
-                        <!-- <a href="javascript:void(0)" class="btn btn-primary btn-round">お問い合わせはこち</a> -->
+                    <a
+                      target="_blank"
+                      href="https://buy.stripe.com/14kbJB5q44Uz2Mo5kk"
+                    >
+                      <div class="card card-pricing">
+                        <div class="card-body">
+                          <h6 class="card-category text-primary">通常プラン</h6>
+                          <h1 class="card-title card-pricing-h1">
+                            <span class="pricing-strong">10,000</span>円~/月
+                          </h1>
+                          <ul>
+                            <li><b>パソコンまたはiPadを所持している</b></li>
+                            <li><b>インターネット環境がある</b></li>
+                            <li>
+                              <b
+                                >初回月は<s>10,000円</s>→
+                                <span class="red">5000円</span></b
+                              >
+                            </li>
+                          </ul>
+                          <!-- <a href="javascript:void(0)" class="btn btn-primary btn-round">お問い合わせはこち</a> -->
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
                   <div class="col-md-6">
                     <div class="card card-pricing" data-color="orange">
-                      <div class="card-body">
-                        <h6 class="card-category text-success">
-                          iPadレンタルプラン
-                        </h6>
-                        <h1 class="card-title card-pricing-h1">
-                          <span class="pricing-strong">30,000</span>円〜/月
-                        </h1>
-                        <ul>
-                          <li><b>ネット環境不要</b></li>
-                          <li><b>iPad一台貸し出し</b></li>
-                          <li><b>13ヶ月継続利用でiPad贈呈</b></li>
-                        </ul>
-                      </div>
+                      <a
+                        target="_blank"
+                        href="https://buy.stripe.com/9AQ8xp2dS3Qv2Mo001"
+                      >
+                        <div class="card-body">
+                          <h6 class="card-category text-success">
+                            iPadレンタルプラン
+                          </h6>
+                          <h1 class="card-title card-pricing-h1">
+                            <span class="pricing-strong">30,000</span>円〜/月
+                          </h1>
+                          <ul>
+                            <li><b>ネット環境不要</b></li>
+                            <li><b>iPad一台貸し出し</b></li>
+                            <li><b>13ヶ月継続利用でiPad贈呈</b></li>
+                          </ul>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -427,10 +442,15 @@
       <a
         [routerLink]="['/contactus']"
         (click)="clickEvent('Buttom contactus button clicked!')"
-        class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
+        class="btn btn-outline-primary btn-lg mr-1 ml-1 landing_hero_button"
         ><i class="fa fa-envelope-o"></i> お問い合わせはこちら</a
       >
-      <app-booking-demo class="landing_hero_button"></app-booking-demo>
+      <button
+        (click)="modalDemoBookingOpen()"
+        class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
+      >
+        <i class="fa fa-tv"></i> 無料オンラインデモ予約はこちら
+      </button>
     </div>
   </div>
 </div>
