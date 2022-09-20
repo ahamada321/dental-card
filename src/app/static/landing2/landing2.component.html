@@ -1,0 +1,444 @@
+<div class="space-110"></div>
+<div class="container">
+  <div class="row flex_directon_reverse">
+    <div class="col-md-6">
+      <div class="container">
+        <h2 class="title">
+          業務報告から支払いまでの一元管理<br />
+          経理業務の80％を自動化！
+        </h2>
+        <h4 class="info-title">5人がかりの仕事を1人でらくらくこなせる</h4>
+        <div class="space-50"></div>
+        <div class="row landing_hero">
+          <a
+            [routerLink]="['/contactus']"
+            (click)="clickEvent('Top contactus button clicked!')"
+            class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
+            ><i class="fa fa-envelope-o"></i> お問い合わせはこちら</a
+          >
+          <button
+            (click)="modalDemoBookingOpen()"
+            class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
+          >
+            <i class="fa fa-tv"></i> 無料オンラインデモ予約はこちら
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 ml-auto">
+      <div class="landing_top_img">
+        <img src="assets/img/landing2/top.png" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="space-50"></div>
+<div
+  class="team-2 section-image"
+  style="background-image: url('./assets/img/landing2/neck_back.jpg')"
+>
+  <div class="filter">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">経理にまつわるよくある問題</h2>
+          <h5 class="description"></h5>
+          <br />
+        </div>
+      </div>
+      <div class="container-cards">
+        <div class="row">
+          <div class="col-md-3 col-6">
+            <div class="card card-just-text">
+              <div class="card-body text-center card_body_ne">
+                <img class="card" src="assets/img/landing2/neck1.png" />
+                <p class="card-description">
+                  宛先や金額を間違って振り込んでしまう
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="card card-hover-effect card-just-text">
+              <div class="card-body text-center card_body_ne">
+                <img class="card" src="assets/img/landing2/neck2.png" />
+                <p class="card-description">請求書の内容が不正確</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="card card-hover-effect card-just-text">
+              <div class="card-body text-center card_body_ne">
+                <img class="card" src="assets/img/landing2/neck3.png" />
+                <p class="card-description">新人教育に時間がかかる</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="card card-hover-effect card-just-text">
+              <div class="card-body text-center card_body_ne">
+                <img class="card" src="assets/img/landing2/neck4.png" />
+                <p class="card-description">
+                  業務が属人化しているから引き継ぎが一苦労
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--     *********    COMPANIES ISSUES     *********      -->
+<div class="container text-center">
+  <div class="space-50"></div>
+  <div class="row">
+    <div class="col-md-9 ml-auto mr-auto">
+      <h2 class="title">
+        今までの集計業務や給与計算をITの力で80％改善できます
+      </h2>
+      <h6 class="category">
+        属人化している業務を機械に任せることで、本来最も重要な業務に集中できる
+      </h6>
+    </div>
+  </div>
+</div>
+<div class="space-50"></div>
+<div class="blog-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 ml-auto mr-auto">
+        <div class="card card-plain card-blog">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="space-top"></div>
+              <div class="card-image">
+                <img class="img" src="assets/img/landing2/problem1.png" />
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h6 class="card-category text-danger">
+                  <i class="fa fa-free-code-camp" aria-hidden="true"></i>
+                  Employee's Problem
+                </h6>
+                <h3 class="card-title">人手が足りず、1人の業務量が多い</h3>
+                <p class="card-description">
+                  「誰かに業務を頼みたいけど、自分しか知らないことが多いから頼めない」<br />
+                  「業務量が多くて精神的にストレス」<br />
+                  「仕事が回らなくなるから気軽に休めない」<br />
+                  「申請内容のチェックや差し戻しに時間がかかる」<br />
+                  「手作業が多く、ミスが起きやすい」
+                  <br />
+                  <br />
+                  こういったお悩みを抱えていませんか？
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-plain card-blog">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="space-top"></div>
+              <div class="card-image">
+                <img class="img" src="assets/img/landing2/problem2.png" />
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h6 class="card-category text-danger">
+                  <i class="fa fa-free-code-camp" aria-hidden="true"></i>
+                  Executive's Problem
+                </h6>
+                <h3 class="card-title">従業員が金のなる木になりきれない</h3>
+                <p class="card-description">
+                  「短期的な目線でしか仕事をしないから効率化になってない」<br />
+                  「より利益を生み出せる作業も工夫をせずにこなしている」<br />
+                  「やる気のある人を採用してもいつの間にか脳死で労働」<br />
+                  「お金を生み出している人が教育に手を取られてもったいない」<br />
+                  <br />
+                  <br />
+                  こういったお悩みを抱えていませんか？
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-plain card-blog">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card-body">
+                <h6 class="card-category text-info">Go to digital</h6>
+                <h3 class="card-title">
+                  システムで大量の業務を捌いて価値ある仕事のみを人に任せられる
+                </h3>
+                <p class="card-description">
+                  今までの人間の手で行っていた集計や給与計算などの一見複雑そうに見える業務も分解すれば機械に任せてることが可能です。その浮いた時間でより利益を生み出す業務に時間をかけることができます。
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+
+        <div class="card card-plain card-blog">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card-body">
+                <h6 class="card-category text-primary">No Education</h6>
+                <h3 class="card-title">
+                  新人を雇うコスト分なのに教育不要で8人分以上の力を発揮する
+                </h3>
+                <p class="card-description">
+                  採用費も教育費も1人分以下で従業員8人分以上の力を発揮し、計算ミスのような人的エラーもない。長期的に見ると数千万円の利益差が出せるシステムです
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <!-- <div class="card-image">
+                  <img class="img" src="assets/img/faces/trust.svg" />
+                </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--     *********     FEATURES 4     *********      -->
+<div class="features-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 ml-auto mr-auto text-center">
+        <h2 class="title">
+          システム導入だけで会社の未来に3000万円を投資できる
+        </h2>
+        <h5 class="description">将来の利益を見据えるなら早めの導入を</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ipad-container">
+          <img src="assets/img/landing2/graphleft.jpg" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="ipad-container">
+          <img src="assets/img/landing2/graphright.png" />
+        </div>
+      </div>
+
+      <!-- <div class="col-md-4 offset-1">
+        <div class="info info-horizontal">
+          <div class="icon icon-info">
+            <i class="nc-icon nc-atom" aria-hidden="true"></i>
+          </div>
+          <div class="description">
+            <h4 class="info-title">For Developers</h4>
+            <p>
+              The moment you use Paper Kit, you know you’ve never felt anything
+              like it. With a single use, is's a powerfull UI Kit
+            </p>
+          </div>
+        </div>
+
+        <div class="info info-horizontal">
+          <div class="icon icon-success">
+            <i class="nc-icon nc-ruler-pencil" aria-hidden="true"></i>
+          </div>
+          <div class="description">
+            <h4 class="info-title">For Designers Only</h4>
+            <p>
+              The moment you use Paper Kit, you know you’ve never felt anything
+              like it. With a single use, this powerfull UI Kit lets you do more
+              than ever before.
+            </p>
+          </div>
+        </div>
+        <div class="info info-horizontal">
+          <div class="icon icon-danger">
+            <i class="nc-icon nc-tie-bow" aria-hidden="true"></i>
+          </div>
+          <div class="description">
+            <h4 class="info-title">Beautiful Examples</h4>
+            <p>
+              Speed up your development time or get inspired with the large
+              number of example pages.
+            </p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<!--     *********     FEATURES 5      *********      -->
+
+<div
+  class="features-5 section-image"
+  style="background-image: url('assets/img/landing2/function_back.jpg')"
+>
+  <div class="container">
+    <div class="row">
+      <div class="ml-auto mr-auto">
+        <h2 class="title text-center">４つの機能</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 ml-auto">
+        <div class="info">
+          <div class="icon">
+            <i class="nc-icon nc-bullet-list-67" aria-hidden="true"></i>
+          </div>
+          <h4 class="title">フォーマット化された報告機能</h4>
+          <p>
+            自由入力に比べ、形式がある報告書は入力者にも優しく<br />正確なデータを取得しやすい
+          </p>
+        </div>
+      </div>
+
+      <div class="col-sm-5 mr-auto">
+        <div class="info">
+          <div class="icon">
+            <i class="nc-icon nc-badge" aria-hidden="true"></i>
+          </div>
+          <h4 class="title">個別時給登録</h4>
+          <p>
+            業務報告と連動して、講師ごとに個別の時給を設定できて、月収額も自動計算されます
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row bottom-line">
+      <div class="col-sm-5 ml-auto">
+        <div class="info">
+          <div class="icon">
+            <i class="nc-icon nc-mobile" aria-hidden="true"></i>
+          </div>
+          <h4 class="title">領収書画像アップロード</h4>
+          <p>
+            講師がスマホで撮った画像をそのまま登録できるので経費計上の手間がなくなり、虚偽も起きない
+          </p>
+        </div>
+      </div>
+
+      <div class="col-sm-5 mr-auto">
+        <div class="info">
+          <div class="icon">
+            <i class="nc-icon nc-single-copy-04" aria-hidden="true"></i>
+          </div>
+          <h4 class="title">明細書発行機能</h4>
+          <p>
+            毎月発生する明細書の発行業務もシステムに任せれば<br />ワンクリックで自動発行
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--     *********    よくある質問     *********      -->
+<div class="section section-team cd-section team-4">
+  <div class="container">
+    <h2 class="title text-center">よくある質問</h2>
+    <div class="space-50"></div>
+    <div class="col-md-10 ml-auto mr-auto">
+      <ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one">
+        <ngb-panel id="config-panel-one">
+          <ng-template ngbPanelTitle>
+            <h5 class="mb-0 panel-title">
+              <a class="collapsed">
+                申し込みから開始までの目安期間はどのくらいですか？
+                <i class="nc-icon nc-minimal-down"></i>
+              </a>
+            </h5>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            申し込みから１０日営業日以内にご利用開始できます
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel>
+          <ng-template ngbPanelTitle>
+            <h5 class="mb-0 panel-title">
+              <a class="collapsed">
+                申し込み前にお試し利用することはできますか
+                <i class="nc-icon nc-minimal-down"></i>
+              </a>
+            </h5>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            利用者が使い慣れるまでに２ヶ月程度を要するのでお試し利用はできません。説明動画から使い方を試聴し、雰囲気を把握いただくことが可能です。
+            疑問点が生じた場合は上場企業出身のITコンサルタントが二人三脚でサポートします。
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel>
+          <ng-template ngbPanelTitle>
+            <h5 class="mb-0 panel-title">
+              <a class="collapsed">
+                スマホで利用できますか？
+                <i class="nc-icon nc-minimal-down"></i>
+              </a>
+            </h5>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            講師はスマホで業務報告、領収書アップロード、明細書閲覧が可能です。<br />
+            管理側はパソコンで詳細データを確認できます。
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+    </div>
+  </div>
+</div>
+<!--     *********    TESTIMONIALS 1     *********      -->
+
+<div
+  class="testimonials-1 section-image"
+  style="background-image: url('assets/img/landing2/last_section_back.jpg')"
+>
+  <div class="container">
+    <div class="text-center">
+      <h2 class="title">
+        業務報告から支払いまでの一元管理<br />
+        経理業務の80％を自動化で <br />
+        お金を収穫しませんか？
+      </h2>
+      <h5 class="description">
+        今すぐ始められて誰でも簡単に使えるから 手間なく、コストも削減できる
+      </h5>
+    </div>
+    <div class="space-top"></div>
+    <div class="row landing-last-buttons landing_hero">
+      <a
+        [routerLink]="['/contactus']"
+        (click)="clickEvent('Buttom contactus button clicked!')"
+        class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
+        ><i class="fa fa-envelope-o"></i> お問い合わせはこちら</a
+      >
+      <button
+        (click)="modalDemoBookingOpen()"
+        class="btn btn-primary btn-lg mr-1 ml-1 landing_hero_button"
+      >
+        <i class="fa fa-tv"></i> 無料オンラインデモ予約はこちら
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer section-nude">
+  <div class="container">
+    <!-- <div class="row">
+      <nav class="footer-nav">
+        <ul>
+          <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+          <li><a href="http://blog.creative-tim.com">Blog</a></li>
+          <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+        </ul>
+      </nav>
+    </div> -->
+  </div>
+</footer>

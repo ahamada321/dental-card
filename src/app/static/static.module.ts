@@ -16,10 +16,12 @@ import { TermsTextModule } from './terms/helpers/terms-text/terms-text.module';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BookingDemoModule } from '../common/booking-demo/booking-demo.module';
+import { LandingComponent2 } from './landing2/landing2.component';
 
 const routes: Routes = [
   // { path: '', component: TopComponent },
   { path: 'landing', component: LandingComponent },
+  { path: 'landing2', component: LandingComponent2 },
   { path: 'saas', component: LandingSaasComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'terms', component: TermsComponent },
@@ -33,6 +35,7 @@ const routes: Routes = [
   declarations: [
     TopComponent,
     LandingComponent,
+    LandingComponent2,
     LandingSaasComponent,
     AboutusComponent,
     MaintenanceComponent,
