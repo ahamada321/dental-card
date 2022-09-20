@@ -78,7 +78,7 @@ export class NavbarComponent implements OnInit {
 
   isLanding() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
-    if (titlee === '/landing') {
+    if (titlee === '/landing' || '/landing2') {
       return true;
     } else {
       return false;
